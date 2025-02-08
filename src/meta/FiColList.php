@@ -41,7 +41,7 @@ class FiColList
     $arrHeaders = [];
 
     foreach ($this->items as $item) {
-      $arrHeaders[] = $item->ofcTxHeaderName;
+      $arrHeaders[] = $item->ofcTxHeader;
     }
 
     return $arrHeaders;
