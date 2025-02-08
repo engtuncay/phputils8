@@ -7,41 +7,44 @@ use Exception;
 class Fdr
 {
 
-  private ?bool $boResult = null;
-  private ?string $message = null;
+  private ?bool $boResult ;
+  private ?string $message ;
   private $value;
-  private ?int $lnResponseCode = null;
 
-  private ?string $txId = null;
-  public ?string $txName = null;
+  private ?int $lnResponseCode ;
+
+  private ?string $txId ;
+  public ?string $txName ;
 
   public array $logList = [];
 
-  private ?int $rowsAffected = null;
-  private ?int $lnTotalCount = null;
-  private ?bool $boFalseExist = null;
+  private ?int $rowsAffected;
+  private ?int $lnTotalCount;
+  private ?bool $boFalseExist;
 
-  private ?Exception $exception = null;
+  private ?Exception $exception ;
 
   public array $listException = [];
 
-  private ?int $lnStatus = null;
-  private ?int $lnSuccessOpCount = null;
-  private ?int $lnFailureOpCount = null;
+  private ?int $lnStatus ;
+  private ?int $lnSuccessOpCount ;
+  private ?int $lnFailureOpCount ;
 
-  private ?string $txQueryType = null;
+  private ?string $txQueryType ;
 
-  private ?int $lnInsertedRows = null;
-  private ?int $lnUpdatedRows = null;
-  private ?int $lnDeletedRows = null;
+  private ?int $lnInsertedRows ;
+  private ?int $lnUpdatedRows ;
+  private ?int $lnDeletedRows ;
 
-  public ?bool $boOpResult = null;
-  public ?bool $boQueryExecuted = null;
-  public ?bool $boMultiFdr = null;
-  public array $listFdr = [];
+  //public ?bool $boOpResult = null;
+  public ?bool $boQueryExecuted ;
+  public ?bool $boMultiFdr ;
+  public ?array $listFdr; // = [];
 
-  private ?bool $boLockAddLog = null;
-  public array $obsMethodFinished = [];
+  private FkbList $fkbList;
+
+  private ?bool $boLockAddLog;
+  //public ?array $obsMethodFinished; // = [];
 
   public function __construct($boResult = null, $message = null)
   {
@@ -187,6 +190,16 @@ class Fdr
     $this->logList[] = ['type' => 'error', 'message' => $log];
   }
 
-}
+  public function getFkbList(): FkbList
+  {
+    return $this->fkbList;
+  }
+
+  public function setFkbList(FkbList $fkbList): void
+  {
+    $this->fkbList = $fkbList;
+  }
 
 
+
+} // end of class
