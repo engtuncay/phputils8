@@ -4,7 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . "/LogConfig.php";
 
 use PHPUnit\Framework\TestCase;
-use Engtuncay\Phputils\Dep\Email;
+use Engtuncay\Phputils8\Dep\Email;
 
 final class EmailTest extends TestCase
 {

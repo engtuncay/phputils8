@@ -1,5 +1,5 @@
 <?php
-namespace Engtuncay\Phputils8\core;
+namespace Engtuncay\Phputils8\meta;
 
 /**
  * Class which wraps an array for utility
