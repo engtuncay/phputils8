@@ -73,8 +73,7 @@ class FiExcel
       $fdrMain->setMessage("Excel dosyası okunurken hata oluştu: ". $e->getMessage());
     }
 
-    $fdrMain->setValue($fkbList);
-
+    $fdrMain->setFkbList($fkbList);
     return $fdrMain;
   }
 }
