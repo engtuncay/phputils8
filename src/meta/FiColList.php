@@ -3,6 +3,7 @@ namespace Engtuncay\Phputils8\meta;
 
 class FiColList
 {
+  /** @var FiCol[] */
   private $items = [];
 
   public function __construct($collection = [])
@@ -22,6 +23,28 @@ class FiColList
   public function getItems()
   {
     return $this->items;
+  }
+
+  public function getItemsField()
+  {
+    /** @var string[] */
+    $arrFields = [];
+    foreach ($this->items as $item) {
+      $arrFields[] = $item->ofcTxFieldName;
+    }
+    return $arrFields;
+  }
+
+  public function getItemsHeader()
+  {
+    /** @var string[] */
+    $arrHeaders = [];
+
+    foreach ($this->items as $item) {
+      $arrHeaders[] = $item->ofcTxHeaderName;
+    }
+
+    return $arrHeaders;
   }
 
   public function get($index)

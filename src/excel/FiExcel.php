@@ -3,6 +3,7 @@
 namespace Engtuncay\Phputils8\excel;
 
 use Engtuncay\Phputils8\meta\Fdr;
+use Engtuncay\Phputils8\meta\FiColList;
 use Engtuncay\Phputils8\meta\FiKeybean;
 use Engtuncay\Phputils8\meta\FkbList;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -13,7 +14,7 @@ class FiExcel
    * @param $inputFileName
    * @return Fdr value FkbList
    */
-  public static function readExcelFile($inputFileName): Fdr
+  public static function readExcelFile($inputFileName,FiColList $fiCols): Fdr
   {
     //$inputFileName = $uploadedFile['tmp_name'];
     $fdrMain = new Fdr();
@@ -25,20 +26,32 @@ class FiExcel
       // En yüksek satır ve sütun numaralarını al
       $highestRow = $sheet->getHighestRow(); // Toplam satır sayısı
       $highestColumn = $sheet->getHighestColumn(); // En yüksek sütun harfi (örneğin, "D")
-      $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn); // Sütun harfini indekse çevir (örneğin, "D" -> 4)
+      //$highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn); // Sütun harfini indekse çevir (örneğin, "D" -> 4)
       $fkbList = new FkbList();
-
+      // URTBC burası düzeltilecek
       $fiExcelHeaders = [];
 
       $row = 1;
-      // Sütunları gezmek için 'for' döngüsü
-      for ($col = 'A'; $col <= $highestColumn; $col++) {
-        // Hücredeki değeri al
-        $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
-        //echo "<td>" . htmlspecialchars($cellValue) . "</td>"; // Hücreyi yazdır
-        $fiExcelHeaders[$col] = $cellValue;
-      }
+      for (; $row <= $highestRow; $row++) {
+        // Sütunları gezmek için 'for' döngüsü
+        for ($col = 'A'; $col <= $highestColumn; $col++) {
+          // Hücredeki değeri al
+          $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
+          //echo "<td>" . htmlspecialchars($cellValue) . "</td>"; // Hücreyi yazdır
+          if (in_array($fiCols->getItemsHeader(),$cellValue)) {
+            break;
+          }
+        }
 
+        for ($col = 'A'; $col <= $highestColumn; $col++) {
+          // Hücredeki değeri al
+          $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
+          $fiExcelHeaders[$col] = $cellValue;
+        }
+
+
+
+      }
       //echo PHP_EOL; // Satır sonu
 
       // Satırları dolaş
