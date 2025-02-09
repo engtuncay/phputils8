@@ -47,6 +47,21 @@ class FiColList
     return $arrHeaders;
   }
 
+  /**
+   * @return string[]
+   */
+  public function getItemsHeaderToField(): array
+  {
+    /** @var string[] */
+    $arrData = [];
+
+    foreach ($this->items as $item) {
+      $arrData[$item->ofcTxHeader] = $item->ofcTxFieldName;
+    }
+
+    return $arrData;
+  }
+
   public function get($index)
   {
     return $this->items[$index] ?? null;

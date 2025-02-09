@@ -86,3 +86,4 @@ dist/
 # Cache ve geçici dosyalar
 .cache/
 tmp/
+/fi-logs/

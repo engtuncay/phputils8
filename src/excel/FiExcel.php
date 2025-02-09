@@ -1,21 +1,23 @@
 <?php
-
 namespace Engtuncay\Phputils8\excel;
 
+use Engtuncay\Phputils8\log\FiLog;
 use Engtuncay\Phputils8\meta\Fdr;
 use Engtuncay\Phputils8\meta\FiColList;
 use Engtuncay\Phputils8\meta\FiKeybean;
 use Engtuncay\Phputils8\meta\FkbList;
+use Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class FiExcel
 {
+
   /**
    * @param $inputFileName
    * @return Fdr value FkbList
    */
-  public static function readExcelFile($inputFileName,FiColList $fiCols): Fdr
+  public static function readExcelFile($inputFileName, FiColList $fiCols): Fdr
   {
     //$inputFileName = $uploadedFile['tmp_name'];
     $fdrMain = new Fdr();
@@ -28,26 +30,18 @@ class FiExcel
       $highestRow = $sheet->getHighestRow(); // Toplam satır sayısı
       $highestColumn = $sheet->getHighestColumn(); // En yüksek sütun harfi (örneğin, "D")
       //$highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn); // Sütun harfini indekse çevir (örneğin, "D" -> 4)
-      $fkbList = new FkbList();
-      // URTBC burası düzeltilecek
+      $fkbListExcel = new FkbList();
 
-      /** @var string[] $fiExcelHeaders */
-      $fiExcelHeaders = [];
-      //list($row, $col, $cellValue, $fiExcelHeaders)
-      $headerRowNo  = self::findHeaderRowNo($sheet, $fiCols);
+      /**
+       * @var string[] $fiExcelHeaders key:colCharIndex,value:fieldName
+       * @var int $headerRowNo
+       */
+      list($fiExcelHeaders, $headerRowNo) = self::findHeaders($sheet, $fiCols);
 
-      if($headerRowNo==-1){
+      if (array_count_values($fiExcelHeaders) == 0) {
         $fdrMain->setMessage("başlık bulunamadı.");
         $fdrMain->setBoResult(false);
         return $fdrMain;
-      }
-
-      for ($col = 'A'; $col <= $highestColumn; $col++) {
-        // Hücredeki değeri al
-        $cellValue = $sheet->getCell($col . $headerRowNo)->getFormattedValue();
-        //echo "<td>" . htmlspecialchars($cellValue) . "</td>"; // Hücreyi yazdır
-        if(empty($cellValue))continue;
-        $fiExcelHeaders[$col] = $cellValue;
       }
 
       //echo PHP_EOL; // Satır sonu
@@ -61,11 +55,10 @@ class FiExcel
         foreach ($fiExcelHeaders as $col => $value) {
           $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
           //echo "<td>" . htmlspecialchars($cellValue) . "</td>"; // Hücreyi yazdır
-          $fkb->put($fiExcelHeaders[$col],$cellValue);
+          $fkb->put($fiExcelHeaders[$col], $cellValue);
         }
 
-        $fkbList->add($fkb);
-
+        $fkbListExcel->add($fkb);
       }
 
       $fdrMain->setBoResult(true);
@@ -74,48 +67,53 @@ class FiExcel
       //echo 'Excel dosyası okunurken hata oluştu: ', $e->getMessage(), PHP_EOL;
       $fdrMain->setBoResult(false);
       $fdrMain->setException($e);
-      $fdrMain->setMessage("Excel dosyası okunurken hata oluştu: ". $e->getMessage());
+      $fdrMain->setMessage("Excel dosyası okunurken hata oluştu: " . $e->getMessage());
     }
 
-    $fdrMain->setFkbList($fkbList);
+    $fdrMain->setFkbList($fkbListExcel);
     return $fdrMain;
   }
 
   /**
-   * @param int $highestRow
-   * @param string $highestColumn
    * @param \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet
    * @param FiColList $fiCols
-   * @param array $fiExcelHeaders
    * @return array
    */
-  public static function findHeaderRowNo(Worksheet $sheet, FiColList $fiCols): int
-  { //, array $fiExcelHeaders
+  public static function findHeaders(Worksheet $sheet, FiColList $fiCols): array
+  {
+    /** @var string[] $fiExcelHeaders */
+    $fiExcelHeaders = [];
 
     // En yüksek satır ve sütun numaralarını al
     $highestRow = $sheet->getHighestRow(); // Toplam satır sayısı
     $highestColumn = $sheet->getHighestColumn(); // En yüksek sütun harfi (örneğin, "D")
 
-    for ($row = 1; $row <= $highestRow; $row++) {
+    $boFoundHeaderRow = false;
+    for ($rowHeaderNo = 1; $rowHeaderNo <= $highestRow; $rowHeaderNo++) {
       // Sütunları gezmek için 'for' döngüsü
-      $boFound = false;
-      for ($col = 'A'; $col <= $highestColumn; $col++) {
+      for ($colIndex = 'A'; $colIndex <= $highestColumn; $colIndex++) {
         // Hücredeki değeri al
-        $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
+        $cellValue = $sheet->getCell($colIndex . $rowHeaderNo)->getFormattedValue();
+
+        //FiLog::$log->info('info message:');
+        FiLog::$log?->debug('cellValue:' . $cellValue);
+        FiLog::$log?->debug(sprintf("itemHeaders:%s", implode("-", $fiCols->getItemsHeader())));
+
         //echo "<td>" . htmlspecialchars($cellValue) . "</td>"; // Hücreyi yazdır
-        if (in_array($cellValue,$fiCols->getItemsHeader())) {
-          $boFound = true;
-          break;
+        if (in_array($cellValue, $fiCols->getItemsHeader())) {
+          $boFoundHeaderRow = true;
+          FiLog::$log?->debug(sprintf("boFoundHeaderRow:%s", $boFoundHeaderRow));
+          $fiExcelHeaders[$colIndex] = $fiCols->getItemsHeaderToField()[$cellValue];
         }
 
-        if($boFound)break;
       }
 
+      if ($boFoundHeaderRow) break;
     }
 
-    if(!$boFound) return -1;
+    //if(!$boFoundHeaderRow) return -1;
 
-    return $row; //array($row, $col, $cellValue, $fiExcelHeaders);
+    return array($fiExcelHeaders, $rowHeaderNo); //array($rowHeaderNo, $colIndex, $cellValue, $fiExcelHeaders);
   }
 }
 
