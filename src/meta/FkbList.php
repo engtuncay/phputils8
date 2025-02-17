@@ -24,6 +24,15 @@ class FkbList
     return $this->items;
   }
 
+  public function getAsMultiArray()
+  {
+    $arrFdr = [];
+    foreach ($this->getItems() as $f) {
+      array_push($arrFdr, $f->params);
+    }
+    return $arrFdr;
+  }
+
   public function get($index)
   {
     return $this->items[$index] ?? null;
