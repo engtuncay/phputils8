@@ -1,11 +1,9 @@
 <?php
-
 namespace Engtuncay\Phputils8\log;
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
-
 
 class FiLog
 {
@@ -14,10 +12,10 @@ class FiLog
   public static function initLogger(string $logFileName)
   {
     //echo 'log init';
-    if (self::$log===null) { //!isset(self::$log)
+    if (self::$log === null) { //!isset(self::$log)
       //echo 'log başlatıldi';
       self::$log = new Logger('filog');
-      self::$log->pushHandler(new StreamHandler('./fi-logs/' . $logFileName .'.log', Level::Debug));
+      self::$log->pushHandler(new StreamHandler('./fi-logs/' . $logFileName . '.log', Level::Debug));
 
       // Filtreleme veya değiştirme işlemi yapan processor
       self::$log->pushProcessor(function ($record) {
