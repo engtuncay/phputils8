@@ -1,4 +1,5 @@
 <?php
+
 namespace Engtuncay\Phputils8\excel;
 
 use Engtuncay\Phputils8\log\FiLog;
@@ -19,6 +20,8 @@ class FiExcel
    */
   public static function readExcelFile($inputFileName, FiColList $fiCols): Fdr
   {
+    //echo 'excel';
+    FiLog::$log?->debug('Excel Read');
     //$inputFileName = $uploadedFile['tmp_name'];
     $fdrMain = new Fdr();
 
@@ -62,16 +65,18 @@ class FiExcel
       }
 
       $fdrMain->setBoResult(true);
+      $fdrMain->setFkbList($fkbListExcel);
+      return $fdrMain;
 
     } catch (Exception $e) {
       //echo 'Excel dosyası okunurken hata oluştu: ', $e->getMessage(), PHP_EOL;
+      FiLog::$log?->debug('Exception aldı');
       $fdrMain->setBoResult(false);
       $fdrMain->setException($e);
       $fdrMain->setMessage("Excel dosyası okunurken hata oluştu: " . $e->getMessage());
+      return $fdrMain;
     }
 
-    $fdrMain->setFkbList($fkbListExcel);
-    return $fdrMain;
   }
 
   /**
@@ -96,8 +101,8 @@ class FiExcel
         $cellValue = $sheet->getCell($colIndex . $rowHeaderNo)->getFormattedValue();
 
         //FiLog::$log->info('info message:');
-        FiLog::$log?->debug('cellValue:' . $cellValue);
-        FiLog::$log?->debug(sprintf("itemHeaders:%s", implode("-", $fiCols->getItemsHeader())));
+        //FiLog::$log?->debug('cellValue:' . $cellValue);
+        //FiLog::$log?->debug(sprintf("itemHeaders:%s", implode("-", $fiCols->getItemsHeader())));
 
         //echo "<td>" . htmlspecialchars($cellValue) . "</td>"; // Hücreyi yazdır
         if (in_array($cellValue, $fiCols->getItemsHeader())) {

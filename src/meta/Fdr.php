@@ -41,7 +41,7 @@ class Fdr
   public ?bool $boMultiFdr ;
   public ?array $listFdr; // = [];
 
-  private FkbList $fkbList;
+  private ?FkbList $fkbList = null; // init
 
   private ?bool $boLockAddLog;
   //public ?array $obsMethodFinished; // = [];
@@ -190,8 +190,11 @@ class Fdr
     $this->logList[] = ['type' => 'error', 'message' => $log];
   }
 
-  public function getFkbList(): FkbList
+  public function getFkbListInit(): FkbList
   {
+    if($this->fkbList === null) {
+        $this->fkbList = new FkbList();
+    }
     return $this->fkbList;
   }
 
