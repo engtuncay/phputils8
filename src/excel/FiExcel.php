@@ -117,7 +117,6 @@ class FiExcel
     }
 
     //if(!$boFoundHeaderRow) return -1;
-
     return array($fiExcelHeaders, $rowHeaderNo); //array($rowHeaderNo, $colIndex, $cellValue, $fiExcelHeaders);
   }
 }
