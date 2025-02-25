@@ -104,5 +104,11 @@ class FiCol
         $this->ofcTxHeader = $ofcTxHeader;
     }
 
+    public function buiColType(string $string):FiCol
+    {
+        $this->colType = $string;
+        return $this;
+    }
+
 
 }

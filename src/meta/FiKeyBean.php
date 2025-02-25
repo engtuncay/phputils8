@@ -1,4 +1,5 @@
 <?php
+
 namespace Engtuncay\Phputils8\meta;
 
 /**
@@ -13,7 +14,7 @@ class FiKeybean
      */
     public array $params = [];
 
-    public function put($key,$value)
+    public function put($key, $value)
     {
         $this->params[$key] = $value;
     }
@@ -31,6 +32,11 @@ class FiKeybean
     public function setParams(array $params): void
     {
         $this->params = $params;
+    }
+
+    public function getByFiCol(FiCol $fiCol)
+    {
+        return $this->getArr()[$fiCol->ofcTxFieldName];
     }
 
 
