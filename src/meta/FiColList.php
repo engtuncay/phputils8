@@ -1,7 +1,12 @@
 <?php
+
 namespace Engtuncay\Phputils8\meta;
 
-class FiColList
+use ArrayIterator;
+use IteratorAggregate;
+use Traversable;
+
+class FiColList implements IteratorAggregate
 {
   /** @var FiCol[] */
   private $items = [];
@@ -70,6 +75,11 @@ class FiColList
   public function size()
   {
     return count($this->items);
+  }
+
+  public function getIterator(): Traversable
+  {
+    return new ArrayIterator($this->items);
   }
 }
 
