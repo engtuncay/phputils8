@@ -1,9 +1,10 @@
 <?php
 
-namespace Engtuncay\Phputils8\meta;
+namespace Engtuncay\Phputils8\Meta;
 
 use ArrayIterator;
-use Engtuncay\Phputils8\log\FiLog;
+use Engtuncay\Phputils8\Core\FiArray;
+use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
 use Traversable;
 
@@ -15,7 +16,7 @@ class FiKeybean implements IteratorAggregate
     /**
      * fkb is used as array, so it initialized.
      *
-     * @var array
+     * @var array $params
      */
     public array $params = [];
 
@@ -46,8 +47,9 @@ class FiKeybean implements IteratorAggregate
 
     public function getValueByFiCol(FiCol $fiCol)
     {
-      FiLog::$log?->debug( json_encode($this->getArr()));
-      return $this->getArr()[$fiCol->getOfcTxFieldNameNtn()];
+      //FiLog::$log?->debug( json_encode($this->getArr()));
+      if (!FiArray::existKeyByFiCol($this->getArr(),$fiCol)) return null;
+      return $this->getArr()[$fiCol->ofcTxFieldName];
     }
 
     public function getIterator(): Traversable {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Engtuncay\Phputils8\excel;
+namespace Engtuncay\Phputils8\Excel;
 
-use Engtuncay\Phputils8\log\FiLog;
-use Engtuncay\Phputils8\meta\Fdr;
-use Engtuncay\Phputils8\meta\FiColList;
-use Engtuncay\Phputils8\meta\FiKeybean;
-use Engtuncay\Phputils8\meta\FkbList;
+use Engtuncay\Phputils8\Log\FiLog;
+use Engtuncay\Phputils8\Meta\Fdr;
+use Engtuncay\Phputils8\Meta\FiColList;
+use Engtuncay\Phputils8\Meta\FiKeybean;
+use Engtuncay\Phputils8\Meta\FkbList;
 use Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;

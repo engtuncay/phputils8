@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\pdo;
+namespace Engtuncay\Phputils8\Pdo;
 
 use PDOException;
 use PDO;

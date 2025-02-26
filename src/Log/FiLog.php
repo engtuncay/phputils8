@@ -1,5 +1,5 @@
 <?php
-namespace Engtuncay\Phputils8\log;
+namespace Engtuncay\Phputils8\Log;
 
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;

@@ -1,8 +1,14 @@
 <?php
-namespace Engtuncay\Phputils8\meta;
 
-class FkbList
+namespace Engtuncay\Phputils8\Meta;
+
+use ArrayIterator;
+use IteratorAggregate;
+use Traversable;
+
+class FiColList implements IteratorAggregate
 {
+  /** @var FiCol[] */
   private $items = [];
 
   public function __construct($collection = [])
@@ -14,7 +20,7 @@ class FkbList
     }
   }
 
-  public function add(FiKeybean $item)
+  public function add(FiCol $item)
   {
     $this->items[] = $item;
   }
@@ -24,13 +30,41 @@ class FkbList
     return $this->items;
   }
 
-  public function getAsMultiArray()
+  public function getItemsField()
   {
-    $arrFdr = [];
-    foreach ($this->getItems() as $f) {
-      array_push($arrFdr, $f->params);
+    /** @var string[] */
+    $arrFields = [];
+    foreach ($this->items as $item) {
+      $arrFields[] = $item->ofcTxFieldName;
     }
-    return $arrFdr;
+    return $arrFields;
+  }
+
+  public function getItemsHeader()
+  {
+    /** @var string[] */
+    $arrHeaders = [];
+
+    foreach ($this->items as $item) {
+      $arrHeaders[] = $item->ofcTxHeader;
+    }
+
+    return $arrHeaders;
+  }
+
+  /**
+   * @return string[]
+   */
+  public function getItemsHeaderToField(): array
+  {
+    /** @var string[] */
+    $arrData = [];
+
+    foreach ($this->items as $item) {
+      $arrData[$item->ofcTxHeader] = $item->ofcTxFieldName;
+    }
+
+    return $arrData;
   }
 
   public function get($index)
@@ -43,6 +77,10 @@ class FkbList
     return count($this->items);
   }
 
+  public function getIterator(): Traversable
+  {
+    return new ArrayIterator($this->items);
+  }
 }
 
 //// FiKeyBean sınıfını tanımlamanız gerekecek.

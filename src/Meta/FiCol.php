@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\meta;
+namespace Engtuncay\Phputils8\Meta;
 
 /**
  *
