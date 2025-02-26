@@ -48,7 +48,7 @@ class FiKeybean implements IteratorAggregate
     public function getValueByFiCol(FiCol $fiCol)
     {
       //FiLog::$log?->debug( json_encode($this->getArr()));
-      if (!FiArray::existKeyByFiCol($this->getArr(),$fiCol)) return null;
+      if (!FiArray::existKeyByFiCol($fiCol, $this->getArr())) return null;
       return $this->getArr()[$fiCol->ofcTxFieldName];
     }
 

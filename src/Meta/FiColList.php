@@ -8,7 +8,7 @@ use Traversable;
 
 class FiColList implements IteratorAggregate
 {
-  /** @var FiCol[] */
+  /** @var FiCol[] $items */
   private $items = [];
 
   public function __construct($collection = [])
@@ -32,7 +32,7 @@ class FiColList implements IteratorAggregate
 
   public function getItemsField()
   {
-    /** @var string[] */
+    /** @var string[] $arrFields */
     $arrFields = [];
     foreach ($this->items as $item) {
       $arrFields[] = $item->ofcTxFieldName;
