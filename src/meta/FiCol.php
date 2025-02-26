@@ -116,4 +116,11 @@ class FiCol
     return $this->ofcTxFieldName;
   }
 
+  public function getOfcTxFieldNameNtn(): string
+  {
+    if($this->ofcTxFieldName==null) return "";
+    return $this->ofcTxFieldName;
+  }
+
+
 }
