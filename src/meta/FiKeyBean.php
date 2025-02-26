@@ -3,6 +3,7 @@
 namespace Engtuncay\Phputils8\meta;
 
 use ArrayIterator;
+use Engtuncay\Phputils8\log\FiLog;
 use IteratorAggregate;
 use Traversable;
 
@@ -43,9 +44,10 @@ class FiKeybean implements IteratorAggregate
         $this->params = $params;
     }
 
-    public function getByFiCol(FiCol $fiCol)
+    public function getValueByFiCol(FiCol $fiCol)
     {
-        return $this->getArr()[$fiCol->ofcTxFieldName];
+      FiLog::$log?->debug( json_encode($this->getArr()));
+      return $this->getArr()[$fiCol->getOfcTxFieldNameNtn()];
     }
 
     public function getIterator(): Traversable {
