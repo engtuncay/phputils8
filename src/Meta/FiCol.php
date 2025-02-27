@@ -26,6 +26,8 @@ class FiCol
 
   /**
    * Col Id olması için konuldu - tekil kodu
+   *
+   * Experimental durumda şu an
    */
   public ?string $txGuid = null;
 
@@ -36,14 +38,14 @@ class FiCol
   // Alanın türünü belirtir (double,?string,date vs )
   public ?string $colType = null; //OzColType
 
+  //public OzColType colGenType;
+
+  // Formlarda default true olarak çalışır, false olursa düzenleme izni vermez
   /**
    * Column Generic Type. Sütun nasıl bir tipte olduğunu gösterir. (Data Tipi degil)
    * <p>
    * Örneğin , Xml parse edilirken, alanın xmlAttribute türünde olduğunu gösterir.
    */
-  //public OzColType colGenType;
-
-  // Formlarda default true olarak çalışır, false olursa düzenleme izni vermez
   public ?bool $boEditable = null;
 
 
@@ -52,7 +54,8 @@ class FiCol
    */
   public ?bool $boHidden = null;
 
-  // excelden sütunları ayarlarken opsiyonel sütunların belinmesi için (zorunlu degil) , vs.. (boRequired:false da kullanılabilirdi.)
+  // excelden sütunları ayarlarken opsiyonel sütunların belinmesi için (zorunlu degil)
+  // vs.. (boRequired:false da kullanılabilirdi.)
   public ?bool $boOptional;
 
   // excelde sütunun bulunduğunu gösterir
@@ -67,16 +70,21 @@ class FiCol
   // Reflection Field Alanlar
 
   // FiId
-  public ?string $ofiTxIdType = null;
+  public ?string $ofcTxIdType = null;
   // FiColumn
   public ?bool $ofcBoUniqGro1 = null;
   public ?bool $ofcBoNullable = null;
   public ?bool $ofcBoUnique = null;
-  public ?bool $ofcBoUtfSupport = null;
+
+  //public ?bool $ofcBoUtfSupport = null;
   public ?string $ofcTxDefValue = null;
   public ?string $ofcTxCollation = null;
   public ?string $ofcTxTypeName = null;
   public ?int $ofcLnLength = null;
+
+  /**
+   * @var int|null
+   */
   public ?int $ofcLnPrecision = null;
   public ?int $ofcLnScale = null;
   public ?bool $ofcBoFilterLike = null;
@@ -85,13 +93,13 @@ class FiCol
 
   //FiTransient
 
-  //public ?string $ofcTxEntityName;
+  public ?string $ofcTxEntityName = null;
 
 
   /**
    * alanın veritabanında olmadığını belirtir
    */
-  public ?bool $oftBoTransient = null;
+  public ?bool $ofcBoTransient = null;
 
   //public ?string $ficTxSqlFieldDefinition;
 
@@ -118,8 +126,17 @@ class FiCol
 
   public function getOfcTxFieldNameNtn(): string
   {
-    if($this->ofcTxFieldName==null) return "";
+    if ($this->ofcTxFieldName == null) return "";
     return $this->ofcTxFieldName;
+  }
+
+  public function getOfcTxEntityNameNtn()
+  {
+    //$this->
+    if ($this->ofcTxEntityName == null) {
+      return "";
+    }
+    return $this->ofcTxEntityName;
   }
 
 

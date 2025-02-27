@@ -3,6 +3,7 @@
 namespace Engtuncay\Phputils8\Meta;
 
 use ArrayIterator;
+use codegen\ficols\FicFiCol;
 use IteratorAggregate;
 use Traversable;
 
@@ -67,7 +68,7 @@ class FiColList implements IteratorAggregate
     return $arrData;
   }
 
-  public function get($index)
+  public function get($index) : FiCol|null
   {
     return $this->items[$index] ?? null;
   }
