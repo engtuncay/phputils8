@@ -130,11 +130,10 @@ class FiCol
     return $this->ofcTxFieldName;
   }
 
-  public function getOfcTxEntityNameNtn()
+  public function getOfcTxEntityNameNtn(): string
   {
-    //$this->
     if ($this->ofcTxEntityName == null) {
-      return "";
+      return "bosentity";
     }
     return $this->ofcTxEntityName;
   }

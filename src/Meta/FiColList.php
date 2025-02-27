@@ -26,7 +26,10 @@ class FiColList implements IteratorAggregate
     $this->items[] = $item;
   }
 
-  public function getItems()
+  /**
+   * @return FiCol[]
+   */
+  public function getItems(): array
   {
     return $this->items;
   }
