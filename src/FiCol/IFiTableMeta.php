@@ -2,14 +2,14 @@
 
 namespace Engtuncay\Phputils8\FiCol;
 
-use Engtuncay\Phputils8\Meta\FiColList;
+use Engtuncay\Phputils8\Meta\FclList;
 
 interface IFiTableMeta
 {
  function getITxTableName():string;
 
- function genITableCols():FiColList;
+ function genITableCols():FclList;
 
- function genITableColsTrans():FiColList;
+ function genITableColsTrans():FclList;
 
 }

@@ -4,7 +4,7 @@ namespace Engtuncay\Phputils8\Excel;
 
 use Engtuncay\Phputils8\Log\FiLog;
 use Engtuncay\Phputils8\Meta\Fdr;
-use Engtuncay\Phputils8\Meta\FiColList;
+use Engtuncay\Phputils8\Meta\FclList;
 use Engtuncay\Phputils8\Meta\FiKeybean;
 use Engtuncay\Phputils8\Meta\FkbList;
 use Exception;
@@ -18,7 +18,7 @@ class FiExcel
    * @param $inputFileName
    * @return Fdr value FkbList
    */
-  public static function readExcelFile($inputFileName, FiColList $fiCols): Fdr
+  public static function readExcelFile($inputFileName, FclList $fiCols): Fdr
   {
     //echo 'excel';
     FiLog::$log?->debug('Excel Read');
@@ -81,10 +81,10 @@ class FiExcel
 
   /**
    * @param \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet
-   * @param FiColList $fiCols
+   * @param FclList $fiCols
    * @return array
    */
-  public static function findHeaders(Worksheet $sheet, FiColList $fiCols): array
+  public static function findHeaders(Worksheet $sheet, FclList $fiCols): array
   {
     /** @var string[] $fiExcelHeaders */
     $fiExcelHeaders = [];

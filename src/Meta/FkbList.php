@@ -1,7 +1,11 @@
 <?php
 namespace Engtuncay\Phputils8\Meta;
 
-class FkbList
+use ArrayIterator;
+use IteratorAggregate;
+use Traversable;
+
+class FkbList implements IteratorAggregate
 {
   private $items = [];
 
@@ -33,7 +37,7 @@ class FkbList
     return $arrFdr;
   }
 
-  public function get($index)
+  public function get($index) : FikeyBean|null
   {
     return $this->items[$index] ?? null;
   }
@@ -43,6 +47,11 @@ class FkbList
     return count($this->items);
   }
 
+
+  public function getIterator(): Traversable
+  {
+    return new ArrayIterator($this->items);
+  }
 }
 
 //// FiKeyBean sınıfını tanımlamanız gerekecek.

@@ -7,7 +7,7 @@ use codegen\ficols\FicFiCol;
 use IteratorAggregate;
 use Traversable;
 
-class FiColList implements IteratorAggregate
+class FclList implements IteratorAggregate
 {
   /** @var FiCol[] $items */
   private $items = [];
@@ -86,34 +86,3 @@ class FiColList implements IteratorAggregate
     return new ArrayIterator($this->items);
   }
 }
-
-//// FiKeyBean sınıfını tanımlamanız gerekecek.
-//class FiKeyBean
-//{
-//  public $key;
-//  public $value;
-//
-//  public function __construct($key, $value)
-//  {
-//    $this->key = $key;
-//    $this->value = $value;
-//  }
-//}
-//
-//// Kullanım örneği
-//$fkbList = new FkbList([
-//  new FiKeyBean('key1', 'value1'),
-//  new FiKeyBean('key2', 'value2')
-//]);
-//
-//$fkbList->add(new FiKeyBean('key3', 'value3'));
-//
-//foreach ($fkbList->getItems() as $item) {
-//  echo $item->key . ': ' . $item->value . PHP_EOL;
-//}
-//
-//// Belirli bir öğeye erişim
-//echo "İkinci öğe: " . $fkbList->get(1)->key . PHP_EOL;
-//
-//// Liste boyutu
-//echo "Toplam öğe sayısı: " . $fkbList->size() . PHP_EOL;
