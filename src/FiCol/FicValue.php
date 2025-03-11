@@ -28,4 +28,24 @@ class FicValue
 
     return null;
   }
+
+  /**
+   * Verilen string'i integer'a çevirir.
+   * Eğer çeviri sırasında bir hata oluşursa, varsayılan değer döner.
+   *
+   * @param string $value
+   * @param int|null $default Eğer dönüşüm başarısız olursa dönecek varsayılan değer (opsiyonel).
+   * @return int
+   */
+  public static function toInt(string $value, $orValue = null): int|null
+  {
+    // Numeric bir değer mi kontrol ediyoruz
+    if (is_numeric($value)) {
+      return (int)$value;
+    }
+
+    // Eğer numeric bir değerse, default'u döndürüyoruz
+    return $orValue;
+  }
+
 }

@@ -23,13 +23,16 @@ class FiString
     return $result;
   }
 
-
-
-
-//// Örnek Kullanım
-//$input = "örnek_bir_metni_upper_camel_case";
-//$output = toUpperCamelCase($input);
-//
-//echo $output; // Çıktı: ÖrnekBirMetniUpperCamelCase
+  /**
+   * Verilen metin içinde küçük harf bulunup bulunmadığını kontrol eder.
+   *
+   * @param string $input Kontrol edilecek metin.
+   * @return bool Küçük harf varsa true, yoksa false döner.
+   */
+  public static function hasLowercaseLetter(string $input): bool
+  {
+    // Küçük harfleri kontrol etmek için preg_match kullanıyoruz
+    return preg_match('/[a-z]/', $input) === 1;
+  }
 
 }
