@@ -17,12 +17,13 @@ class FicValue
   {
     $txValue = strval($value);
 
-    FiLog::$log?->debug('toBool:'. $txValue);
-
+    //FiLog::$log?->debug('toBool:'. $txValue);
     if(strcasecmp($txValue,'true')===0) return true;
     if(strcasecmp($txValue,'false')===0) return false;
     if(strcasecmp($txValue,'x')===0) return false;
     if(strcasecmp($txValue,'ok')===0) return true;
+    if(strcasecmp($txValue,'yes')===0) return true;
+    if(strcasecmp($txValue,'no')===0) return false;
 
     if($boElseValue!==null) return $boElseValue;
 

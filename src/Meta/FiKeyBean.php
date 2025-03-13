@@ -4,6 +4,7 @@ namespace Engtuncay\Phputils8\Meta;
 
 use ArrayIterator;
 use Engtuncay\Phputils8\Core\FiArray;
+use Engtuncay\Phputils8\FiCol\FicValue;
 use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
 use Traversable;
@@ -57,7 +58,7 @@ class FiKeybean implements IteratorAggregate
     $this->params = $params;
   }
 
-  public function getValueByFiCol(FiCol $fiCol)
+  public function getValueByFiCol(FiCol $fiCol): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     if (!FiArray::existKeyByFiCol($fiCol, $this->getArr())) return null;
@@ -74,18 +75,11 @@ class FiKeybean implements IteratorAggregate
     if (!FiArray::existKeyByFiCol($fiCol, $this->getArr())) return null;
     $txValue = $this->getArr()[$fiCol->ofcTxFieldName];
 
-    if (is_string($txValue)) {
+    //if (is_string($txValue)) {
+      return FicValue::toBool($txValue);
+    //}
 
-      $txValueLower = strtolower($txValue);
-
-      if( $txValueLower=="true"|| $txValueLower=="ok") return true;
-
-      if( $txValueLower=="false"|| $txValueLower=="x") return true;
-
-    }
-
-    return null;
-
+    //return null;
   }
 
 }

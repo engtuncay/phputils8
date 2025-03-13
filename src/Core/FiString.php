@@ -35,4 +35,11 @@ class FiString
     return preg_match('/[a-z]/', $input) === 1;
   }
 
+  public static function orEmpty(mixed $getValueByFiCol)
+  {
+    if($getValueByFiCol === null) return '';
+
+    return $getValueByFiCol;
+  }
+
 }
