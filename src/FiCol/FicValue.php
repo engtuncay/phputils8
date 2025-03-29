@@ -38,7 +38,7 @@ class FicValue
    * @param int|null $default Eğer dönüşüm başarısız olursa dönecek varsayılan değer (opsiyonel).
    * @return int
    */
-  public static function toInt(string $value, $orValue = null): int|null
+  public static function toInt(mixed $value, $orValue = null): int|null
   {
     // Numeric bir değer mi kontrol ediyoruz
     if (is_numeric($value)) {

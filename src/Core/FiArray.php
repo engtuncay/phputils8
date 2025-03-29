@@ -13,6 +13,12 @@ class FiArray
     return array_key_exists($fiCol->ofcTxFieldName, $params);
   }
 
+  public static function existKey(string $txKey, array $params):bool
+  {
+    if($txKey==null) return false;
+    return array_key_exists($txKey, $params);
+  }
+
   public static function arrStrBuild(array $sbFiColMethodBody):string
   {
     return implode('', $sbFiColMethodBody);
