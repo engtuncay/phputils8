@@ -2,6 +2,9 @@
 
 namespace Engtuncay\Phputils8\Core;
 
+use Engtuncay\Phputils8\Meta\FiKeybean;
+use Engtuncay\Phputils8\Meta\FkbList;
+
 /**
  * Fi-Wrapper-Array : FiwArray
  *
@@ -53,6 +56,14 @@ class FiwArray
   public function putInArray($mixKey, $genValue)
   {
     $this->arrValue[$mixKey][] = $genValue;
+  }
+
+  public function putInFkbList($mixKey, FiKeybean $fkbValue)
+  {
+    /** @var FkbList $fkbList */
+    $fkbList =  $this->arrValue[$mixKey];
+
+    $fkbList->add($fkbValue);
   }
 
 }

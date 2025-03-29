@@ -42,4 +42,6 @@ class FiString
     return $getValueByFiCol;
   }
 
+
+
 }
