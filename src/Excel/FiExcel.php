@@ -21,7 +21,7 @@ class FiExcel
   public static function readExcelFile($inputFileName, FclList $fiCols): Fdr
   {
     //echo 'excel';
-    FiLog::$log?->debug('Excel Read');
+    //FiLog::$log?->debug('Excel Read');
     //$inputFileName = $uploadedFile['tmp_name'];
     $fdrMain = new Fdr();
 

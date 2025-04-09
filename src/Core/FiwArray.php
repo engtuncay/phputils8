@@ -35,7 +35,7 @@ class FiwArray
 
   public function existKey(mixed $mixKeyName)
   {
-    return in_array($mixKeyName, $this->getArrValue());
+    return array_key_exists($mixKeyName, $this->getArrValue());
   }
 
   /**
