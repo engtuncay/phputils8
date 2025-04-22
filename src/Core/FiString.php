@@ -42,6 +42,18 @@ class FiString
     return $getValueByFiCol;
   }
 
+  /**
+   * Trim is Applied
+   *
+   * @param mixed $ofcTxFielDesc
+   * @return true|void
+   */
+  public static function isEmpty(mixed $ofcTxFielDesc):bool
+  {
+    if($ofcTxFielDesc === null) return true;
+    if(trim($ofcTxFielDesc) === '') return true;
+    return false;
+  }
 
 
 }
