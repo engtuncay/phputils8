@@ -7,7 +7,7 @@ use codegen\ficols\FicFiCol;
 use IteratorAggregate;
 use Traversable;
 
-class FclList implements IteratorAggregate
+class FicList implements IteratorAggregate
 {
   /** @var FiCol[] $items */
   private $items = [];
@@ -59,7 +59,7 @@ class FclList implements IteratorAggregate
   /**
    * @return string[]
    */
-  public function getItemsHeaderToField(): array
+  public function getArrayHeaderToField(): array
   {
     /** @var string[] */
     $arrData = [];

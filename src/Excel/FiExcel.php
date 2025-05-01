@@ -4,7 +4,7 @@ namespace Engtuncay\Phputils8\Excel;
 
 use Engtuncay\Phputils8\Log\FiLog;
 use Engtuncay\Phputils8\Meta\Fdr;
-use Engtuncay\Phputils8\Meta\FclList;
+use Engtuncay\Phputils8\Meta\FicList;
 use Engtuncay\Phputils8\Meta\FiKeybean;
 use Engtuncay\Phputils8\Meta\FkbList;
 use Exception;
@@ -18,7 +18,7 @@ class FiExcel
    * @param $inputFileName
    * @return Fdr value FkbList
    */
-  public static function readExcelFile($inputFileName, FclList $fiCols): Fdr
+  public static function readExcelFile($inputFileName, FicList $fiCols): Fdr
   {
     //echo 'excel';
     //FiLog::$log?->debug('Excel Read');
@@ -81,10 +81,10 @@ class FiExcel
 
   /**
    * @param \PhpOffice\PhpSpreadsheet\Worksheet\Worksheet $sheet
-   * @param FclList $fiCols
+   * @param FicList $fiCols
    * @return array
    */
-  public static function findHeaders(Worksheet $sheet, FclList $fiCols): array
+  public static function findHeaders(Worksheet $sheet, FicList $fiCols): array
   {
     /** @var string[] $fiExcelHeaders */
     $fiExcelHeaders = [];
@@ -108,7 +108,7 @@ class FiExcel
         if (in_array($cellValue, $fiCols->getItemsHeader())) {
           $boFoundHeaderRow = true;
           FiLog::$log?->debug(sprintf("boFoundHeaderRow:%s", $boFoundHeaderRow));
-          $fiExcelHeaders[$colIndex] = $fiCols->getItemsHeaderToField()[$cellValue];
+          $fiExcelHeaders[$colIndex] = $fiCols->getArrayHeaderToField()[$cellValue];
         }
 
       }
