@@ -19,6 +19,12 @@ class FiArray
     return array_key_exists($txKey, $params);
   }
 
+  /**
+   * Builds a string by concatenating all elements of the provided array.
+   *
+   * @param array $sbFiColMethodBody An array containing elements to be concatenated into a single string.
+   * @return string The resulting string created by concatenating all elements of the provided array.
+   */
   public static function arrStrBuild(array $sbFiColMethodBody):string
   {
     return implode('', $sbFiColMethodBody);
