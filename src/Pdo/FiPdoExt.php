@@ -23,12 +23,13 @@ class FiPdoExt extends PDO
   public $boConnection;
 
   public PDOException $pdoException;
+  //private string $dbName;
 
   public function __construct($host, $dbname, $username, $password, $charset = 'utf8')
   {
     try {
       parent::__construct('mysql:host=' . $host . ';dbname=' . $dbname, $username, $password);
-      $this->dbName = $dbname;
+      //$this->dbName = $dbname;
       $this->query('SET CHARACTER SET ' . $charset);
       $this->query('SET NAMES ' . $charset);
       $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -36,7 +37,7 @@ class FiPdoExt extends PDO
       $this->boConnection = true;
     } catch (PDOException $e) {
       //$this->showError($e);
-      $this->boExecResult = false;
+      //$this->boExecResult = false;
       $this->pdoException = $e;
       $this->boConnection = false;
     }
