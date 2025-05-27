@@ -15,7 +15,10 @@ class Fdr
    */
   private ?bool $boExec ;
   private ?string $message ;
-  private $refValue;
+
+  private mixed $refValue;
+
+  private ?FiKeybean $fkbValue;
 
   private ?int $lnResponseCode ;
 

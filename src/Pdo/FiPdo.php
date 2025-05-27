@@ -210,9 +210,9 @@ class FiPdo extends PDO
 
     $fdr->setBoExec($boExec);
     $fdr->setBoResult($boExec);
-    $arrResult = $stmt->fetch(PDO::FETCH_ASSOC);
-    FiKeybean::bui($arrResult);
-    $fdr->setRefValue($refValue);
+    $fkbResult = FiKeybean::bui($stmt->fetch(PDO::FETCH_ASSOC));
+    $fdr->setRefValue($fkbResult);
+    $fdr->setRefValue($fkbResult);
 
     return $fdr;
   }
