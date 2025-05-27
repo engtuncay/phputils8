@@ -18,7 +18,7 @@ class Fdr
 
   private mixed $refValue;
 
-  private ?FiKeybean $fkbValue;
+  private ?FiKeybean $fkbValue = null;
 
   private ?int $lnResponseCode ;
 

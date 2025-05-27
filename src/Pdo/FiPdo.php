@@ -195,15 +195,16 @@ class FiPdo extends PDO
   /**
    * PDOStatement::fetch — Fetches the next row from a result set
    */
-  public function sqlExecute(string $sql, ?array $arrParam = null): Fdr
+  public function sqlExecute(FiQuery $fiQuery): Fdr  //string $sql, ?array $fkbParams = null
   {
     $fdr = new Fdr();
+    $fkbParams = $fiQuery->getFkbParams();
 
-    $stmt = $this->prepare($sql);
+    $stmt = $this->prepare($fiQuery->getSql());;
     $boExec = null;
 
-    if ($arrParam != null) {
-      $boExec = $stmt->execute($arrParam);
+    if ($fkbParams != null) {
+      $boExec = $stmt->execute($fkbParams->getParams());
     } else {
       $boExec = $stmt->execute();
     }
