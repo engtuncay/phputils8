@@ -6,10 +6,16 @@ use Exception;
 
 class Fdr
 {
-
   private ?bool $boResult ;
+
+  /**
+   * boExecution : örneğin sorgu başarılı çalıştırıldığını gösterir, patlamadığını
+   *
+   * @var bool|null
+   */
+  private ?bool $boExec ;
   private ?string $message ;
-  private $value;
+  private $refValue;
 
   private ?int $lnResponseCode ;
 
@@ -65,14 +71,14 @@ class Fdr
   public static function creByValue($value, ?bool $boResult)
   {
     $instance = new self($boResult);
-    $instance->setValue($value);
+    $instance->setRefValue($value);
     return $instance;
   }
 
   public static function creEmptyAndResultFalse()
   {
     $instance = new self();
-    $instance->setValue(null);
+    $instance->setRefValue(null);
     $instance->setBoResult(false);
     return $instance;
   }
@@ -94,14 +100,14 @@ class Fdr
     $this->boResult = $boResult;
   }
 
-  public function getValue()
+  public function getRefValue()
   {
-    return $this->value;
+    return $this->refValue;
   }
 
-  public function setValue($value): void
+  public function setRefValue($refValue): void
   {
-    $this->value = $value;
+    $this->refValue = $refValue;
   }
 
   public function getMessage(): ?string
@@ -202,6 +208,18 @@ class Fdr
   {
     $this->fkbList = $fkbList;
   }
+
+  public function getBoExec(): ?bool
+  {
+    return $this->boExec;
+  }
+
+  public function setBoExec(?bool $boExec): void
+  {
+    $this->boExec = $boExec;
+  }
+
+
 
 
 

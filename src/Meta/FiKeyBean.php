@@ -10,7 +10,7 @@ use IteratorAggregate;
 use Traversable;
 
 /**
- * Class which wraps an array for utility
+ * Class which wraps an associative array for utility
  */
 class FiKeybean implements IteratorAggregate
 {
@@ -19,12 +19,20 @@ class FiKeybean implements IteratorAggregate
    *
    * @var array $params
    */
-  public array $params = [];
+  public array $params;
 
-  public static function bui(): FiKeybean
+  /**
+   * @param array $params
+   */
+  public function __construct(array $params = [])
   {
-    return new FiKeybean();
+    $this->params = $params;
+  }
 
+
+  public static function bui(array $params = []): FiKeybean
+  {
+    return new FiKeybean($params);
   }
 
   public function put($key, $value)

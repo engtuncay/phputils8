@@ -2,6 +2,8 @@
 
 namespace Engtuncay\Phputils8\Pdo;
 
+use Engtuncay\Phputils8\Meta\Fdr;
+use Engtuncay\Phputils8\Meta\FiKeybean;
 use PDOException;
 use PDO;
 
@@ -187,9 +189,33 @@ class FiPdo extends PDO
             $stmt->execute();
         }
 
-        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+
+  /**
+   * PDOStatement::fetch — Fetches the next row from a result set
+   */
+  public function sqlExecute(string $sql, ?array $arrParam = null): Fdr
+  {
+    $fdr = new Fdr();
+
+    $stmt = $this->prepare($sql);
+    $boExec = null;
+
+    if ($arrParam != null) {
+      $boExec = $stmt->execute($arrParam);
+    } else {
+      $boExec = $stmt->execute();
+    }
+
+    $fdr->setBoExec($boExec);
+    $fdr->setBoResult($boExec);
+    $arrResult = $stmt->fetch(PDO::FETCH_ASSOC);
+    FiKeybean::bui($arrResult);
+    $fdr->setRefValue($refValue);
+
+    return $fdr;
+  }
 
     /**
      * PDOStatement::fetchAll — Returns an array containing all of the result set rows
