@@ -69,8 +69,14 @@ class FiKeybean implements IteratorAggregate
   public function getValueByFiCol(FiCol $fiCol): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    if (!FiArray::existKeyByFiCol($fiCol, $this->getArr())) return null;
-    return $this->getArr()[$fiCol->ofcTxFieldName];
+    return $this->getValue($fiCol->ofcTxFieldName);
+  }
+
+  public function getValue(string $txKey): mixed
+  {
+    //FiLog::$log?->debug( json_encode($this->getArr()));
+    if (!FiArray::existKey($txKey, $this->getArr())) return null;
+    return $this->getArr()[$txKey];
   }
 
   public function getIterator(): Traversable
