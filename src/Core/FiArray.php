@@ -52,7 +52,7 @@ class FiArray
     return null;
   }
 
-  public static function findArrayElemByKeyValue(array $array, string $key, $value): ?array
+  public static function findElemInMultiArrayByKeyValue(array $array, string $key, $value): ?array
   {
     if (!is_array($array)) {
       return null;
