@@ -41,7 +41,7 @@ class FiArray
   public static function findObjectByField(array $objects, string $field, mixed $value): ?object
   {
     if (!is_array($objects)) {
-        return null;
+      return null;
     }
 
     foreach ($objects as $obj) {
@@ -52,4 +52,17 @@ class FiArray
     return null;
   }
 
+  public static function findArrayElemByKeyValue(array $array, string $key, $value): ?array
+  {
+    if (!is_array($array)) {
+      return null;
+    }
+
+    foreach ($array as $item) {
+      if (is_array($item) && array_key_exists($key, $item) && $item[$key] === $value) {
+        return $item;
+      }
+    }
+    return null; // Eşleşme yoksa null döner
+  }
 }
