@@ -23,5 +23,17 @@
       "name": "Tuncay Orak",
       "email": "tuncayorak@gmail.com"
     }
-  ]
+  ],
+  "archive": {
+    "exclude": [
+      ".git",
+      ".gitignore",
+      ".gitattributes",
+      "tests",
+      "phpunit.xml.dist",
+      "*.md",
+      "readme.md",
+      "fi-logs"
+    ]
+  }
 }
