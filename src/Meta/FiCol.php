@@ -31,45 +31,7 @@ class FiCol
    */
   public ?string $txGuid = null;
 
-  //public ObjectProperty<Double> prefSize;
-
-  //public ?integer printSize;
-
-  // Alanın türünü belirtir (double,?string,date vs )
-  public ?string $colType = null; //OzColType
-
-  //public OzColType colGenType;
-
-  // Formlarda default true olarak çalışır, false olursa düzenleme izni vermez
-  /**
-   * Column Generic Type. Sütun nasıl bir tipte olduğunu gösterir. (Data Tipi degil)
-   * <p>
-   * Örneğin , Xml parse edilirken, alanın xmlAttribute türünde olduğunu gösterir.
-   */
-  public ?bool $boEditable = null;
-
-
-  /**
-   * Formlarda gösterilmeyeceğini belirtir
-   */
-  public ?bool $boHidden = null;
-
-  // excelden sütunları ayarlarken opsiyonel sütunların belinmesi için (zorunlu degil)
-  // vs.. (boRequired:false da kullanılabilirdi.)
-  public ?bool $boOptional;
-
-  // excelde sütunun bulunduğunu gösterir
-  public ?bool $boExist = null;
-
-  // Excel için true olursa sütunun olması gerektiğini gösterir
-  public ?bool $boRequired = null;
-
-  // For Excel Reading, the field shows whether or not column exists in the excel
-  public ?bool $boEnabled = null;
-
-  // Reflection Field Alanlar
-
-  // FiId
+    // FiId
   public ?string $ofcTxIdType = null;
   // FiColumn
   public ?bool $ofcBoUniqGro1 = null;
@@ -100,6 +62,46 @@ class FiCol
    * alanın veritabanında olmadığını belirtir
    */
   public ?bool $ofcBoTransient = null;
+
+  //public ObjectProperty<Double> prefSize;
+
+  //public ?integer printSize;
+
+  // Alanın türünü belirtir (double,?string,date vs )
+  public ?string $colType = null; //OzColType
+
+  //public OzColType colGenType;
+
+  // Formlarda default true olarak çalışır, false olursa düzenleme izni vermez
+  /**
+   * Column Generic Type. Sütun nasıl bir tipte olduğunu gösterir. (Data Tipi degil)
+   * <p>
+   * Örneğin , Xml parse edilirken, alanın xmlAttribute türünde olduğunu gösterir.
+   */
+  public ?bool $boEditable = null;
+
+  // URFIX !!! ofc başlamayan alanlar kaldırılacak
+  /**
+   * Formlarda gösterilmeyeceğini belirtir
+   */
+  public ?bool $boHidden = null;
+
+  // excelden sütunları ayarlarken opsiyonel sütunların belinmesi için (zorunlu degil)
+  // vs.. (boRequired:false da kullanılabilirdi.)
+  public ?bool $boOptional;
+
+  // excelde sütunun bulunduğunu gösterir
+  public ?bool $boExist = null;
+
+  // Excel için true olursa sütunun olması gerektiğini gösterir
+  public ?bool $boRequired = null;
+
+  // For Excel Reading, the field shows whether or not column exists in the excel
+  public ?bool $boEnabled = null;
+
+  // Reflection Field Alanlar
+
+
 
   //public ?string $ficTxSqlFieldDefinition;
 

@@ -54,8 +54,8 @@ class FkbList implements IteratorAggregate
   }
 }
 
-//// FiKeyBean sınıfını tanımlamanız gerekecek.
-//class FiKeyBean
+//// FiKeybean sınıfını tanımlamanız gerekecek.
+//class FiKeybean
 //{
 //  public $key;
 //  public $value;
@@ -69,11 +69,11 @@ class FkbList implements IteratorAggregate
 //
 //// Kullanım örneği
 //$fkbList = new FkbList([
-//  new FiKeyBean('key1', 'value1'),
-//  new FiKeyBean('key2', 'value2')
+//  new FiKeybean('key1', 'value1'),
+//  new FiKeybean('key2', 'value2')
 //]);
 //
-//$fkbList->add(new FiKeyBean('key3', 'value3'));
+//$fkbList->add(new FiKeybean('key3', 'value3'));
 //
 //foreach ($fkbList->getItems() as $item) {
 //  echo $item->key . ': ' . $item->value . PHP_EOL;
