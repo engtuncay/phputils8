@@ -5,6 +5,7 @@ namespace Engtuncay\Phputils8\Meta;
 use ArrayIterator;
 use Engtuncay\Phputils8\Core\FiArray;
 use Engtuncay\Phputils8\Core\FiString;
+use Engtuncay\Phputils8\FiCol\FicFiCol;
 use Engtuncay\Phputils8\FiCol\FicValue;
 use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
@@ -52,12 +53,34 @@ class FiKeybean implements IteratorAggregate
     $this->params[$key] = $value;
   }
 
+  /**
+   * Adds a field (FiCol->ofcTxFieldName) to the FiKeybean.
+   *
+   * @param FiCol $fiCol
+   * @param mixed $value
+   * @return void
+   */
   public function addFiCol($fiCol, $value)
   {
     if (FiString::isEmpty($fiCol->ofcTxFieldName)) {
       return;
     }
     $this->params[$fiCol->ofcTxFieldName] = $value;
+  }
+
+  /**
+   * FkbCol->ofcTxFieldName is used as key
+   *
+   * @param FiKeybean $fkbCol
+   * @param mixed $value
+   * @return void
+   */
+  public function addFkbCol($fkbCol, $value)
+  {
+    if (FiString::isEmpty($fkbCol->getValueByFiCol(FicFiCol::ofcTxFieldName()))) {
+      return;
+    }
+    $this->params[$fkbCol->getValueByFiCol(FicFiCol::ofcTxFieldName())] = $value;
   }
 
   public function getArr(): array
