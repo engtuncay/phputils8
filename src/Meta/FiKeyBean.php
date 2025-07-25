@@ -4,6 +4,7 @@ namespace Engtuncay\Phputils8\Meta;
 
 use ArrayIterator;
 use Engtuncay\Phputils8\Core\FiArray;
+use Engtuncay\Phputils8\Core\FiString;
 use Engtuncay\Phputils8\FiCol\FicValue;
 use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
@@ -51,6 +52,14 @@ class FiKeybean implements IteratorAggregate
     $this->params[$key] = $value;
   }
 
+  public function addFiCol($fiCol, $value)
+  {
+    if (FiString::isEmpty($fiCol->ofcTxFieldName)) {
+      return;
+    }
+    $this->params[$fiCol->ofcTxFieldName] = $value;
+  }
+
   public function getArr(): array
   {
     return $this->params;
@@ -95,12 +104,9 @@ class FiKeybean implements IteratorAggregate
     $txValue = $this->getArr()[$fiCol->ofcTxFieldName];
 
     //if (is_string($txValue)) {
-      return FicValue::toBool($txValue);
+    return FicValue::toBool($txValue);
     //}
 
     //return null;
   }
-
-
-
 }
