@@ -145,5 +145,4 @@ class FimFiCol
 
     return $fiMeta;
   }
-
 }
