@@ -1,15 +1,15 @@
 <?php
 
-namespace Engtuncay\Phputils8\FiCol;
+namespace Engtuncay\Phputils8\FiMeta;
 
-// FiCol Class Generation v1
+// Codegen v2
 
 use Engtuncay\Phputils8\FiCol\FicFiCol;
 use Engtuncay\Phputils8\FiCol\IFkbTableMeta;
 use Engtuncay\Phputils8\Meta\FiKeybean;
 use Engtuncay\Phputils8\Meta\FkbList;
 
-class FkcFiCol implements IFkbTableMeta
+class FicFkbCol implements IFkbTableMeta
 {
 
   public function getITxTableName(): string
@@ -19,7 +19,7 @@ class FkcFiCol implements IFkbTableMeta
 
   public static function  getTxTableName(): string
   {
-    return "FicFiCol";
+    return "FicFkbCol";
   }
 
 

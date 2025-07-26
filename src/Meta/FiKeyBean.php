@@ -60,12 +60,27 @@ class FiKeybean implements IteratorAggregate
    * @param mixed $value
    * @return void
    */
-  public function addFiCol($fiCol, $value)
+  public function addField($fiCol, $value)
   {
     if (FiString::isEmpty($fiCol->ofcTxFieldName)) {
       return;
     }
     $this->params[$fiCol->ofcTxFieldName] = $value;
+  }
+
+  /**
+   * Undocumented function
+   *
+   * @param FiKeybean $fiCol
+   * @param mixed $value
+   * @return void
+   */
+  public function addFieldFkb($fiCol, $value)
+  {
+    if (FiString::isEmpty($fiCol->getValueByFiCol(FicFiCol::ofcTxFieldName()))) {
+      return;
+    }
+    $this->params[$fiCol->getValueByFiCol(FicFiCol::ofcTxFieldName())] = $value;
   }
 
   /**

@@ -3,7 +3,6 @@
 namespace Engtuncay\Phputils8\Meta;
 
 use ArrayIterator;
-use codegen\ficols\FicFiCol;
 use IteratorAggregate;
 use Traversable;
 

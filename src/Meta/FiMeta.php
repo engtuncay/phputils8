@@ -7,21 +7,21 @@ class FiMeta
     /**
      * TxCode (TxKodu)
      */
-    public ?string $txKey = null;
+    public ?string $ofmTxKey = null;
 
-    public ?string $txValue  = null;
+    public ?string $ofmTxValue  = null;
 
     /**
      * LnCode (LnKodu)
      * <p>
      * Key Meta Karşılık Gelen Integer Kod varsa
      */
-    public ?int $lnKey = null;
+    public ?int $ofmLnKey = null;
 
     /**
      * Açıklama (Description) gibi düşünebiliriz
      */
-    public ?string $txLabel = null;
+    public ?string $ofmTxLabel = null;
 
   //private ?string $txType = null;
 
@@ -30,8 +30,8 @@ class FiMeta
      */
     public function __construct(string $txKey = '', string $txValue = null)
     {
-        $this->txKey = $txKey;
-        $this->txValue = $txValue;
+        $this->ofmTxKey = $txKey;
+        $this->ofmTxValue = $txValue;
     }
 
     /**
@@ -41,49 +41,49 @@ class FiMeta
     //@Override
     public function __toString()
     {
-        return $this->txKey;
+        return $this->ofmTxKey;
     }
 
     // Getter and Setters
 
     public function getTxKey(): ?string
     {
-        return $this->txKey;
+        return $this->ofmTxKey;
     }
 
     public function setTxKey(?string $txKey): void
     {
-        $this->txKey = $txKey;
+        $this->ofmTxKey = $txKey;
     }
 
     public function getTxValue(): ?string
     {
-        return $this->txValue;
+        return $this->ofmTxValue;
     }
 
     public function setTxValue(?string $txValue): void
     {
-        $this->txValue = $txValue;
+        $this->ofmTxValue = $txValue;
     }
 
     public function getLnKey(): ?int
     {
-        return $this->lnKey;
+        return $this->ofmLnKey;
     }
 
     public function setLnKey(?int $lnKey): void
     {
-        $this->lnKey = $lnKey;
+        $this->ofmLnKey = $lnKey;
     }
 
     public function getTxLabel(): ?string
     {
-        return $this->txLabel;
+        return $this->ofmTxLabel;
     }
 
     public function setTxLabel(?string $txLabel): void
     {
-        $this->txLabel = $txLabel;
+        $this->ofmTxLabel = $txLabel;
     }
 
 
