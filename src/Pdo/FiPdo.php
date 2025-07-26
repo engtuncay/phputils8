@@ -2,8 +2,8 @@
 
 namespace Engtuncay\Phputils8\Pdo;
 
-use Engtuncay\Phputils8\Meta\Fdr;
-use Engtuncay\Phputils8\Meta\FiKeybean;
+use Engtuncay\Phputils8\FiDto\Fdr;
+use Engtuncay\Phputils8\FiDto\FiKeybean;
 use PDOException;
 use PDO;
 

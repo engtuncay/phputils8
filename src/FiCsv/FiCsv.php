@@ -3,10 +3,10 @@
 namespace Engtuncay\Phputils8\FiCsv;
 
 use Engtuncay\Phputils8\Log\FiLog;
-use Engtuncay\Phputils8\Meta\Fdr;
-use Engtuncay\Phputils8\Meta\FicList;
-use Engtuncay\Phputils8\Meta\FiKeybean;
-use Engtuncay\Phputils8\Meta\FkbList;
+use Engtuncay\Phputils8\FiDto\Fdr;
+use Engtuncay\Phputils8\FiDto\FicList;
+use Engtuncay\Phputils8\FiDto\FiKeybean;
+use Engtuncay\Phputils8\FiDto\FkbList;
 
 class FiCsv
 {

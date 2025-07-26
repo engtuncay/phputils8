@@ -2,7 +2,7 @@
 
 namespace Engtuncay\Phputils8\Core;
 
-use Engtuncay\Phputils8\Meta\FiCol;
+use Engtuncay\Phputils8\FiDto\FiCol;
 
 class FiArray
 {

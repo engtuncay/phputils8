@@ -4,8 +4,8 @@ namespace Engtuncay\Phputils8\FiMeta;
 
 // Codegen v2
 
-use Engtuncay\Phputils8\Meta\FiMeta;
-use Engtuncay\Phputils8\Meta\FmtList;
+use Engtuncay\Phputils8\FiDto\FiMeta;
+use Engtuncay\Phputils8\FiDto\FmtList;
 
 class FimFiCol
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\Meta;
+namespace Engtuncay\Phputils8\FiDto;
 
 use ArrayIterator;
 use Engtuncay\Phputils8\Core\FiArray;

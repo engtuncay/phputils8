@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\Meta;
+namespace Engtuncay\Phputils8\FiDto;
 
 class FiMeta
 {
