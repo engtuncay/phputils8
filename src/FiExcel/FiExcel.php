@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\Excel;
+namespace Engtuncay\Phputils8\FiExcel;
 
 use Engtuncay\Phputils8\Log\FiLog;
 use Engtuncay\Phputils8\FiDto\Fdr;
