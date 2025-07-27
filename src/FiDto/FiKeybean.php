@@ -84,6 +84,26 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
+   * Adds a field (FiMeta->ofcTxFieldName) to the FiKeybean.
+   *
+   * @param FiMeta $fiMeta
+   * @param mixed $value
+   * @return void
+   */
+  public function addFieldMeta($fiMeta, $value)
+  {
+    if (FiString::isEmpty($fiMeta->ofmTxKey)) {
+      return;
+    }
+    $this->params[$fiMeta->ofmTxKey] = $value;
+  }
+
+  public function addFm($fiMeta, $value)
+  {
+    self::addFieldMeta($fiMeta, $value);
+  }
+
+  /**
    * FkbCol->ofcTxFieldName is used as key
    *
    * @param FiKeybean $fkbCol
