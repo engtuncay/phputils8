@@ -4,70 +4,70 @@ namespace Engtuncay\Phputils8\FiDb;
 
 class FiConnConfig
 {
-    private ?string $serverName;
-    private ?string $dbName;
-    private ?string $userName;
-    private ?string $userPass;
+    private ?string $txServer = null;
+    private ?string $txDatabase = null;
+    private ?string $txUsername = null;
+    private ?string $txPass = null;
 
     /**
      * @return mixed
      */
-    public function getServerName()
+    public function getTxServer()
     {
-        return $this->serverName;
+        return $this->txServer;
     }
 
     /**
      * @param mixed $hostname
      */
-    public function setServerName($hostname): void
+    public function setTxServer($hostname): void
     {
-        $this->serverName = $hostname;
+        $this->txServer = $hostname;
     }
 
     /**
      * @return mixed
      */
-    public function getDbName()
+    public function getTxDatabase()
     {
-        return $this->dbName;
+        return $this->txDatabase;
     }
 
     /**
      * @param mixed $dbname
      */
-    public function setDbName($dbname): void
+    public function setTxDatabase($dbname): void
     {
-        $this->dbName = $dbname;
+        $this->txDatabase = $dbname;
     }
 
     /**
      * @return mixed
      */
-    public function getUserName(): ?string
+    public function getTxUsername(): ?string
     {
-        return $this->userName;
+        return $this->txUsername;
     }
 
     /**
-     * @param mixed $username
+     * @param mixed $txUsername
      */
-    public function setUserName($username): void
+    public function setTxUsername($txUsername): void
     {
-        $this->userName = $username;
+        $this->txUsername = $txUsername;
     }
 
-    public function getUserPass(): ?string
+    public function getTxPass(): ?string
     {
-        return $this->userPass;
+        return $this->txPass;
     }
 
     /**
-     * @param mixed $userPass
+     * @param mixed $txPass
      */
-    public function setUserPass($userPass): void
+    public function setTxPass($txPass): void
     {
-        $this->userPass = $userPass;
+        $this->txPass = $txPass;
     }
 
 }
