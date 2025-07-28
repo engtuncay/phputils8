@@ -7,6 +7,8 @@ use Engtuncay\Phputils8\Core\FiArray;
 use Engtuncay\Phputils8\Core\FiString;
 use Engtuncay\Phputils8\FiCol\FicFiCol;
 use Engtuncay\Phputils8\FiCol\FicValue;
+use Engtuncay\Phputils8\FiCol\FimColType;
+use Engtuncay\Phputils8\FiMeta\FimFiCol;
 use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
 use Traversable;
@@ -142,6 +144,18 @@ class FiKeybean implements IteratorAggregate
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValue($fiCol->ofcTxFieldName);
+  }
+
+  public function getValueByFiMeta(FiMeta $fiMeta): mixed
+  {
+    //FiLog::$log?->debug( json_encode($this->getArr()));
+    return $this->getValue($fiMeta->ofmTxKey);
+  }
+
+  public function getOfcFieldName(): mixed
+  {
+    //FiLog::$log?->debug( json_encode($this->getArr()));
+    return $this->getValue(FimFiCol::ofcTxFieldName()->ofmTxKey);
   }
 
   public function getValue(string $txKey): mixed

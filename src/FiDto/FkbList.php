@@ -1,4 +1,5 @@
 <?php
+
 namespace Engtuncay\Phputils8\FiDto;
 
 use ArrayIterator;
@@ -37,7 +38,7 @@ class FkbList implements IteratorAggregate
     return $arrFdr;
   }
 
-  public function get($index) : FikeyBean|null
+  public function get($index): FikeyBean|null
   {
     return $this->items[$index] ?? null;
   }
@@ -51,6 +52,14 @@ class FkbList implements IteratorAggregate
   public function getIterator(): Traversable
   {
     return new ArrayIterator($this->items);
+  }
+
+  public function getItemsField(): array
+  {
+    return array_map(function ($item) {
+      /** @var FiKeybean $item */
+      return $item->getOfcFieldName();
+    }, $this->items);
   }
 }
 
