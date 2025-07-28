@@ -10,7 +10,58 @@ use Engtuncay\Phputils8\FiDto\FkbList;
 
 class FiCsv
 {
-  public static function read($file, FicList $ficList): Fdr
+
+  public static function readByFirstRowHeader($file): Fdr
+  {
+    $fdrMain = new Fdr();
+    // CSV'yi okumak için bir dizi oluşturun
+    $data = [];
+    $fkbListData = new FkbList();
+
+    // Dosyayı açın
+    if (($handle = fopen($file, 'r')) !== false) {
+      // Her satırı oku (ilk satır başlık varsayılır)
+      while (($rowIndex = fgetcsv($handle, 1000, ",")) !== false) {
+        $data[] = $rowIndex; // Her satırı diziye ekle
+      }
+      fclose($handle);
+    }
+
+    //print_r($data);
+
+    $fiExcelHeaders = self::findHeaderByFirstRow($data);
+
+    // Satırları dolaş
+    $rowIndex = 1;
+    for (; $rowIndex <= count($data); $rowIndex++) {
+      // Sütunları dolaş
+      //FiLog::$log?->debug($data[$rowIndex]);
+
+      if (array_key_exists($rowIndex, $data)) {
+        $row = $data[$rowIndex];
+        $fkb = new FiKeybean();
+        // Sütunları gezmek için 'for' döngüsü
+        foreach ($fiExcelHeaders as $col => $value) {
+
+          if(array_key_exists($col, $row) === false) {
+            //FiLog::$log?->error(sprintf("Column %s not found in row %s", $col, $rowIndex));
+            continue;
+          }
+
+          $cellValue = $row[$col];
+          $fkb->put($value, $cellValue);
+        }
+        $fkbListData->add($fkb);
+      }
+    }
+
+    $fdrMain->setBoResult(true);
+    $fdrMain->setFkbList($fkbListData);
+    return $fdrMain;
+  }
+
+
+  public static function readByFicList($file, FicList $ficList): Fdr
   {
     $fdrMain = new Fdr();
     // CSV'yi okumak için bir dizi oluşturun
@@ -78,8 +129,6 @@ class FiCsv
             $fiExcelHeaders[$colIndex] = $ficList->getArrayHeaderToField()[$cellValue];
           }
         }
-
-
       }
 
       if ($boFoundHeaderRow) break;
@@ -89,4 +138,27 @@ class FiCsv
     return array($fiExcelHeaders, $rowHeaderNo);
   }
 
+  public static function findHeaderByFirstRow(array $data): array
+  {
+    /** @var int[] $fiExcelHeaders */
+    $fiExcelHeaders = [];
+
+    $row = $data[0];
+
+    for ($colIndex = 0; $colIndex <= count($row); $colIndex++) {
+      // Hücredeki değeri al
+      if (array_key_exists($colIndex, $row)) {
+        $cellValue = $row[$colIndex];   //$sheet->getCell($colIndex . $rowHeaderNo)->getFormattedValue();
+        //
+        if (!empty($cellValue)) {
+          //$boFoundHeaderRow = true;
+          //FiLog::$log?->debug(sprintf("boFoundHeaderRow:%s", $boFoundHeaderRow));
+          $fiExcelHeaders[$colIndex] = $cellValue;
+        }
+      }
+    }
+
+    //if(!$boFoundHeaderRow) return -1;
+    return $fiExcelHeaders;
+  }
 }
