@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\Pdo;
+namespace Engtuncay\Phputils8\FiDb;
 
 use Engtuncay\Phputils8\FiDto\FiKeybean;
 
@@ -28,9 +28,9 @@ class FiQuery
     $this->sql = $sql;
   }
 
-  public function getFkbParams(): ?FiKeybean
+  public function getFkbParams(): FiKeybean
   {
-    return $this->fkbParams;
+    return $this->fkbParams ?? new FiKeybean();
   }
 
   public function setFkbParams(?FiKeybean $fkbParams): void

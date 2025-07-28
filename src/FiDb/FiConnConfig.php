@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\Pdo;
+namespace Engtuncay\Phputils8\FiDb;
 
 class FiConnConfig
 {

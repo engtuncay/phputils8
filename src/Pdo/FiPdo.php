@@ -2,6 +2,7 @@
 
 namespace Engtuncay\Phputils8\Pdo;
 
+use Engtuncay\Phputils8\FiDb\FiQuery;
 use Engtuncay\Phputils8\FiDto\Fdr;
 use Engtuncay\Phputils8\FiDto\FiKeybean;
 use PDOException;
