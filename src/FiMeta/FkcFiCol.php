@@ -9,7 +9,7 @@ use Engtuncay\Phputils8\FiCol\IFkbTableMeta;
 use Engtuncay\Phputils8\FiDto\FiKeybean;
 use Engtuncay\Phputils8\FiDto\FkbList;
 
-class FkcFkbCol implements IFkbTableMeta
+class FkcFiCol implements IFkbTableMeta
 {
 
   public function getITxTableName(): string
@@ -19,7 +19,7 @@ class FkcFkbCol implements IFkbTableMeta
 
   public static function  getTxTableName(): string
   {
-    return "FkcFkbCol";
+    return "FkcFiCol";
   }
 
 
