@@ -33,7 +33,7 @@ class FicList implements IteratorAggregate
     return $this->items;
   }
 
-  public function getItemsField()
+  public function getItemsField(): array
   {
     /** @var string[] $arrFields */
     $arrFields = [];

@@ -62,6 +62,9 @@ class FiCsv
     /** @var array $data */
     for ($rowHeaderNo = 0; $rowHeaderNo <= count($data); $rowHeaderNo++) {
       // Sütunları gezmek için 'for' döngüsü
+      if (!array_key_exists($rowHeaderNo, $data)) {
+        continue;
+      }
       $row = $data[$rowHeaderNo];
 
       for ($colIndex = 0; $colIndex <= count($row); $colIndex++) {
