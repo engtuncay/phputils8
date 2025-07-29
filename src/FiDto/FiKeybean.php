@@ -28,9 +28,9 @@ class FiKeybean implements IteratorAggregate
   /**
    * @param array $params
    */
-  public function __construct(array $params = [])
+  public function __construct(?array $params = null)
   {
-    $this->params = $params;
+    $this->params = $params ?? [];
   }
 
 
@@ -150,6 +150,11 @@ class FiKeybean implements IteratorAggregate
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValue($fiMeta->ofmTxKey);
+  }
+
+  public function getValueByFkc(FiKeybean $fkcCol): mixed
+  {
+    return $this->getValue($fkcCol->getOfcFieldName());
   }
 
   public function getOfcFieldName(): mixed
