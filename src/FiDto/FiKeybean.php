@@ -154,13 +154,13 @@ class FiKeybean implements IteratorAggregate
 
   public function getValueByFkc(FiKeybean $fkcCol): mixed
   {
-    return $this->getValue($fkcCol->getOfcFieldName());
+    return $this->getValue($fkcCol->getValueByFiMeta(FimFiCol::ofcTxFieldName()));
   }
 
   public function getOfcFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValue(FimFiCol::ofcTxFieldName()->ofmTxKey);
+    return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());
   }
 
   public function getValue(string $txKey): mixed
