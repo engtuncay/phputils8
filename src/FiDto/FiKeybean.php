@@ -7,9 +7,7 @@ use Engtuncay\Phputils8\Core\FiArray;
 use Engtuncay\Phputils8\Core\FiString;
 use Engtuncay\Phputils8\FiCol\FicFiCol;
 use Engtuncay\Phputils8\FiCol\FicValue;
-use Engtuncay\Phputils8\FiCol\FimColType;
 use Engtuncay\Phputils8\FiMeta\FimFiCol;
-use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
 use Traversable;
 
@@ -55,6 +53,11 @@ class FiKeybean implements IteratorAggregate
     $this->params[$key] = $value;
   }
 
+  public function addValue($value)
+  {
+    $this->params[] = $value;
+  }
+
   /**
    * Adds a field (FiCol->ofcTxFieldName) to the FiKeybean.
    *
@@ -79,10 +82,13 @@ class FiKeybean implements IteratorAggregate
    */
   public function addFieldFkb($fiCol, $value)
   {
-    if (FiString::isEmpty($fiCol->getValueByFiCol(FicFiCol::ofcTxFieldName()))) {
-      return;
-    }
-    $this->params[$fiCol->getValueByFiCol(FicFiCol::ofcTxFieldName())] = $value;
+    if ($fiCol == null) return;
+
+    $txFieldName =  $fiCol->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+
+    if (FiString::isEmpty($txFieldName)) return;
+
+    $this->params[$fiCol->getValueByFiMeta(FimFiCol::ofcTxFieldName())] = $value;
   }
 
   /**
@@ -157,7 +163,20 @@ class FiKeybean implements IteratorAggregate
     return $this->getValue($fkcCol->getValueByFiMeta(FimFiCol::ofcTxFieldName()));
   }
 
+  // Deprecated, use getOfcTxFieldName() instead
   public function getOfcFieldName(): mixed
+  {
+    //FiLog::$log?->debug( json_encode($this->getArr()));
+    return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+  }
+
+  public function getOfcTxFieldName(): mixed
+  {
+    //FiLog::$log?->debug( json_encode($this->getArr()));
+    return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+  }
+
+  public function getOfcTxFn(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());

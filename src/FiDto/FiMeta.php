@@ -51,6 +51,16 @@ class FiMeta
         return $this->ofmTxKey;
     }
 
+    /**
+     * {{ ofmTxKey }} şeklinde dönüş verir. Template variable olarak kullanılır.
+     *
+     * @return string|null
+     */
+    public function getTxKeyAsTemp(): ?string
+    {
+        return '{{' . $this->ofmTxKey . '}}';
+    }
+
     public function setTxKey(?string $txKey): void
     {
         $this->ofmTxKey = $txKey;

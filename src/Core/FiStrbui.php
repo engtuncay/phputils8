@@ -22,7 +22,7 @@ class FiStrbui
     return implode('', $this->arrStr);
   }
 
-  public function toString()
+  public function toString(): string
   {
     return $this->__toString();
   }

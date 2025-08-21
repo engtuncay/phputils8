@@ -20,7 +20,7 @@ class Fdr
 
   private ?FiKeybean $fkbValue = null;
 
-  private ?int $lnResponseCode ;
+  public ?int $lnResponseCode ;
 
   private ?string $txId ;
   public ?string $txName ;
@@ -51,6 +51,7 @@ class Fdr
   public ?array $listFdr; // = [];
 
   private ?FkbList $fkbList = null; // init
+  
 
   private ?bool $boLockAddLog;
   //public ?array $obsMethodFinished; // = [];
@@ -222,8 +223,24 @@ class Fdr
     $this->boExec = $boExec;
   }
 
+  /**
+   * Get the value of fkbValue
+   */ 
+  public function getFkbValue()
+  {
+    return $this->fkbValue;
+  }
 
+  /**
+   * Set the value of fkbValue
+   *
+   * @return  self
+   */ 
+  public function setFkbValue($fkbValue)
+  {
+    $this->fkbValue = $fkbValue;
 
-
+    return $this;
+  }
 
 } // end of class
