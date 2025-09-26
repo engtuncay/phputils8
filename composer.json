@@ -2,7 +2,7 @@
   "name": "engtuncay/phputils8",
   "description": "OrakSoft Php Utility Library (Php 8)",
   "type": "library",
-  "version": "0.0.45",
+  "version": "0.0.46",
   "require": {
     "php": ">=8.1",
     "ext-pdo": "*",

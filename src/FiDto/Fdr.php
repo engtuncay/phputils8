@@ -6,55 +6,69 @@ use Exception;
 
 class Fdr
 {
-  private ?bool $boResult ;
+  /**
+   * Örneğin veritabanı işlemi ise sorgu başarılı mı başarısız mı gösterir
+   *
+   */
+  private ?bool $boResult = null;
 
   /**
-   * boExecution : örneğin sorgu başarılı çalıştırıldığını gösterir, patlamadığını
+   * Kulanılmayacak, çıkartılacak - depracated
+   * 
+   * boExecution : örneğin sorgu çalıştırıldığını gösterir, patlamadığını
    *
    * @var bool|null
    */
-  private ?bool $boExec ;
-  private ?string $message ;
+  private ?bool $boExec = null;
+
+  private ?string $message = null;
 
   private mixed $refValue;
 
+  private ?array $arrValue = null;
+
   private ?FiKeybean $fkbValue = null;
 
-  public ?int $lnResponseCode ;
+  private ?FkbList $fkbList = null;
 
-  private ?string $txId ;
-  public ?string $txName ;
+  public ?int $lnResponseCode = null;
+
+  private ?string $txId;
+
+  public ?string $txName = null;
 
   public array $logList = [];
 
-  private ?int $rowsAffected;
-  private ?int $lnTotalCount;
-  private ?bool $boFalseExist;
+  private ?int $rowsAffected = null;
 
-  private ?Exception $exception ;
+  // sayfalama yaparken lazım olan toplam kayıt sayısı
+  private ?int $lnTotalCount = null;
+
+  // private ?bool $boFalseExist;
+
+  private ?Exception $exception = null;
 
   public array $listException = [];
 
-  private ?int $lnStatus ;
-  private ?int $lnSuccessOpCount ;
-  private ?int $lnFailureOpCount ;
+  private ?int $lnStatus;
+  private ?int $lnSuccessOpCount;
+  private ?int $lnFailureOpCount;
 
-  private ?string $txQueryType ;
+  private ?string $txQueryType;
 
-  private ?int $lnInsertedRows ;
-  private ?int $lnUpdatedRows ;
-  private ?int $lnDeletedRows ;
+  // ?????
+  private ?int $lnInsertedRows;
+  private ?int $lnUpdatedRows;
+  private ?int $lnDeletedRows;
 
-  //public ?bool $boOpResult = null;
-  public ?bool $boQueryExecuted ;
-  public ?bool $boMultiFdr ;
-  public ?array $listFdr; // = [];
+  public ?bool $boQueryExecuted = null;
 
-  private ?FkbList $fkbList = null; // init
-  
+  public ?bool $boMultiFdr = null;
+
+  public ?array $listFdr = null; // = [];
 
   private ?bool $boLockAddLog;
-  //public ?array $obsMethodFinished; // = [];
+
 
   public function __construct($boResult = null, $message = null)
   {
@@ -202,8 +216,8 @@ class Fdr
 
   public function getFkbListInit(): FkbList
   {
-    if($this->fkbList === null) {
-        $this->fkbList = new FkbList();
+    if ($this->fkbList === null) {
+      $this->fkbList = new FkbList();
     }
     return $this->fkbList;
   }
@@ -225,7 +239,7 @@ class Fdr
 
   /**
    * Get the value of fkbValue
-   */ 
+   */
   public function getFkbValue()
   {
     return $this->fkbValue;
@@ -235,7 +249,7 @@ class Fdr
    * Set the value of fkbValue
    *
    * @return  self
-   */ 
+   */
   public function setFkbValue($fkbValue)
   {
     $this->fkbValue = $fkbValue;
@@ -243,4 +257,32 @@ class Fdr
     return $this;
   }
 
+
+  /**
+   * Get the value of arrValue
+   */
+  public function getArrValue()
+  {
+    return $this->arrValue;
+  }
+
+  /**
+   * Set the value of arrValue
+   *
+   * @return  self
+   */
+  public function setArrValue($arrValue)
+  {
+    $this->arrValue = $arrValue;
+
+    return $this;
+  }
+
+  public function getArrValueNtn(): array
+  {
+    if ($this->arrValue === null) {
+      return [];
+    }
+    return $this->arrValue;
+  }
 } // end of class
