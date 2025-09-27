@@ -1,4 +1,5 @@
 <?php
+namespace Engtuncay\Phputils8\FiDb;
 
 use Engtuncay\Phputils8\Pdo\FiPdo;
 

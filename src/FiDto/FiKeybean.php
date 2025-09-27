@@ -53,6 +53,11 @@ class FiKeybean implements IteratorAggregate
     $this->params[$key] = $value;
   }
 
+  public function set($key, $value)
+  {
+    $this->add($key, $value);
+  }
+
   public function addValue($value)
   {
     $this->params[] = $value;
@@ -189,6 +194,11 @@ class FiKeybean implements IteratorAggregate
     return $this->getArr()[$txKey];
   }
 
+  public function get(string $txKey): mixed
+  {
+    return $this->getValue($txKey);
+  }
+
   public function getIterator(): Traversable
   {
     return new ArrayIterator($this->params);
@@ -201,8 +211,11 @@ class FiKeybean implements IteratorAggregate
 
     //if (is_string($txValue)) {
     return FicValue::toBool($txValue);
-    //}
+  }
 
-    //return null;
+  public function has(string $txKey = null): bool
+  {
+    if ($txKey == null) return false;
+    return array_key_exists($txKey, $this->getArr());
   }
 }

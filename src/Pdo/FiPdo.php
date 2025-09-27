@@ -2,11 +2,10 @@
 
 namespace Engtuncay\Phputils8\Pdo;
 
+use Engtuncay\Phputils8\FiApp\FiAppConfig;
 use Engtuncay\Phputils8\FiDb\FiQuery;
 use Engtuncay\Phputils8\FiDto\Fdr;
 use Engtuncay\Phputils8\FiDto\FiKeybean;
-use Engtuncay\Phputils8\FiDto\FkbList;
-use IFiConfigManager;
 use PDOException;
 use PDO;
 
@@ -22,6 +21,8 @@ class FiPdo extends PDO
   public ?bool $boExecResult = null;
   public ?string $dbName = null;
 
+  public static ?FiKeybean $fkbPdoPool = null;
+  
   /**
    * shows whether or not there is a connection
    *
@@ -48,9 +49,32 @@ class FiPdo extends PDO
     }
   }
 
-  public static function buiWithProfile(string $connProfile): FiPdo
+  public static function buiWithProfile(string $connProfile = null): FiPdo
   {
-    
+    if($connProfile == null) {
+      $connProfile = FiAppConfig::$fiConfig?->getProfile();
+    }
+
+    if(self::$fkbPdoPool == null) {
+      self::$fkbPdoPool = FiKeybean::bui([]);
+    }
+
+    if(self::$fkbPdoPool->has($connProfile)) {
+      return self::$fkbPdoPool->get($connProfile);
+    }
+
+    $fiConnConfig = FiAppConfig::$fiConfig?->getFiConnConfig($connProfile);
+
+    $fiPdo = null;
+
+    if($fiConnConfig != null) {
+      $fiPdo = new FiPdo($fiConnConfig->getTxServer(), $fiConnConfig->getTxDatabase(), $fiConnConfig->getTxUsername(), $fiConnConfig->getTxPass());
+      self::$fkbPdoPool->set($connProfile, $fiPdo);
+    } else {
+      throw new \Exception("FiConnConfig is null. Please check your configuration.");
+    }
+
+    return $fiPdo;
   }
 
   // public function from($tableName)
@@ -282,7 +306,7 @@ class FiPdo extends PDO
     $fdrMain = new Fdr();
 
     try {
-      
+
       $stmt = $this->prepare($fiQuery->getSql());
 
       if ($fiQuery->getFkbParams() != null) {
@@ -298,7 +322,6 @@ class FiPdo extends PDO
       $fdrMain->setException($e);
       return $fdrMain; //$result;
     }
-
   }
 
   public function getBoDebug(): ?bool
