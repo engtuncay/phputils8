@@ -6,6 +6,7 @@ use Engtuncay\Phputils8\FiDb\FiQuery;
 use Engtuncay\Phputils8\FiDto\Fdr;
 use Engtuncay\Phputils8\FiDto\FiKeybean;
 use Engtuncay\Phputils8\FiDto\FkbList;
+use IFiConfigManager;
 use PDOException;
 use PDO;
 
@@ -45,6 +46,11 @@ class FiPdo extends PDO
       $this->pdoException = $e;
       $this->boConnection = false;
     }
+  }
+
+  public static function buiWithProfile(string $connProfile): FiPdo
+  {
+    
   }
 
   // public function from($tableName)
