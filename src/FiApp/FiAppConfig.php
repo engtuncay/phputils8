@@ -1,9 +1,15 @@
 <?php
+namespace Engtuncay\Phputils8\FiApp;
+
+use Engtuncay\Phputils8\FiConfig\IFiConfigManager;
+use Engtuncay\Phputils8\FiLog\IFiLogManager;
+
 
 class FiAppConfig
 {
-  // Util Libde uygulama tarafından atanan ConfigManager kullanılacak
+  // Uygulama tarafında, ConfigManager ataması yapılacak
   public static IFiConfigManager $fiConfig = null;
 
-  //public static IFiLogManager $fiLog = null;
+  public static IFiLogManager $fiLog = null;
+  
 }

@@ -1,4 +1,5 @@
 <?php
+namespace Engtuncay\Phputils8\FiConfig;
 
 interface IFiConfigManager
 {
