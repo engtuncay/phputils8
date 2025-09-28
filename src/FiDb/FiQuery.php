@@ -6,11 +6,11 @@ use Engtuncay\Phputils8\FiDto\FiKeybean;
 
 class FiQuery
 {
-  private string $sql;
+  private ?string $sql = null;
 
   private ?FiKeybean $fkbParams = null;
 
-  public function __construct(string $sql = "")
+  public function __construct(?string $sql = null)
   {
     $this->sql = $sql;
   }
