@@ -5,10 +5,10 @@ use Engtuncay\Phputils8\FiDb\FiConnConfig;
 
 interface IFiConfigManager
 {
-  public function getConnString(string $profile): string;
-  public function getApiUrl(string $txProfile): string;
+  public function getConnString(?string $profile): string;
+  public function getApiUrl(?string $txProfile): string;
 
-  public function getFiConnConfig(string $profile = null): FiConnConfig;
+  public function getFiConnConfig(?string $profile = null): FiConnConfig;
 
   /**
    * Ayar dosyasından okunarak alınacak profile

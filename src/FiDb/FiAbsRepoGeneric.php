@@ -7,7 +7,7 @@ abstract class FiAbsRepoGeneric
 {
     public ?string $connProfile = null; 
 
-    public function __construct(string $connProfile = null) {
+    public function __construct(?string $connProfile = null) {
       $this->connProfile = $connProfile;
     }
 
