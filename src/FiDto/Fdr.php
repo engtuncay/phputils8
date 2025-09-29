@@ -285,4 +285,14 @@ class Fdr
     }
     return $this->arrValue;
   }
+
+  public function isTrueBoResult(): bool
+  {
+    if( $this->getBoResult() === null ) {
+      return false;
+    }
+    
+    return $this->getBoResult() === true;
+  }
+
 } // end of class
