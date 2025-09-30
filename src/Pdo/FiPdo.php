@@ -315,7 +315,9 @@ class FiPdo extends PDO
         $stmt->execute();
       }
       $fdrMain->setBoResult(true);
-      $fdrMain->setArrValue($stmt->fetchAll(PDO::FETCH_ASSOC));
+      $arrResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $fdrMain->setArrValue($arrResult);
+      $fdrMain->setRefValue($arrResult);
       return $fdrMain;
     } catch (PDOException $e) {
       $fdrMain->setBoResult(false);

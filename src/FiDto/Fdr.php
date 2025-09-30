@@ -23,7 +23,7 @@ class Fdr
 
   private ?string $message = null;
 
-  private mixed $refValue;
+  private mixed $refValue = null;
 
   private ?array $arrValue = null;
 

@@ -3,7 +3,9 @@
 namespace Engtuncay\Phputils8\FiDb;
 
 use Engtuncay\Phputils8\Core\FiStrbui;
+use Engtuncay\Phputils8\FiDto\FiKeybean;
 use Engtuncay\Phputils8\FiDto\FkbList;
+use Engtuncay\Phputils8\FiMeta\FimFiCol;
 
 /**
  * FiQuery Generator
@@ -11,17 +13,21 @@ use Engtuncay\Phputils8\FiDto\FkbList;
 class FiQugen
 {
 
-  public static function sqlAlterFields(FkbList $settingsField, array $fdrFields)
+  public static function sqlAlterFields(FkbList $fkbFields, array $fdrFields): string
   {
     $sbSql = new FiStrbui();
 
-    foreach ($settingsField as $field) {
-      if (!in_array($field, $fdrFields)) {
+    /** @var FkbList $fkbFields 
+     * @var FiKeybean $fkb
+     */
+    foreach ($fkbFields as $fkb) {
+      if (!in_array($fkb->getOfcTxFn(), $fdrFields)) {
         // Field needs to be added
-        $sql = "ALTER TABLE payments_log ADD COLUMN {$field->getName()} {$field->getType()}";
+        $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getOfcTxFn()} {$fkb->getValueByFiMeta(FimFiCol::ofcTxFieldType())};");
+        $sbSql->append("<br/>");
         // Execute the SQL
       }
     }
+    return $sbSql->toString();
   }
-
 }
