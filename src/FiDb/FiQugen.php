@@ -17,8 +17,9 @@ class FiQugen
   {
     $sbSql = new FiStrbui();
 
-    /** @var FkbList $fkbFields 
-     * @var FiKeybean $fkb
+    /** 
+     *  @var FkbList $fkbFields 
+     *  @var FiKeybean $fkb
      */
     foreach ($fkbFields as $fkb) {
       if (!in_array($fkb->getOfcTxFn(), $fdrFields)) {
