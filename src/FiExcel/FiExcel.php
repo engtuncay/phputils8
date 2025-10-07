@@ -2,6 +2,7 @@
 
 namespace Engtuncay\Phputils8\FiExcel;
 
+use Engtuncay\Phputils8\FiApp\FiAppConfig;
 use Engtuncay\Phputils8\Log\FiLog;
 use Engtuncay\Phputils8\FiDto\Fdr;
 use Engtuncay\Phputils8\FiDto\FicList;
@@ -71,6 +72,7 @@ class FiExcel
     } catch (Exception $e) {
       //echo 'Excel dosyası okunurken hata oluştu: ', $e->getMessage(), PHP_EOL;
       FiLog::$log?->debug('Exception aldı');
+      FiAppConfig::$fiLog?->debug('Exception aldı');
       $fdrMain->setBoResult(false);
       $fdrMain->setException($e);
       $fdrMain->setMessage("Excel dosyası okunurken hata oluştu: " . $e->getMessage());
