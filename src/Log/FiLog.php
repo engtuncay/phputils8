@@ -1,4 +1,5 @@
 <?php
+
 namespace Engtuncay\Phputils8\Log;
 
 use Monolog\Handler\StreamHandler;
@@ -26,9 +27,34 @@ class FiLog
         }
         return $record;
       });
-
     }
-
   }
+
+  /**
+   * urlFile : relative path of log file
+   *
+   * @param string $urlFile ex: ./dir/filename.ext
+   * @return void
+   */
+  public static function initLogger2(string $urlFile)
+  {
+    //echo 'log init';
+    if (self::$log === null) { //!isset(self::$log)
+      //echo 'log başlatıldi';
+      self::$log = new Logger('filog');
+      self::$log->pushHandler(new StreamHandler($urlFile, Level::Debug));
+
+      // Filtreleme veya değiştirme işlemi yapan processor
+      self::$log->pushProcessor(function ($record) {
+        // Örneğin, 'password' içeren mesajları filtrele
+        if (strpos($record['message'], 'password') !== false) {
+          // Log'u tamamen iptal etmek için null dönebilirsiniz (Monolog bunu direkt desteklemez ama Handler içinde yapılabilir)
+          $record['message'] = '[REDACTED]';
+        }
+        return $record;
+      });
+    }
+  }
+
 
 }
