@@ -299,7 +299,7 @@ class FiPdo extends PDO
   }
 
   /**
-   * PDOStatement::fetchAll — Returns an array containing all of the result set rows
+   * PDOStatement::fetchAll — Returns an named array containing all of the result set rows
    */
   public function fiSelect(FiQuery $fiQuery): Fdr
   {

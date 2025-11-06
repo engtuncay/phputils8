@@ -3,9 +3,12 @@
 namespace Engtuncay\Phputils8\FiDb;
 
 use Engtuncay\Phputils8\Core\FiStrbui;
+use Engtuncay\Phputils8\FiApp\FiAppConfig;
+use Engtuncay\Phputils8\FiCol\FimColType;
 use Engtuncay\Phputils8\FiDto\FiKeybean;
 use Engtuncay\Phputils8\FiDto\FkbList;
 use Engtuncay\Phputils8\FiMeta\FimFiCol;
+use Engtuncay\Phputils8\FiMeta\FimOksFieldType;
 
 /**
  * FiQuery Generator
@@ -23,7 +26,8 @@ class FiQugen
       $arrFieldId[] = $refFields['Field'];
     }
 
-    log_message('info', 'Mevcut alanlar: ' . print_r($arrFieldId, true));
+    //$debugMessage = 'Log from FiQugen - Mevcut alanlar: ' . print_r($arrFieldId, true);
+    //FiAppConfig::$fiLog->debug($debugMessage);
 
     /** 
      *  @var FkbList $fkbFields 
@@ -32,8 +36,18 @@ class FiQugen
     foreach ($fkbFields as $fkb) {
       if (!in_array($fkb->getOfcTxFn(), $arrFieldId)) {
         // Field needs to be added
-        $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getOfcTxFn()} {$fkb->getValueByFiMeta(FimFiCol::ofcTxFieldType())};");
-        $sbSql->append("\n");
+        $fieldType = $fkb->getValueByFiMeta(FimFiCol::ofcTxFieldType());
+        
+        $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getOfcTxFn()} {$fieldType}");
+
+        if($fieldType == FimOksFieldType::varchar()->getTxValue()) {
+          $lnLength = $fkb->getValueByFiMeta(FimFiCol::ofcLnLength());
+          if($lnLength !== null) {
+            $sbSql->append("({$lnLength})");
+          }
+        }
+
+        $sbSql->append(";\n");
         // Execute the SQL
       }
     }

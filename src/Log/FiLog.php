@@ -21,10 +21,10 @@ class FiLog
       // Filtreleme veya değiştirme işlemi yapan processor
       self::$log->pushProcessor(function ($record) {
         // Örneğin, 'password' içeren mesajları filtrele
-        if (strpos($record['message'], 'password') !== false) {
-          // Log'u tamamen iptal etmek için null dönebilirsiniz (Monolog bunu direkt desteklemez ama Handler içinde yapılabilir)
-          $record['message'] = '[REDACTED]';
-        }
+        // if (strpos($record->message, 'password') !== false) {
+        //   // Monolog v3+ için yeni LogRecord oluştur
+        //   return $record->with(message: '[REDACTED]');
+        // }
         return $record;
       });
     }
@@ -47,10 +47,10 @@ class FiLog
       // Filtreleme veya değiştirme işlemi yapan processor
       self::$log->pushProcessor(function ($record) {
         // Örneğin, 'password' içeren mesajları filtrele
-        if (strpos($record['message'], 'password') !== false) {
-          // Log'u tamamen iptal etmek için null dönebilirsiniz (Monolog bunu direkt desteklemez ama Handler içinde yapılabilir)
-          $record['message'] = '[REDACTED]';
-        }
+        // if (strpos($record->message, 'password') !== false) {
+        //   // Monolog v3+ için yeni LogRecord oluştur
+        //   return $record->with(message: '[REDACTED]');
+        // }
         return $record;
       });
     }
