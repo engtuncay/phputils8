@@ -40,7 +40,8 @@ class FiQugen
         
         $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getOfcTxFn()} {$fieldType}");
 
-        if($fieldType == FimOksFieldType::varchar()->getTxValue()) {
+        if($fieldType == FimOksFieldType::varchar()->getTxKey()
+          || $fieldType == FimOksFieldType::string()->getTxKey()) {
           $lnLength = $fkb->getValueByFiMeta(FimFiCol::ofcLnLength());
           if($lnLength !== null) {
             $sbSql->append("({$lnLength})");
