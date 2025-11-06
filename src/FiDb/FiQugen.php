@@ -44,6 +44,9 @@ class FiQugen
           $lnLength = $fkb->getValueByFiMeta(FimFiCol::ofcLnLength());
           if($lnLength !== null) {
             $sbSql->append("({$lnLength})");
+          }else{
+            // Varsayılan uzunluk eklenebilir
+            $sbSql->append("(50)");
           }
         }
 
