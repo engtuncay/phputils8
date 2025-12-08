@@ -25,28 +25,28 @@ class FkcFiCol implements IFkbTableMeta
 
   public static function genTableCols(): FkbList
   {
-    $ficList = new FkbList();
+    $fkbList = new FkbList();
 
-    $ficList->add(self::ofcTxDesc());
-    $ficList->add(self::ofcTxPrefix());
-    $ficList->add(self::ofcTxEntityName());
-    $ficList->add(self::ofcTxFieldName());
-    $ficList->add(self::ofcTxFieldType());
-    $ficList->add(self::ofcTxHeader());
-    $ficList->add(self::ofcTxDbField());
-    $ficList->add(self::ofcTxRefField());
-    $ficList->add(self::ofcLnLength());
-    $ficList->add(self::ofcLnPrecision());
-    $ficList->add(self::ofcLnScale());
-    $ficList->add(self::ofcBoNullable());
-    $ficList->add(self::ofcTxIdType());
-    $ficList->add(self::ofcBoTransient());
-    $ficList->add(self::ofcBoUnique());
-    $ficList->add(self::ofcBoUniqGro1());
-    $ficList->add(self::ofcTxDefValue());
+    $fkbList->add(self::ofcTxDesc());
+    $fkbList->add(self::ofcTxPrefix());
+    $fkbList->add(self::ofcTxEntityName());
+    $fkbList->add(self::ofcTxFieldName());
+    $fkbList->add(self::ofcTxFieldType());
+    $fkbList->add(self::ofcTxHeader());
+    $fkbList->add(self::ofcTxDbField());
+    $fkbList->add(self::ofcTxRefField());
+    $fkbList->add(self::ofcLnLength());
+    $fkbList->add(self::ofcLnPrecision());
+    $fkbList->add(self::ofcLnScale());
+    $fkbList->add(self::ofcBoNullable());
+    $fkbList->add(self::ofcTxIdType());
+    $fkbList->add(self::ofcBoTransient());
+    $fkbList->add(self::ofcBoUnique());
+    $fkbList->add(self::ofcBoUniqGro1());
+    $fkbList->add(self::ofcTxDefValue());
 
 
-    return $ficList;
+    return $fkbList;
   }
 
   public static function genTableColsTrans(): FkbList
