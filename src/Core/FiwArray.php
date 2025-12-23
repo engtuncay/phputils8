@@ -58,6 +58,13 @@ class FiwArray
     $this->arrValue[$mixKey][] = $genValue;
   }
 
+  /**
+   * $mixkey FkbList olan bir anahtar olarak tanımlanarak, içine $fkbValue ekler
+   *
+   * @param mixed $mixKey
+   * @param FiKeybean $fkbValue
+   * @return void
+   */
   public function putInFkbList($mixKey, FiKeybean $fkbValue)
   {
     /** @var FkbList $fkbList */

@@ -8,6 +8,7 @@ use Engtuncay\Phputils8\Core\FiString;
 use Engtuncay\Phputils8\FiCol\FicFiCol;
 use Engtuncay\Phputils8\FiCol\FicValue;
 use Engtuncay\Phputils8\FiMeta\FimFiCol;
+use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
 use Traversable;
 
@@ -162,6 +163,16 @@ class FiKeybean implements IteratorAggregate
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValue($fiMeta->ofmTxKey);
   }
+  /**
+   * shortcut method for getValueByFiMeta
+   *
+   * @param FiMeta $fiMeta
+   * @return mixed
+   */
+  public function getFimValue(FiMeta $fiMeta): mixed
+  {
+    return $this->getValueByFiMeta($fiMeta);
+  }
 
   public function getValueByFkc(FiKeybean $fkcCol): mixed
   {
@@ -189,7 +200,7 @@ class FiKeybean implements IteratorAggregate
 
   public function getValue(string $txKey): mixed
   {
-    //FiLog::$log?->debug( json_encode($this->getArr()));
+    FiLog::$log?->debug( print_r($this->getArr(), true));
     if (!FiArray::existKey($txKey, $this->getArr())) return null;
     return $this->getArr()[$txKey];
   }
@@ -217,5 +228,34 @@ class FiKeybean implements IteratorAggregate
   {
     if ($txKey == null) return false;
     return array_key_exists($txKey, $this->getArr());
+  }
+
+  public function existKey(string $txKey = null): bool
+  {
+    return $this->has($txKey);
+  }
+
+  /**
+   * $mixkey FkbList olan bir anahtar olarak tanımlanarak, içine $fkbValue ekler
+   *
+   * @param mixed $mixKey
+   * @param FiKeybean $fkbValue
+   * @return void
+   */
+  public function putInFkbList($mixKey, FiKeybean $fkbValue)
+  {
+    if (!$this->existKey($mixKey)) {
+      $this->params[$mixKey] = new FkbList();
+    } else {
+      if (!($this->params[$mixKey] instanceof FkbList)) {
+        //throw new \InvalidArgumentException("The key '$mixKey' is not associated with a FkbList.");
+        return;
+      }
+    }
+
+    /** @var FkbList $fkbList */
+    $fkbList =  $this->params[$mixKey];
+
+    $fkbList->add($fkbValue);
   }
 }

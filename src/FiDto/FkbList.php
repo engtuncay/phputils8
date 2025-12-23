@@ -6,10 +6,19 @@ use ArrayIterator;
 use IteratorAggregate;
 use Traversable;
 
+/**
+ * FiKeybean(named array) nesnelerinin listesini tutar
+ */
 class FkbList implements IteratorAggregate
 {
+  /** @var FiKeybean[] $items */
   private $items = [];
 
+  /**
+   * 
+   *
+   * @param FiKeybean[]|null $collection
+   */
   public function __construct($collection = [])
   {
     if (is_array($collection)) {
@@ -29,7 +38,7 @@ class FkbList implements IteratorAggregate
     return $this->items;
   }
 
-  public function getAsMultiArray()
+  public function getAsMultiArray(): array
   {
     $arrFdr = [];
     foreach ($this->getItems() as $f) {
@@ -62,34 +71,3 @@ class FkbList implements IteratorAggregate
     }, $this->items);
   }
 }
-
-//// FiKeybean sınıfını tanımlamanız gerekecek.
-//class FiKeybean
-//{
-//  public $key;
-//  public $value;
-//
-//  public function __construct($key, $value)
-//  {
-//    $this->key = $key;
-//    $this->value = $value;
-//  }
-//}
-//
-//// Kullanım örneği
-//$fkbList = new FkbList([
-//  new FiKeybean('key1', 'value1'),
-//  new FiKeybean('key2', 'value2')
-//]);
-//
-//$fkbList->add(new FiKeybean('key3', 'value3'));
-//
-//foreach ($fkbList->getItems() as $item) {
-//  echo $item->key . ': ' . $item->value . PHP_EOL;
-//}
-//
-//// Belirli bir öğeye erişim
-//echo "İkinci öğe: " . $fkbList->get(1)->key . PHP_EOL;
-//
-//// Liste boyutu
-//echo "Toplam öğe sayısı: " . $fkbList->size() . PHP_EOL;

@@ -21,7 +21,13 @@ class FiCsv
     // Dosyayı açın
     if (($handle = fopen($file, 'r')) !== false) {
       // Her satırı oku (ilk satır başlık varsayılır)
+      $firstLine = true;
       while (($rowIndex = fgetcsv($handle, 1000, ",")) !== false) {
+        // İlk satırın ilk elemanından BOM'u kaldır
+        if ($firstLine && !empty($rowIndex)) {
+          $rowIndex[0] = preg_replace('/^\x{FEFF}/u', '', $rowIndex[0]);
+          $firstLine = false;
+        }
         $data[] = $rowIndex; // Her satırı diziye ekle
       }
       fclose($handle);
@@ -71,7 +77,13 @@ class FiCsv
     // Dosyayı açın
     if (($handle = fopen($file, 'r')) !== false) {
       // Her satırı oku (ilk satır başlık varsayılır)
+      $firstLine = true;
       while (($rowIndex = fgetcsv($handle, 1000, ",")) !== false) {
+        // İlk satırın ilk elemanından BOM'u kaldır
+        if ($firstLine && !empty($rowIndex)) {
+          $rowIndex[0] = preg_replace('/^\x{FEFF}/u', '', $rowIndex[0]);
+          $firstLine = false;
+        }
         $data[] = $rowIndex; // Her satırı diziye ekle
       }
       fclose($handle);
@@ -145,7 +157,7 @@ class FiCsv
 
     $row = $data[0];
 
-    for ($colIndex = 0; $colIndex <= count($row); $colIndex++) {
+    for ($colIndex = 0; $colIndex < count($row); $colIndex++) {
       // Hücredeki değeri al
       if (array_key_exists($colIndex, $row)) {
         $cellValue = $row[$colIndex];   //$sheet->getCell($colIndex . $rowHeaderNo)->getFormattedValue();

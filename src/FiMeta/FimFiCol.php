@@ -43,7 +43,7 @@ class FimFiCol
 
   public static function ofcTxEntityName(): FiMeta
   {
-    $fiMeta = new FiMeta("ofcTxEntityName");
+    $fiMeta = new FiMeta("ofcTxEntityName"); 
 
     return $fiMeta;
   }
