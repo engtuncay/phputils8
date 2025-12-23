@@ -145,4 +145,11 @@ class FimFiCol
 
     return $fiMeta;
   }
+
+  public static function ofcLnId(): FiMeta
+  {
+    $fiMeta = new FiMeta("ofcLnId");
+
+    return $fiMeta;
+  }
 }
