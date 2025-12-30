@@ -3,7 +3,7 @@
 namespace Engtuncay\Phputils8\FiExcels;
 
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
-use Engtuncay\Phputils8\Log\FiLog;
+use Engtuncay\Phputils8\FiLogs\FiLog;
 use Engtuncay\Phputils8\FiDtos\Fdr;
 use Engtuncay\Phputils8\FiDtos\FicList;
 use Engtuncay\Phputils8\FiDtos\FiKeybean;
