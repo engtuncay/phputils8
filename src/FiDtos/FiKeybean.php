@@ -265,4 +265,11 @@ class FiKeybean implements IteratorAggregate
     return count($this->params);
   }
 
+  public function remove(string $txKey): void
+  {
+    if ($this->existKey($txKey)) {
+      unset($this->params[$txKey]);
+    }
+  }
+
 }
