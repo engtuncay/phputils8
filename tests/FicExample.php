@@ -1,8 +1,8 @@
 <?php
 // FiCol Class Generation v1
-use Engtuncay\Phputils8\FiCol\IFiTableMeta;
-use Engtuncay\Phputils8\FiDto\FiCol;
-use Engtuncay\Phputils8\FiDto\FicList;
+use Engtuncay\Phputils8\FiCols\IFiTableMeta;
+use Engtuncay\Phputils8\FiDtos\FiCol;
+use Engtuncay\Phputils8\FiDtos\FicList;
 
 class OksCoding implements IFiTableMeta
 {

@@ -2,8 +2,8 @@
 
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDto\FiKeybean;
-use Engtuncay\Phputils8\FiDto\FkbList;
+use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\FkbList;
 
 /**
  * Fi-Wrapper-Array : FiwArray

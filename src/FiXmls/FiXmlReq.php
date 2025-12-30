@@ -1,20 +1,20 @@
 <?php
 namespace Engtuncay\Phputils8\FiXmls;
 
-use Engtuncay\Phputils8\FiDto\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\FiKeybean;
 use Engtuncay\Phputils8\FiCores\FiCollection;
-use Engtuncay\Phputils8\FiDto\FiCol;
+use Engtuncay\Phputils8\FiDtos\FiCol;
 use Engtuncay\Phputils8\FiXmls\FiXmlUtil;
 
 class FiXmlReq
 {
   public string $txXml;
 
-  public FiKeybean $fkbParams;
+  public ?FiKeybean $fkbParams;
 
   public string $txBaseUrl;
   
-  public function __construct(string $prmTxXml, FiKeybean $prmFkbParams)
+  public function __construct(string $prmTxXml, ?FiKeybean $prmFkbParams)
   {
     $this->txXml = $prmTxXml;
     $this->fkbParams = $prmFkbParams;
@@ -27,36 +27,36 @@ class FiXmlReq
   // {
   // }
 
-  public function GetXmlFinal()
+  public function getXmlFinal()
   {
-    $this->ProcessParams();
+    $this->processParams();
     return $this->txXml;
   }
 
-  public function PrepFkbParams()
+  public function prepFkbParams()
   {
-    $this->txXml = FiXmlUtil::PrepFkbParams($this->txXml, $this->fkbParams);
+    $this->txXml = FiXmlUtil::prepFkbParams($this->txXml, $this->fkbParams);
   }
-  public function DeactiveAllParams()
+  public function deactiveAllParams()
   {
     $this->txXml = FiXmlUtil::deActivateAllParams($this->txXml);
   }
   /**
    * Xml deki parametreleri değerlerle değiştirir.
    */
-  public function  ProcessParams()
+  public function processParams()
   {
     if (FiCollection::isEmpty($this->fkbParams)) return;
-    $this->txXml = FiXmlUtil::ConvertXmlParams($this->txXml, $this->fkbParams);
+    $this->txXml = FiXmlUtil::convertXmlParams($this->txXml, $this->fkbParams);
   }
 
-  public function ProcessParamsWitPrep()
+  public function processParamsWitPrep()
   {
     if (FiCollection::IsEmpty($this->fkbParams)) return;
-    $this->txXml = FiXmlUtil::PrepFkbParams($this->txXml, $this->fkbParams);
-    $this->txXml = FiXmlUtil::ConvertXmlParams($this->txXml, $this->fkbParams);
+    $this->txXml = FiXmlUtil::prepFkbParams($this->txXml, $this->fkbParams);
+    $this->txXml = FiXmlUtil::convertXmlParams($this->txXml, $this->fkbParams);
   }
-  public function DeactiveField(FiCol $fiCol)
+  public function deactiveField(FiCol $fiCol)
   {
     $this->txXml = FiXmlUtil::deActivateParam($this->txXml, $fiCol->ofcTxFieldName);
   }

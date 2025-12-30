@@ -5,8 +5,8 @@ namespace Engtuncay\Phputils8\FiXmls;
 use DateTime;
 use Engtuncay\Phputils8\FiCores\FiStrbui;
 use Engtuncay\Phputils8\FiCores\FiString;
-use Engtuncay\Phputils8\FiDto\FiKeybean;
-use Engtuncay\Phputils8\FiDto\FkbList;
+use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\FkbList;
 
 
 class FiXmlUtil
@@ -14,27 +14,23 @@ class FiXmlUtil
 
   public static function convertXmlParams(string $txXml, FiKeybean $fkbParams): string
   {
-    if (
-      FiString::isEmpty($txXml)
+    if (FiString::isEmpty($txXml)
       || $fkbParams == null
       || $fkbParams->count() == 0
     ) return $txXml;
 
-
-    //foreach (var key in $fkbParams->getArr() .Keys)
     foreach ($fkbParams->getArr() as $key => $objValue) {
       //string 
-      $placeholder = "{{$key}}"; // Şablondaki büyük parantezler
+      $placeholder = "{{". $key."}}"; 
       //string 
       $value = "";
 
-      //object 
-      //$objValue = $fkbParams->getValue($key);
+      // object 
+      // $objValue = $fkbParams->getValue($key);
 
       //FiAppConfig.fiLogManager?.LogMessage(objValue.GetType().ToString());
 
-      /** @var mixed $objValue */
-      if (is_object($objValue) && is_a($objValue, 'Engtuncay\Phputils8\FiDto\FkbList')) //$fkbListChild
+      if ($objValue instanceof FkbList) //$fkbListChild
       {
 
         if (!self::containsTemplateKey($txXml, $key)) {
@@ -57,10 +53,10 @@ class FiXmlUtil
       } else if ($objValue instanceof DateTime) //$dtValue
       {
         //$dtValue = $objValue;
-        $value = $objValue->format("c"); // O olursa milisecond lı oluyor
+        $value = $objValue->format("c"); // c: ISO 8601 date format
 
       } else if ($objValue instanceof bool) {
-        $value = $fkbParams->getValue($key); //->ToLower();
+        $value = $objValue; // $fkbParams->getValue($key); //->ToLower();
       }
       // else if (objValue is JValue jsonValue)
       // {
@@ -76,13 +72,15 @@ class FiXmlUtil
       else {
         //temp-commented:
         //$value = $fkbParams->GetAsString($key) ?? ""; // Anahtara karşılık gelen değeri al
+        $value= $objValue??"";
       }
 
       // Şablondaki placeholder'ları değerle değiştir
+      // echo "Replacing $placeholder with $value\n";
       $txXml = str_replace($placeholder, $value, $txXml);
     }
 
-    return ""; //txXmlTemp; // Güncellenmiş metni döndür
+    return $txXml; //txXmlTemp; // Güncellenmiş metni döndür
   }
 
   public static function prepFkbParams(string $txXmlTemp, FiKeybean $fkbParams): string

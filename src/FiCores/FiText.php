@@ -2,7 +2,7 @@
 
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDto\FkbList;
+use Engtuncay\Phputils8\FiDtos\FkbList;
 
 class FiText
 {

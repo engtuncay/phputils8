@@ -1,7 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDto\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\FiKeybean;
 
 class FiCollection
 {
