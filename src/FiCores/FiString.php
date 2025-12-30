@@ -1,6 +1,6 @@
 <?php
 
-namespace Engtuncay\Phputils8\Core;
+namespace Engtuncay\Phputils8\FiCores;
 
 use Engtuncay\Phputils8\FiDto\FiKeybean;
 
@@ -26,34 +26,32 @@ class FiString
   /**
    * Verilen metin içinde küçük harf bulunup bulunmadığını kontrol eder.
    *
-   * @param string $input Kontrol edilecek metin.
+   * @param string $txValue Kontrol edilecek metin.
    * @return bool Küçük harf varsa true, yoksa false döner.
    */
-  public static function hasLowercaseLetter(string $input): bool
+  public static function hasLowercaseLetter(string $txValue): bool
   {
     // Küçük harfleri kontrol etmek için preg_match kullanıyoruz
-    return preg_match('/[a-z]/', $input) === 1;
+    return preg_match('/[a-z]/', $txValue) === 1;
   }
 
-  public static function orEmpty(mixed $getValueByFiCol)
+  public static function orEmpty(mixed $objValue)
   {
-    if($getValueByFiCol === null) return '';
+    if ($objValue === null) return '';
 
-    return $getValueByFiCol;
+    return $objValue;
   }
 
   /**
    * Trim is Applied
    *
-   * @param mixed $ofcTxFielDesc
+   * @param mixed $objValue
    * @return true|void
    */
-  public static function isEmpty(mixed $ofcTxFielDesc):bool
+  public static function isEmpty(mixed $objValue): bool
   {
-    if($ofcTxFielDesc === null) return true;
-    if(trim($ofcTxFielDesc) === '') return true;
+    if ($objValue === null) return true;
+    if (trim($objValue) === '') return true;
     return false;
   }
-
-
 }

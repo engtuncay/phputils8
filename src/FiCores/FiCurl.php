@@ -1,5 +1,5 @@
 <?php
-namespace Engtuncay\Phputils8\Core;
+namespace Engtuncay\Phputils8\FiCores;
 
 /** 
  * This class has all the necessary code for making API calls thru curl library

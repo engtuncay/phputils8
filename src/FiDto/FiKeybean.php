@@ -3,8 +3,8 @@
 namespace Engtuncay\Phputils8\FiDto;
 
 use ArrayIterator;
-use Engtuncay\Phputils8\Core\FiArray;
-use Engtuncay\Phputils8\Core\FiString;
+use Engtuncay\Phputils8\FiCores\FiArray;
+use Engtuncay\Phputils8\FiCores\FiString;
 use Engtuncay\Phputils8\FiCol\FicFiCol;
 use Engtuncay\Phputils8\FiCol\FicValue;
 use Engtuncay\Phputils8\FiMeta\FimFiCol;
@@ -200,7 +200,7 @@ class FiKeybean implements IteratorAggregate
 
   public function getValue(string $txKey): mixed
   {
-    FiLog::$log?->debug( print_r($this->getArr(), true));
+    // FiLog::$log?->debug( print_r($this->getArr(), true));
     if (!FiArray::existKey($txKey, $this->getArr())) return null;
     return $this->getArr()[$txKey];
   }
@@ -258,4 +258,11 @@ class FiKeybean implements IteratorAggregate
 
     $fkbList->add($fkbValue);
   }
+
+
+  public function count(): int
+  {
+    return count($this->params);
+  }
+
 }

@@ -7,12 +7,16 @@ use IteratorAggregate;
 use Traversable;
 
 /**
- * FiKeybean(named array) nesnelerinin listesini tutar
+ * FiKeybean nesne dizisi (listesini) tutar
  */
 class FkbList implements IteratorAggregate
 {
   /** @var FiKeybean[] $items */
   private $items = [];
+
+  public ?string $txTemplate;
+
+  //public ?string $txValue;
 
   /**
    * 

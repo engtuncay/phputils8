@@ -2,7 +2,7 @@
 
 namespace Engtuncay\Phputils8\FiDb;
 
-use Engtuncay\Phputils8\Core\FiStrbui;
+use Engtuncay\Phputils8\FiCores\FiStrbui;
 use Engtuncay\Phputils8\FiApp\FiAppConfig;
 use Engtuncay\Phputils8\FiCol\FimColType;
 use Engtuncay\Phputils8\FiDto\FiKeybean;
