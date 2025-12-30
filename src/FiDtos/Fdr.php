@@ -12,16 +12,16 @@ class Fdr
    */
   private ?bool $boResult = null;
 
-  /**
-   * Kulanılmayacak, çıkartılacak - depracated
-   * 
-   * boExecution : örneğin sorgu çalıştırıldığını gösterir, patlamadığını
-   *
-   * @var bool|null
-   */
-  private ?bool $boExec = null;
+  // /**
+  //  * Kulanılmayacak, çıkartılacak - depracated
+  //  * 
+  //  * boExecution : örneğin sorgu çalıştırıldığını gösterir, patlamadığını
+  //  *
+  //  * @var bool|null
+  //  */
+  //private ?bool $boExec = null;
 
-  private ?string $message = null;
+  private ?string $txMessage = null;
 
   private mixed $refValue = null;
 
@@ -29,7 +29,7 @@ class Fdr
 
   private ?FiKeybean $fkbValue = null;
 
-  private ?FkbList $fkbList = null;
+  private ?FkbList $fklValue = null;
 
   public ?int $lnResponseCode = null;
 
@@ -73,7 +73,7 @@ class Fdr
   public function __construct($boResult = null, $message = null)
   {
     $this->boResult = $boResult;
-    $this->message = $message;
+    $this->txMessage = $message;
   }
 
   public static function genInstance()
@@ -130,12 +130,12 @@ class Fdr
 
   public function getMessage(): ?string
   {
-    return $this->message ?? '';
+    return $this->txMessage ?? '';
   }
 
   public function setMessage(?string $message): void
   {
-    $this->message = $message;
+    $this->txMessage = $message;
   }
 
   public function getRowsAffected(): ?int
@@ -200,7 +200,7 @@ class Fdr
   public function appendMessageLn(?string $message): void
   {
     if ($message !== null) {
-      $this->message .= "\n" . $message;
+      $this->txMessage .= "\n" . $message;
     }
   }
 
@@ -216,26 +216,26 @@ class Fdr
 
   public function getFkbListInit(): FkbList
   {
-    if ($this->fkbList === null) {
-      $this->fkbList = new FkbList();
+    if ($this->fklValue === null) {
+      $this->fklValue = new FkbList();
     }
-    return $this->fkbList;
+    return $this->fklValue;
   }
 
   public function setFkbList(FkbList $fkbList): void
   {
-    $this->fkbList = $fkbList;
+    $this->fklValue = $fkbList;
   }
 
-  public function getBoExec(): ?bool
-  {
-    return $this->boExec;
-  }
+  // public function getBoExec(): ?bool
+  // {
+  //   return $this->boExec;
+  // }
 
-  public function setBoExec(?bool $boExec): void
-  {
-    $this->boExec = $boExec;
-  }
+  // public function setBoExec(?bool $boExec): void
+  // {
+  //   $this->boExec = $boExec;
+  // }
 
   /**
    * Get the value of fkbValue
