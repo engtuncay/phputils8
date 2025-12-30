@@ -2,8 +2,6 @@
 
 namespace Engtuncay\Phputils8\FiCols;
 
-use Engtuncay\Phputils8\Log\FiLog;
-
 class FicValue
 {
   /**
