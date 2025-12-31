@@ -23,17 +23,19 @@ class Fdr
 
   private ?string $txMessage = null;
 
-  private mixed $refValue = null;
+  public mixed $refValue = null;
+
+  private ?string $txValue = null;
 
   private ?array $arrValue = null;
 
   private ?FiKeybean $fkbValue = null;
 
-  private ?FkbList $fklValue = null;
+  public ?FkbList $fklValue = null;
 
   public ?int $lnResponseCode = null;
 
-  private ?string $txId;
+  public ?string $txId = null;
 
   public ?string $txName = null;
 
@@ -294,5 +296,8 @@ class Fdr
     
     return $this->getBoResult() === true;
   }
+
+  
+
 
 } // end of class

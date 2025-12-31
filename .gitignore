@@ -14,8 +14,6 @@ composer.phar
 # .env dosyaları (gizli bilgileri içerir)
 .env
 .env.*
-.env.local
-.env.*.local
 
 # PHP Hata ve Cache dosyaları
 *.log
@@ -87,4 +85,4 @@ dist/
 # Cache ve geçici dosyalar
 .cache/
 tmp/
-/fi-logs/
+.filogs/
