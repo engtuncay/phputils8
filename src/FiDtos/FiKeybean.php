@@ -27,7 +27,7 @@ class FiKeybean implements IteratorAggregate
   /**
    * @param array $params
    */
-  public function __construct(?array $params)
+  public function __construct(?array $params = null)
   {
     $this->params = $params ?? [];
   }
