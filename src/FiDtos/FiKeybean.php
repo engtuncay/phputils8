@@ -179,6 +179,11 @@ class FiKeybean implements IteratorAggregate
     return $this->getValue($fkcCol->getValueByFiMeta(FimFiCol::ofcTxFieldName()));
   }
 
+  public function getFkcVal(FiKeybean $fkcCol): mixed
+  {
+    return $this->getValueByFkc($fkcCol);
+  }
+
   // Deprecated, use getOfcTxFieldName() instead
   public function getOfcFieldName(): mixed
   {
