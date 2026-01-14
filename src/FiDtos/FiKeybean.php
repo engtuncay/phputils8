@@ -8,7 +8,6 @@ use Engtuncay\Phputils8\FiCores\FiString;
 use Engtuncay\Phputils8\FiCols\FicFiCol;
 use Engtuncay\Phputils8\FiCols\FicValue;
 use Engtuncay\Phputils8\FiMetas\FimFiCol;
-use Engtuncay\Phputils8\Log\FiLog;
 use IteratorAggregate;
 use Traversable;
 
