@@ -1,7 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiDbs;
 
-use Engtuncay\Phputils8\Pdo\FiPdo;
+use Engtuncay\Phputils8\FiPdos\FiPdo;
 
 abstract class FiAbsRepoGeneric
 {
