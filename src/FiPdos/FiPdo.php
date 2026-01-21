@@ -326,6 +326,31 @@ class FiPdo extends PDO
     }
   }
 
+  public function selectFkb(FiQuery $fiQuery): Fdr
+  {
+    $fdrMain = new Fdr();
+
+    try {
+
+      $stmt = $this->prepare($fiQuery->getSql());
+
+      if ($fiQuery->getFkbParams() != null) {
+        $stmt->execute($fiQuery->getFkbParams()->getParams());
+      } else {
+        $stmt->execute();
+      }
+      $fdrMain->setBoResult(true);
+      $arrResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $fkbVal = new FiKeybean($arrResult);
+      $fdrMain->setFkbValue($fkbVal);
+      return $fdrMain;
+    } catch (PDOException $e) {
+      $fdrMain->setBoResult(false);
+      $fdrMain->setException($e);
+      return $fdrMain; //$result;
+    }
+  }
+
   public function getBoDebug(): ?bool
   {
     return $this->boDebug;

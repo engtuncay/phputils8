@@ -31,6 +31,11 @@ class Fdr
 
   private ?FiKeybean $fkbValue = null;
 
+  /**
+   * fkl -> Fkb-List
+   * 
+   * @var null|FkbList
+   */
   public ?FkbList $fklValue = null;
 
   public ?int $lnResponseCode = null;
