@@ -38,6 +38,11 @@ class FiwArray
     return array_key_exists($mixKeyName, $this->getArrValue());
   }
 
+  public function existValue(mixed $mixValue)
+  {
+    return in_array($mixValue, $this->getArrValue());
+  }
+
   /**
    * @param mixed $mixKey
    * @param T $genValue
@@ -46,6 +51,16 @@ class FiwArray
   public function put(mixed $mixKey, $genValue)
   {
     $this->arrValue[$mixKey] = $genValue;
+  }
+
+public function addValue($genValue)
+  {
+    $this->putValue($genValue);
+  }
+
+  public function putValue($genValue)
+  {
+    $this->arrValue[] = $genValue;
   }
 
   /**
