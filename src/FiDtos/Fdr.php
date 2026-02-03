@@ -302,7 +302,27 @@ class Fdr
     return $this->getBoResult() === true;
   }
 
-  
+  /**
+   * Get the value of txValue
+   *
+   * @return ?string
+   */
+  public function getTxValue(): ?string
+  {
+    return $this->txValue;
+  }
 
+  /**
+   * Set the value of txValue
+   *
+   * @param ?string $txValue
+   *
+   * @return self
+   */
+  public function setTxValue(?string $txValue): self
+  {
+    $this->txValue = $txValue;
 
+    return $this;
+  }
 } // end of class
