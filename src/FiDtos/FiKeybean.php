@@ -136,6 +136,11 @@ class FiKeybean implements IteratorAggregate
     return $this->params;
   }
 
+  public function getVal(): array
+  {
+    return $this->params;
+  }
+
   public function toArray(): array
   {
     return $this->params;
