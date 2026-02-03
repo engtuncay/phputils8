@@ -6,7 +6,7 @@
   "require": {
     "php": ">=8.1",
     "ext-pdo": "*",
-    "phpoffice/phpspreadsheet": "^4.0",
+    "phpoffice/phpspreadsheet": "^4.5",
     "monolog/monolog": "^3.8.1"
   },
   "require-dev": {
@@ -35,5 +35,13 @@
       "readme.md",
       "fi-logs"
     ]
+  },
+  "scripts": {
+    "fi-cmp-install": "composer install",
+    "fi-cmp-update": "composer update",
+    "fi-cmp-dump-optimize": ["composer dump-autoload -o"],
+    "fi-cmp-install-dev": ["composer install --dev"],
+    "phpcs": "vendor/bin/phpcs --standard=phpcs.xml",
+    "test": "phpunit"
   }
 }
