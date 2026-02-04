@@ -42,6 +42,7 @@
     "fi-cmp-dump-optimize": ["composer dump-autoload -o"],
     "fi-cmp-install-dev": ["composer install --dev"],
     "phpcs": "vendor/bin/phpcs --standard=phpcs.xml",
-    "test": "phpunit"
+    "test": "phpunit",
+    "fi-phpcs-check" : "php vendor/bin/phpcs --standard=phpcs.xml Codegen"
   }
 }
