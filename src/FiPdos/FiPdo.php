@@ -326,6 +326,12 @@ class FiPdo extends PDO
     }
   }
 
+  /**
+   * select query
+   *
+   * @param FiQuery $fiQuery
+   * @return Fdr
+   */
   public function selectFkb(FiQuery $fiQuery): Fdr
   {
     $fdrMain = new Fdr();
