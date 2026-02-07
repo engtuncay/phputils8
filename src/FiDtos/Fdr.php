@@ -76,6 +76,34 @@ class Fdr
 
   private ?bool $boLockAddLog;
 
+  public function genArrReturn(): array
+  {
+    return $this->genFkbReturn()->getVal();
+  }
+
+  public function genFkbReturn()
+  {
+
+    $fkbReturn = new FiKeybean();
+
+    if ($this->getBoResult() !== null) $fkbReturn->add('fdBoResult', $this->getBoResult());
+    if ($this->getTxValue() !== null) $fkbReturn->add('fdTxValue', $this->getTxValue());
+    if ($this->getRefValue() !== null) $fkbReturn->add('fdRefValue', $this->getRefValue());
+    if ($this->getArrValue() !== null) $fkbReturn->add('fdArrValue', $this->getArrValue());
+    if ($this->getFkbValue() !== null) $fkbReturn->add('fdFkbValue', $this->getFkbValue()?->getVal());
+    if ($this->fklValue !== null) $fkbReturn->add('fdFklValue', $this->fklValue);
+    if ($this->lnResponseCode !== null) $fkbReturn->add('fdLnResponseCode', $this->lnResponseCode);
+    if ($this->txId !== null) $fkbReturn->add('fdTxId', $this->txId);
+    if ($this->txName !== null) $fkbReturn->add('fdTxName', $this->txName);
+    if (!empty($this->logList)) $fkbReturn->add('fdLogList', $this->logList);
+    if ($this->getRowsAffectedV1() !== null) $fkbReturn->add('fdRowsAffected', $this->getRowsAffectedV1());
+    // if($this->getLnTotalCount() !== null) $fkbReturn->add('fdLnTotalCount', $this->getLnTotalCount());
+    if ($this->getException() !== null) $fkbReturn->add('fdException', $this->getException());
+    if (!empty($this->listException)) $fkbReturn->add('fdListException', $this->listException);
+
+    return $fkbReturn;
+  }
+
 
   public function __construct($boResult = null, $message = null)
   {
@@ -148,6 +176,11 @@ class Fdr
   public function getRowsAffected(): ?int
   {
     return $this->rowsAffected ?? -1;
+  }
+
+  public function getRowsAffectedV1(): ?int
+  {
+    return $this->rowsAffected;
   }
 
   public function setRowsAffected(?int $rowsAffected): void
@@ -252,6 +285,14 @@ class Fdr
     return $this->fkbValue;
   }
 
+  public function getFkbValueInit()
+  {
+    if ($this->fkbValue === null) {
+      $this->fkbValue = new FiKeybean();
+    }
+    return $this->fkbValue;
+  }
+
   /**
    * Set the value of fkbValue
    *
@@ -295,10 +336,10 @@ class Fdr
 
   public function isTrueBoResult(): bool
   {
-    if( $this->getBoResult() === null ) {
+    if ($this->getBoResult() === null) {
       return false;
     }
-    
+
     return $this->getBoResult() === true;
   }
 

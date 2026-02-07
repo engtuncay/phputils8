@@ -54,4 +54,16 @@ class FiString
     if (trim($objValue) === '') return true;
     return false;
   }
+
+  public static function toArray(string $txValue, string $txDelimiter = ',', bool $boTrim = false): array
+  {
+    if (FiString::isEmpty($txValue)) return [];
+    $arr = explode($txDelimiter, $txValue);
+    
+    if ($boTrim) {
+      $arr = array_map('trim', $arr);
+    }
+    
+    return $arr;
+  }
 }
