@@ -3,6 +3,7 @@
 namespace Engtuncay\Phputils8\FiPdos;
 
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
+use Engtuncay\Phputils8\FiDbs\FiDbTypes;
 use Engtuncay\Phputils8\FiDbs\FiQuery;
 use Engtuncay\Phputils8\FiDtos\Fdr;
 use Engtuncay\Phputils8\FiDtos\FiKeybean;
@@ -32,10 +33,24 @@ class FiPdo extends PDO
 
   public ?PDOException $pdoException;
 
-  public function __construct($host, $dbname, $username, $password, $charset = 'utf8')
+  public function __construct($host, $dbname, $username, $password, $charset = 'utf8',string $dbType = FiDbTypes::MYSQL)
   {
     try {
-      parent::__construct('mysql:host=' . $host . ';dbname=' . $dbname, $username, $password);
+      if($dbType == FiDbTypes::MYSQL) {
+        $txDsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
+      } else if($dbType == FiDbTypes::MSSQL) {
+        $txDsn = 'sqlsrv:server=' . $host . ';database=' . $dbname;
+      } else if($dbType == FiDbTypes::POSTGRESQL) {
+        $txDsn = 'pgsql:host=' . $host . ';dbname=' . $dbname;
+      } else if($dbType == FiDbTypes::ORACLE) {
+        $txDsn = 'oci:dbname=' . $dbname . ';host=' . $host;
+      } else if($dbType == FiDbTypes::SQLITE) {
+        $txDsn = 'sqlite:' . $dbname;
+      } else {
+        throw new \Exception("Unsupported database type: " . $dbType);
+      }
+      
+      parent::__construct($txDsn, $username, $password);
       $this->dbName = $dbname;
       $this->query('SET CHARACTER SET ' . $charset);
       $this->query('SET NAMES ' . $charset);
