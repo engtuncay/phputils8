@@ -6,6 +6,8 @@ use PDO;
 
 /**
  * PdoExtend Helper Class
+ * 
+ * Depreceated, use FiPdo instead.
  *
  * 2024-06-10
  *

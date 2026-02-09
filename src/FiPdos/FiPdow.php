@@ -1,9 +1,13 @@
 <?php
+
 namespace Engtuncay\Phputils8\FiPdos;
 
 use PDO;
 use PDOException;
 
+/**
+ * Depreceated , use FiPdo
+ */
 class FiPdow
 {
   // Props
@@ -24,20 +28,21 @@ class FiPdow
   {
     $this->pdo = new PDO(
       'mysql:host=' . $this->dbConfig['host'] . ';' .
-      'dbname=' . $this->dbConfig['name'],
+        'dbname=' . $this->dbConfig['name'],
       $this->dbConfig['user'],
       $this->dbConfig['pass']
     );
   }
-  
+
   function __construct($pdo = null)
   {
-    if(!is_null($pdo)){
+    if (!is_null($pdo)) {
       $this->pdo = $pdo;
     }
   }
 
-  function initPdo($host, $dbName, $user, $pass, $charset = 'utf8'){
+  function initPdo($host, $dbName, $user, $pass, $charset = 'utf8')
+  {
     $connString = 'mysql:host=' . $host . ';' . 'dbname=' . $dbName;
 
     $options = array(
@@ -126,7 +131,6 @@ class FiPdow
   {
     return $this->error;
   }
-
 }
 
 
@@ -138,6 +142,3 @@ class FiPdow
 // 	array( 'title' => 'OH BOY GOSH', 'content' => 'GEEEEEEEEE' ),
 // 	array( 'title' => 'I LIKE TURTLES', 'content' => 'TEE HEEEEEEEE' )
 // ) ); 
-
-
-?>

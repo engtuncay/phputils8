@@ -342,7 +342,7 @@ class FiPdo extends PDO
   }
 
   /**
-   * select query
+   * Select query
    *
    * @param FiQuery $fiQuery
    * @return Fdr
