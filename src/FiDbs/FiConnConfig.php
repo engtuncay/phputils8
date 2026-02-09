@@ -8,7 +8,6 @@ class FiConnConfig
   private ?string $txDatabase = null;
   private ?string $txUsername = null;
   private ?string $txPass = null;
-
   private ?string $txDbType = null;
 
   /**
@@ -95,5 +94,5 @@ class FiConnConfig
 
     return $this;
   }
-  
+
 }
