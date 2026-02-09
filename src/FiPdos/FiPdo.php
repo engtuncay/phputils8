@@ -280,16 +280,16 @@ class FiPdo extends PDO
     $fkbParams = $fiQuery->getFkbParams();
 
     $stmt = $this->prepare($fiQuery->getSql());;
-    $boExec = null;
+    $boResult = null;
 
     if ($fkbParams != null) {
-      $boExec = $stmt->execute($fkbParams->getParams());
+      $boResult = $stmt->execute($fkbParams->getParams());
     } else {
-      $boExec = $stmt->execute();
+      $boResult = $stmt->execute();
     }
 
-    $fdr->setBoExec($boExec);
-    $fdr->setBoResult($boExec);
+    //$fdr->setBoExec($boExec);
+    $fdr->setBoResult($boResult);
     $fkbResult = FiKeybean::bui($stmt->fetch(PDO::FETCH_ASSOC));
     $fdr->setRefValue($fkbResult);
     $fdr->setRefValue($fkbResult);

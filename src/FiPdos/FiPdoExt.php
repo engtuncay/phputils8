@@ -45,14 +45,14 @@ class FiPdoExt extends PDO
 
   public function from($tableName)
   {
-    $this->sql = 'SELECT * FROM ' . $tableName;
-    $this->tableName = $tableName;
+    // $this->sql = 'SELECT * FROM ' . $tableName;
+    // $this->tableName = $tableName;
     return $this;
   }
 
   public function select($columns)
   {
-    $this->sql = str_replace(' * ', ' ' . $columns . ' ', $this->sql);
+    // $this->sql = str_replace(' * ', ' ' . $columns . ' ', $this->sql);
     return $this;
   }
 
