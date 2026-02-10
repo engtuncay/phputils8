@@ -76,12 +76,12 @@ class Fdr
 
   private ?bool $boLockAddLog;
 
-  public function genArrReturn(): array
+  public function genArrResponse(): array
   {
-    return $this->genFkbReturn()->getVal();
+    return $this->genFkbResponse()->getVal();
   }
 
-  public function genFkbReturn()
+  public function genFkbResponse()
   {
 
     $fkbReturn = new FiKeybean();
