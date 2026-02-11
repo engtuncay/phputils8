@@ -27,23 +27,23 @@ class FkcFiCol implements IFkbTableMeta
   {
     $ficList = new FkbList();
 
-    $ficList->add(self::ofcTxDesc());
-    $ficList->add(self::ofcTxPrefix());
-    $ficList->add(self::ofcTxEntityName());
-    $ficList->add(self::ofcTxFieldName());
-    $ficList->add(self::ofcTxFieldType());
-    $ficList->add(self::ofcTxHeader());
-    $ficList->add(self::ofcTxDbField());
-    $ficList->add(self::ofcTxRefField());
-    $ficList->add(self::ofcLnLength());
-    $ficList->add(self::ofcLnPrecision());
-    $ficList->add(self::ofcLnScale());
-    $ficList->add(self::ofcBoNullable());
-    $ficList->add(self::ofcTxIdType());
-    $ficList->add(self::ofcBoTransient());
-    $ficList->add(self::ofcBoUnique());
-    $ficList->add(self::ofcBoUniqGro1());
-    $ficList->add(self::ofcTxDefValue());
+    $ficList->add(self::fcTxDesc());
+    $ficList->add(self::fcTxPrefix());
+    $ficList->add(self::fcTxEntityName());
+    $ficList->add(self::fcTxFieldName());
+    $ficList->add(self::fcTxFieldType());
+    $ficList->add(self::fcTxHeader());
+    $ficList->add(self::fcTxDbField());
+    $ficList->add(self::fcTxRefField());
+    $ficList->add(self::fcLnLength());
+    $ficList->add(self::fcLnPrecision());
+    $ficList->add(self::fcLnScale());
+    $ficList->add(self::fcBoNullable());
+    $ficList->add(self::fcTxIdType());
+    $ficList->add(self::fcBoTransient());
+    $ficList->add(self::fcBoUnique());
+    $ficList->add(self::fcBoUniqGro1());
+    $ficList->add(self::fcTxDefValue());
 
 
     return $ficList;
@@ -58,154 +58,154 @@ class FkcFiCol implements IFkbTableMeta
     return $ficList;
   }
 
-  public static function ofcTxDesc(): FiKeybean
+  public static function fcTxDesc(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addFm(FimFiCol::fcTxFieldName(), 'ofcTxDesc');
+    $fkbCol->addFm(FimFiCol::fcTxFieldName(), 'fcTxDesc');
     $fkbCol->addFm(FimFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxPrefix(): FiKeybean
+  public static function fcTxPrefix(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxPrefix');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxPrefix');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxEntityName(): FiKeybean
+  public static function fcTxEntityName(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxEntityName');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxEntityName');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxFieldName(): FiKeybean
+  public static function fcTxFieldName(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxFieldName');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxFieldName');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxFieldType(): FiKeybean
+  public static function fcTxFieldType(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxFieldType');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxFieldType');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxHeader(): FiKeybean
+  public static function fcTxHeader(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxHeader');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxHeader');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxDbField(): FiKeybean
+  public static function fcTxDbField(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxDbField');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxDbField');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcTxRefField(): FiKeybean
+  public static function fcTxRefField(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxRefField');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxRefField');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
 
-  public static function ofcLnLength(): FiKeybean
+  public static function fcLnLength(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcLnLength');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcLnLength');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'int');
 
     return $fkbCol;
   }
 
-  public static function ofcLnPrecision(): FiKeybean
+  public static function fcLnPrecision(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcLnPrecision');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcLnPrecision');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'int');
 
     return $fkbCol;
   }
 
-  public static function ofcLnScale(): FiKeybean
+  public static function fcLnScale(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcLnScale');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcLnScale');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'int');
 
     return $fkbCol;
   }
 
-  public static function ofcBoNullable(): FiKeybean
+  public static function fcBoNullable(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoNullable');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcBoNullable');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
 
-  public static function ofcTxIdType(): FiKeybean
+  public static function fcTxIdType(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxIdType');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxIdType');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
 
-  public static function ofcBoTransient(): FiKeybean
+  public static function fcBoTransient(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoTransient');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcBoTransient');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
 
-  public static function ofcBoUnique(): FiKeybean
+  public static function fcBoUnique(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoUnique');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcBoUnique');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
 
-  public static function ofcBoUniqGro1(): FiKeybean
+  public static function fcBoUniqGro1(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoUniqGro1');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcBoUniqGro1');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
 
-  public static function ofcTxDefValue(): FiKeybean
+  public static function fcTxDefValue(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxDefValue');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'fcTxDefValue');
     $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;

@@ -188,20 +188,20 @@ class FiKeybean implements IteratorAggregate
     return $this->getValueByFkc($fkcCol);
   }
 
-  // Deprecated, use getOfcTxFieldName() instead
-  public function getOfcFieldName(): mixed
+  // Deprecated, use getFcTxFieldName() instead
+  public function getFcFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
   }
 
-  public function getOfcTxFieldName(): mixed
+  public function getFcTxFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
   }
 
-  public function getOfcTxFn(): mixed
+  public function getFcTxFn(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());

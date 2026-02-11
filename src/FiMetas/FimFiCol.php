@@ -129,4 +129,25 @@ class FimFiCol
 
     return $fiMeta;
   }
+
+  public static function fcTxDbField(): FiMeta
+  {
+    $fiMeta = new FiMeta("fcTxDbField");
+
+    return $fiMeta;
+  }
+
+  public static function fcTxRefField(): FiMeta
+  {
+    $fiMeta = new FiMeta("fcTxRefField");
+
+    return $fiMeta;
+  }
+
+  public static function fcLnId(): FiMeta
+  {
+    $fiMeta = new FiMeta("fcLnId");
+
+    return $fiMeta;
+  }
 }

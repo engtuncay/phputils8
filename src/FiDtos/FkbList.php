@@ -71,7 +71,7 @@ class FkbList implements IteratorAggregate
   {
     return array_map(function ($item) {
       /** @var FiKeybean $item */
-      return $item->getOfcFieldName();
+      return $item->getFcFieldName();
     }, $this->items);
   }
 }

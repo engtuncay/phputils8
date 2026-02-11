@@ -80,7 +80,7 @@ class FiCol
    */
   public ?bool $boEditable = null;
 
-  // URFIX !!! ofc başlamayan alanlar kaldırılacak
+  // URFIX !!! fc başlamayan alanlar kaldırılacak
   /**
    * Formlarda gösterilmeyeceğini belirtir
    */
@@ -126,13 +126,13 @@ class FiCol
     return $this->fcTxFieldName;
   }
 
-  public function getOfcTxFieldNameNtn(): string
+  public function getFcTxFieldNameNtn(): string
   {
     if ($this->fcTxFieldName == null) return "";
     return $this->fcTxFieldName;
   }
 
-  public function getOfcTxEntityNameNtn(): string
+  public function getFcTxEntityNameNtn(): string
   {
     if ($this->fcTxEntityName == null) {
       return "bosentity";

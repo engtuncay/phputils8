@@ -34,15 +34,15 @@ class FiQugen
      *  @var FiKeybean $fkb
      */
     foreach ($fkbFields as $fkb) {
-      if (!in_array($fkb->getOfcTxFn(), $arrFieldId)) {
+      if (!in_array($fkb->getFcTxFn(), $arrFieldId)) {
         // Field needs to be added
         $fieldType = $fkb->getValueByFiMeta(FimFiCol::fcTxFieldType());
         
-        $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getOfcTxFn()} {$fieldType}");
+        $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getFcTxFn()} {$fieldType}");
 
         if($fieldType == FimOksFieldType::varchar()->getTxKey()
           || $fieldType == FimOksFieldType::string()->getTxKey()) {
-          $lnLength = $fkb->getValueByFiMeta(FimFiCol::ofcLnLength());
+          $lnLength = $fkb->getValueByFiMeta(FimFiCol::fcLnLength());
           if($lnLength !== null) {
             $sbSql->append("({$lnLength})");
           }else{
