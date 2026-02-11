@@ -61,8 +61,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxDesc(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxDesc');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxDesc');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -70,8 +70,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxPrefix(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxPrefix');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxPrefix');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -79,8 +79,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxEntityName(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxEntityName');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxEntityName');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -88,8 +88,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxFieldName(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxFieldName');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxFieldName');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -97,8 +97,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxFieldType(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxFieldType');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxFieldType');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -106,8 +106,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxHeader(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxHeader');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxHeader');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -115,8 +115,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxDbField(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxDbField');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxDbField');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -124,8 +124,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxRefField(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxRefField');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxRefField');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }
@@ -133,8 +133,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcLnLength(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcLnLength');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'int');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcLnLength');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'int');
 
     return $fkbCol;
   }
@@ -142,8 +142,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcLnPrecision(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcLnPrecision');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'int');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcLnPrecision');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'int');
 
     return $fkbCol;
   }
@@ -151,8 +151,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcLnScale(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcLnScale');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'int');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcLnScale');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'int');
 
     return $fkbCol;
   }
@@ -160,8 +160,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcBoNullable(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcBoNullable');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'bool');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoNullable');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
@@ -169,8 +169,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxIdType(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxIdType');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'bool');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxIdType');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
@@ -178,8 +178,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcBoTransient(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcBoTransient');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'bool');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoTransient');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
@@ -187,8 +187,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcBoUnique(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcBoUnique');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'bool');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoUnique');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
@@ -196,8 +196,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcBoUniqGro1(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcBoUniqGro1');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'bool');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcBoUniqGro1');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'bool');
 
     return $fkbCol;
   }
@@ -205,8 +205,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxDefValue(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addField(FicFiCol::ofcTxFieldName(), 'ofcTxDefValue');
-    $fkbCol->addField(FicFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addField(FicFiCol::fcTxFieldName(), 'ofcTxDefValue');
+    $fkbCol->addField(FicFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }

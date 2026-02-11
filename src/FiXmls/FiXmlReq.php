@@ -79,7 +79,7 @@ class FiXmlReq
 	 */
 	public function deactiveField(FiCol $fiCol)
 	{
-		$this->txXml = FiXmlUtil::deActivateParam($this->txXml, $fiCol->ofcTxFieldName);
+		$this->txXml = FiXmlUtil::deActivateParam($this->txXml, $fiCol->fcTxFieldName);
 	}
 }
 

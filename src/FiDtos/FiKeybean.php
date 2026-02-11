@@ -64,7 +64,7 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
-   * Adds a field (FiCol->ofcTxFieldName) to the FiKeybean.
+   * Adds a field (FiCol->fcTxFieldName) to the FiKeybean.
    *
    * @param FiCol $fiCol
    * @param mixed $value
@@ -72,10 +72,10 @@ class FiKeybean implements IteratorAggregate
    */
   public function addField($fiCol, $value)
   {
-    if (FiString::isEmpty($fiCol->ofcTxFieldName)) {
+    if (FiString::isEmpty($fiCol->fcTxFieldName)) {
       return;
     }
-    $this->params[$fiCol->ofcTxFieldName] = $value;
+    $this->params[$fiCol->fcTxFieldName] = $value;
   }
 
   /**
@@ -97,7 +97,7 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
-   * Adds a field (FiMeta->ofcTxFieldName) to the FiKeybean.
+   * Adds a field (FiMeta->fcTxFieldName) to the FiKeybean.
    *
    * @param FiMeta $fiMeta
    * @param mixed $value
@@ -117,7 +117,7 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
-   * FkbCol->ofcTxFieldName is used as key
+   * FkbCol->fcTxFieldName is used as key
    *
    * @param FiKeybean $fkbCol
    * @param mixed $value
@@ -125,10 +125,10 @@ class FiKeybean implements IteratorAggregate
    */
   public function addFkbCol($fkbCol, $value)
   {
-    if (FiString::isEmpty($fkbCol->getValueByFiCol(FicFiCol::ofcTxFieldName()))) {
+    if (FiString::isEmpty($fkbCol->getValueByFiCol(FicFiCol::fcTxFieldName()))) {
       return;
     }
-    $this->params[$fkbCol->getValueByFiCol(FicFiCol::ofcTxFieldName())] = $value;
+    $this->params[$fkbCol->getValueByFiCol(FicFiCol::fcTxFieldName())] = $value;
   }
 
   public function getArr(): array
@@ -159,7 +159,7 @@ class FiKeybean implements IteratorAggregate
   public function getValueByFiCol(FiCol $fiCol): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValue($fiCol->ofcTxFieldName);
+    return $this->getValue($fiCol->fcTxFieldName);
   }
 
   public function getValueByFiMeta(FiMeta $fiMeta): mixed
@@ -227,7 +227,7 @@ class FiKeybean implements IteratorAggregate
   public function getValueAsBoolByFiCol(FiCol $fiCol): bool|null
   {
     if (!FiArray::existKeyByFiCol($fiCol, $this->getArr())) return null;
-    $txValue = $this->getArr()[$fiCol->ofcTxFieldName];
+    $txValue = $this->getArr()[$fiCol->fcTxFieldName];
 
     //if (is_string($txValue)) {
     return FicValue::toBool($txValue);

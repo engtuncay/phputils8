@@ -25,23 +25,23 @@ class FicFiCol implements IFiTableMeta
   {
     $ficList = new FicList();
 
-    $ficList->add(self::ofcTxDesc());
-    $ficList->add(self::ofcTxPrefix());
-    $ficList->add(self::ofcTxEntityName());
-    $ficList->add(self::ofcTxFieldName());
-    $ficList->add(self::ofcTxFieldType());
-    $ficList->add(self::ofcTxHeader());
-    $ficList->add(self::ofcTxDbField());
-    $ficList->add(self::ofcTxRefField());
-    $ficList->add(self::ofcLnLength());
-    $ficList->add(self::ofcLnPrecision());
-    $ficList->add(self::ofcLnScale());
-    $ficList->add(self::ofcBoNullable());
-    $ficList->add(self::ofcTxIdType());
-    $ficList->add(self::ofcBoTransient());
-    $ficList->add(self::ofcBoUnique());
-    $ficList->add(self::ofcBoUniqGro1());
-    $ficList->add(self::ofcTxDefValue());
+    $ficList->add(self::fcTxDesc());
+    $ficList->add(self::fcTxPrefix());
+    $ficList->add(self::fcTxEntityName());
+    $ficList->add(self::fcTxFieldName());
+    $ficList->add(self::fcTxFieldType());
+    $ficList->add(self::fcTxHeader());
+    $ficList->add(self::fcTxDbField());
+    $ficList->add(self::fcTxRefField());
+    $ficList->add(self::fcLnLength());
+    $ficList->add(self::fcLnPrecision());
+    $ficList->add(self::fcLnScale());
+    $ficList->add(self::fcBoNullable());
+    $ficList->add(self::fcTxIdType());
+    $ficList->add(self::fcBoTransient());
+    $ficList->add(self::fcBoUnique());
+    $ficList->add(self::fcBoUniqGro1());
+    $ficList->add(self::fcTxDefValue());
 
 
     return $ficList;
@@ -56,138 +56,138 @@ class FicFiCol implements IFiTableMeta
     return $ficList;
   }
 
-  public static function ofcTxDesc(): FiCol
+  public static function fcTxDesc(): FiCol
   {
     $fiCol = new FiCol("fcTxDesc");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxPrefix(): FiCol
+  public static function fcTxPrefix(): FiCol
   {
     $fiCol = new FiCol("fcTxPrefix");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxEntityName(): FiCol
+  public static function fcTxEntityName(): FiCol
   {
     $fiCol = new FiCol("fcTxEntityName");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxFieldName(): FiCol
+  public static function fcTxFieldName(): FiCol
   {
     $fiCol = new FiCol("fcTxFieldName");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxFieldType(): FiCol
+  public static function fcTxFieldType(): FiCol
   {
     $fiCol = new FiCol("fcTxFieldType");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxHeader(): FiCol
+  public static function fcTxHeader(): FiCol
   {
     $fiCol = new FiCol("fcTxHeader");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxDbField(): FiCol
+  public static function fcTxDbField(): FiCol
   {
     $fiCol = new FiCol("fcTxDbField");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcTxRefField(): FiCol
+  public static function fcTxRefField(): FiCol
   {
     $fiCol = new FiCol("fcTxRefField");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }
 
-  public static function ofcLnLength(): FiCol
+  public static function fcLnLength(): FiCol
   {
     $fiCol = new FiCol("fcLnLength");
-    $fiCol->ofcTxFieldType = 'int';
+    $fiCol->fcTxFieldType = 'int';
 
     return $fiCol;
   }
 
-  public static function ofcLnPrecision(): FiCol
+  public static function fcLnPrecision(): FiCol
   {
     $fiCol = new FiCol("fcLnPrecision");
-    $fiCol->ofcTxFieldType = 'int';
+    $fiCol->fcTxFieldType = 'int';
 
     return $fiCol;
   }
 
-  public static function ofcLnScale(): FiCol
+  public static function fcLnScale(): FiCol
   {
     $fiCol = new FiCol("fcLnScale");
-    $fiCol->ofcTxFieldType = 'int';
+    $fiCol->fcTxFieldType = 'int';
 
     return $fiCol;
   }
 
-  public static function ofcBoNullable(): FiCol
+  public static function fcBoNullable(): FiCol
   {
     $fiCol = new FiCol("fcBoNullable");
-    $fiCol->ofcTxFieldType = 'bool';
+    $fiCol->fcTxFieldType = 'bool';
 
     return $fiCol;
   }
 
-  public static function ofcTxIdType(): FiCol
+  public static function fcTxIdType(): FiCol
   {
     $fiCol = new FiCol("fcTxIdType");
-    $fiCol->ofcTxFieldType = 'bool';
+    $fiCol->fcTxFieldType = 'bool';
 
     return $fiCol;
   }
 
-  public static function ofcBoTransient(): FiCol
+  public static function fcBoTransient(): FiCol
   {
     $fiCol = new FiCol("fcBoTransient");
-    $fiCol->ofcTxFieldType = 'bool';
+    $fiCol->fcTxFieldType = 'bool';
 
     return $fiCol;
   }
 
-  public static function ofcBoUnique(): FiCol
+  public static function fcBoUnique(): FiCol
   {
     $fiCol = new FiCol("fcBoUnique");
-    $fiCol->ofcTxFieldType = 'bool';
+    $fiCol->fcTxFieldType = 'bool';
 
     return $fiCol;
   }
 
-  public static function ofcBoUniqGro1(): FiCol
+  public static function fcBoUniqGro1(): FiCol
   {
     $fiCol = new FiCol("fcBoUniqGro1");
-    $fiCol->ofcTxFieldType = 'bool';
+    $fiCol->fcTxFieldType = 'bool';
 
     return $fiCol;
   }
 
-  public static function ofcTxDefValue(): FiCol
+  public static function fcTxDefValue(): FiCol
   {
     $fiCol = new FiCol("fcTxDefValue");
-    $fiCol->ofcTxFieldType = 'varchar';
+    $fiCol->fcTxFieldType = 'varchar';
 
     return $fiCol;
   }

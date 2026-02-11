@@ -9,8 +9,8 @@ class FiArray
 
   public static function existKeyByFiCol(FiCol $fiCol, array $params): bool
   {
-    if ($fiCol->ofcTxFieldName == null) return false;
-    return array_key_exists($fiCol->ofcTxFieldName, $params);
+    if ($fiCol->fcTxFieldName == null) return false;
+    return array_key_exists($fiCol->fcTxFieldName, $params);
   }
 
   public static function existKey(string $txKey, array $params): bool

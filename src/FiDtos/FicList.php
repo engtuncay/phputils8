@@ -38,7 +38,7 @@ class FicList implements IteratorAggregate
     /** @var string[] $arrFields */
     $arrFields = [];
     foreach ($this->items as $item) {
-      $arrFields[] = $item->ofcTxFieldName;
+      $arrFields[] = $item->fcTxFieldName;
     }
     return $arrFields;
   }
@@ -49,7 +49,7 @@ class FicList implements IteratorAggregate
     $arrHeaders = [];
 
     foreach ($this->items as $item) {
-      $arrHeaders[] = $item->ofcTxHeader;
+      $arrHeaders[] = $item->fcTxHeader;
     }
 
     return $arrHeaders;
@@ -64,7 +64,7 @@ class FicList implements IteratorAggregate
     $arrData = [];
 
     foreach ($this->items as $item) {
-      $arrData[$item->ofcTxHeader] = $item->ofcTxFieldName;
+      $arrData[$item->fcTxHeader] = $item->fcTxFieldName;
     }
 
     return $arrData;

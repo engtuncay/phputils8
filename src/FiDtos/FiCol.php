@@ -10,19 +10,19 @@ class FiCol
   /**
    * Alanın ismini (veritabanındaki veya objedeki refere ettiği alan ismi )
    */
-  public ?string $ofcTxFieldName = null;
+  public ?string $fcTxFieldName = null;
 
   /**
    * Alanın başlık açıklaması ( tablo için sütün başlığı , form için label alanı değeri / excelde başlık )
    */
-  public ?string $ofcTxHeader = null;
+  public ?string $fcTxHeader = null;
 
   public ?string $txLabel = null;
 
   /**
    * Objedeki alan adı (fieldName) ile db deki alan adı aynı degilse kullanılır.
    */
-  public ?string $ofcTxDbFieldName = null;
+  public ?string $fcTxDbFieldName = null;
 
   /**
    * Col Id olması için konuldu - tekil kodu
@@ -32,36 +32,36 @@ class FiCol
   public ?string $txGuid = null;
 
     // FiId
-  public ?string $ofcTxIdType = null;
+  public ?string $fcTxIdType = null;
   // FiColumn
-  public ?bool $ofcBoUniqGro1 = null;
-  public ?bool $ofcBoNullable = null;
-  public ?bool $ofcBoUnique = null;
+  public ?bool $fcBoUniqGro1 = null;
+  public ?bool $fcBoNullable = null;
+  public ?bool $fcBoUnique = null;
 
-  //public ?bool $ofcBoUtfSupport = null;
-  public ?string $ofcTxDefValue = null;
-  public ?string $ofcTxCollation = null;
-  public ?string $ofcTxTypeName = null;
-  public ?int $ofcLnLength = null;
+  //public ?bool $fcBoUtfSupport = null;
+  public ?string $fcTxDefValue = null;
+  public ?string $fcTxCollation = null;
+  public ?string $fcTxTypeName = null;
+  public ?int $fcLnLength = null;
 
   /**
    * @var int|null
    */
-  public ?int $ofcLnPrecision = null;
-  public ?int $ofcLnScale = null;
-  public ?bool $ofcBoFilterLike = null;
+  public ?int $fcLnPrecision = null;
+  public ?int $fcLnScale = null;
+  public ?bool $fcBoFilterLike = null;
 
-  public ?string $ofcTxFieldType = null;
+  public ?string $fcTxFieldType = null;
 
   //FiTransient
 
-  public ?string $ofcTxEntityName = null;
+  public ?string $fcTxEntityName = null;
 
 
   /**
    * alanın veritabanında olmadığını belirtir
    */
-  public ?bool $ofcBoTransient = null;
+  public ?bool $fcBoTransient = null;
 
   //public ObjectProperty<Double> prefSize;
 
@@ -106,13 +106,13 @@ class FiCol
   //public ?string $ficTxSqlFieldDefinition;
 
   /**
-   * @param string|null $ofcTxFieldName
-   * @param string|null $ofcTxHeader
+   * @param string|null $fcTxFieldName
+   * @param string|null $fcTxHeader
    */
-  public function __construct(?string $ofcTxFieldName = null, ?string $ofcTxHeader = null)
+  public function __construct(?string $fcTxFieldName = null, ?string $fcTxHeader = null)
   {
-    $this->ofcTxFieldName = $ofcTxFieldName;
-    $this->ofcTxHeader = $ofcTxHeader;
+    $this->fcTxFieldName = $fcTxFieldName;
+    $this->fcTxHeader = $fcTxHeader;
   }
 
   public function buiColType(string $string): FiCol
@@ -123,21 +123,21 @@ class FiCol
 
   public function __toString(): string
   {
-    return $this->ofcTxFieldName;
+    return $this->fcTxFieldName;
   }
 
   public function getOfcTxFieldNameNtn(): string
   {
-    if ($this->ofcTxFieldName == null) return "";
-    return $this->ofcTxFieldName;
+    if ($this->fcTxFieldName == null) return "";
+    return $this->fcTxFieldName;
   }
 
   public function getOfcTxEntityNameNtn(): string
   {
-    if ($this->ofcTxEntityName == null) {
+    if ($this->fcTxEntityName == null) {
       return "bosentity";
     }
-    return $this->ofcTxEntityName;
+    return $this->fcTxEntityName;
   }
 
 
