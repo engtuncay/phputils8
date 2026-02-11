@@ -61,8 +61,8 @@ class FkcFiCol implements IFkbTableMeta
   public static function ofcTxDesc(): FiKeybean
   {
     $fkbCol = new FiKeybean();
-    $fkbCol->addFm(FimFiCol::ofcTxFieldName(), 'ofcTxDesc');
-    $fkbCol->addFm(FimFiCol::ofcTxFieldType(), 'varchar');
+    $fkbCol->addFm(FimFiCol::fcTxFieldName(), 'ofcTxDesc');
+    $fkbCol->addFm(FimFiCol::fcTxFieldType(), 'varchar');
 
     return $fkbCol;
   }

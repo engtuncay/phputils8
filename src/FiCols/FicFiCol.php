@@ -58,7 +58,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxDesc(): FiCol
   {
-    $fiCol = new FiCol("ofcTxDesc");
+    $fiCol = new FiCol("fcTxDesc");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -66,7 +66,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxPrefix(): FiCol
   {
-    $fiCol = new FiCol("ofcTxPrefix");
+    $fiCol = new FiCol("fcTxPrefix");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -74,7 +74,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxEntityName(): FiCol
   {
-    $fiCol = new FiCol("ofcTxEntityName");
+    $fiCol = new FiCol("fcTxEntityName");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -82,7 +82,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxFieldName(): FiCol
   {
-    $fiCol = new FiCol("ofcTxFieldName");
+    $fiCol = new FiCol("fcTxFieldName");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -90,7 +90,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxFieldType(): FiCol
   {
-    $fiCol = new FiCol("ofcTxFieldType");
+    $fiCol = new FiCol("fcTxFieldType");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -98,7 +98,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxHeader(): FiCol
   {
-    $fiCol = new FiCol("ofcTxHeader");
+    $fiCol = new FiCol("fcTxHeader");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -106,7 +106,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxDbField(): FiCol
   {
-    $fiCol = new FiCol("ofcTxDbField");
+    $fiCol = new FiCol("fcTxDbField");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -114,7 +114,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxRefField(): FiCol
   {
-    $fiCol = new FiCol("ofcTxRefField");
+    $fiCol = new FiCol("fcTxRefField");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;
@@ -122,7 +122,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcLnLength(): FiCol
   {
-    $fiCol = new FiCol("ofcLnLength");
+    $fiCol = new FiCol("fcLnLength");
     $fiCol->ofcTxFieldType = 'int';
 
     return $fiCol;
@@ -130,7 +130,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcLnPrecision(): FiCol
   {
-    $fiCol = new FiCol("ofcLnPrecision");
+    $fiCol = new FiCol("fcLnPrecision");
     $fiCol->ofcTxFieldType = 'int';
 
     return $fiCol;
@@ -138,7 +138,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcLnScale(): FiCol
   {
-    $fiCol = new FiCol("ofcLnScale");
+    $fiCol = new FiCol("fcLnScale");
     $fiCol->ofcTxFieldType = 'int';
 
     return $fiCol;
@@ -146,7 +146,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcBoNullable(): FiCol
   {
-    $fiCol = new FiCol("ofcBoNullable");
+    $fiCol = new FiCol("fcBoNullable");
     $fiCol->ofcTxFieldType = 'bool';
 
     return $fiCol;
@@ -154,7 +154,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxIdType(): FiCol
   {
-    $fiCol = new FiCol("ofcTxIdType");
+    $fiCol = new FiCol("fcTxIdType");
     $fiCol->ofcTxFieldType = 'bool';
 
     return $fiCol;
@@ -162,7 +162,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcBoTransient(): FiCol
   {
-    $fiCol = new FiCol("ofcBoTransient");
+    $fiCol = new FiCol("fcBoTransient");
     $fiCol->ofcTxFieldType = 'bool';
 
     return $fiCol;
@@ -170,7 +170,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcBoUnique(): FiCol
   {
-    $fiCol = new FiCol("ofcBoUnique");
+    $fiCol = new FiCol("fcBoUnique");
     $fiCol->ofcTxFieldType = 'bool';
 
     return $fiCol;
@@ -178,7 +178,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcBoUniqGro1(): FiCol
   {
-    $fiCol = new FiCol("ofcBoUniqGro1");
+    $fiCol = new FiCol("fcBoUniqGro1");
     $fiCol->ofcTxFieldType = 'bool';
 
     return $fiCol;
@@ -186,7 +186,7 @@ class FicFiCol implements IFiTableMeta
 
   public static function ofcTxDefValue(): FiCol
   {
-    $fiCol = new FiCol("ofcTxDefValue");
+    $fiCol = new FiCol("fcTxDefValue");
     $fiCol->ofcTxFieldType = 'varchar';
 
     return $fiCol;

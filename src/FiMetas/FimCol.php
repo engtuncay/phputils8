@@ -1,5 +1,4 @@
 <?php
-
 namespace Engtuncay\Phputils8\FiMetas;
 
 // FiMeta Class Generation (By Dml) - v0.3 
@@ -7,7 +6,7 @@ namespace Engtuncay\Phputils8\FiMetas;
 use Engtuncay\Phputils8\FiDtos\FiMeta;
 use Engtuncay\Phputils8\FiDtos\FmtList;
 
-class FimFiCol {
+class FimCol {
 
 
 public static function fcTxEntityName() : FiMeta

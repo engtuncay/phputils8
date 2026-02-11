@@ -89,11 +89,11 @@ class FiKeybean implements IteratorAggregate
   {
     if ($fiCol == null) return;
 
-    $txFieldName =  $fiCol->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+    $txFieldName =  $fiCol->getValueByFiMeta(FimFiCol::fcTxFieldName());
 
     if (FiString::isEmpty($txFieldName)) return;
 
-    $this->params[$fiCol->getValueByFiMeta(FimFiCol::ofcTxFieldName())] = $value;
+    $this->params[$fiCol->getValueByFiMeta(FimFiCol::fcTxFieldName())] = $value;
   }
 
   /**
@@ -180,7 +180,7 @@ class FiKeybean implements IteratorAggregate
 
   public function getValueByFkc(FiKeybean $fkcCol): mixed
   {
-    return $this->getValue($fkcCol->getValueByFiMeta(FimFiCol::ofcTxFieldName()));
+    return $this->getValue($fkcCol->getValueByFiMeta(FimFiCol::fcTxFieldName()));
   }
 
   public function getFkcVal(FiKeybean $fkcCol): mixed
@@ -192,19 +192,19 @@ class FiKeybean implements IteratorAggregate
   public function getOfcFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+    return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
   }
 
   public function getOfcTxFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+    return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
   }
 
   public function getOfcTxFn(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValueByFiMeta(FimFiCol::ofcTxFieldName());
+    return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
   }
 
   public function getValue(string $txKey): mixed

@@ -36,7 +36,7 @@ class FiQugen
     foreach ($fkbFields as $fkb) {
       if (!in_array($fkb->getOfcTxFn(), $arrFieldId)) {
         // Field needs to be added
-        $fieldType = $fkb->getValueByFiMeta(FimFiCol::ofcTxFieldType());
+        $fieldType = $fkb->getValueByFiMeta(FimFiCol::fcTxFieldType());
         
         $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getOfcTxFn()} {$fieldType}");
 
