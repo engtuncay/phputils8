@@ -66,4 +66,11 @@ class FiString
     
     return $arr;
   }
+
+  public static function split(string $txValue, string $txDelimiter = ',', bool $boTrim = false): array
+  {
+    return FiString::toArray($txValue, $txDelimiter, $boTrim);
+  }
+
+
 }

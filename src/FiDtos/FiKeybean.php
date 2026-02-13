@@ -81,19 +81,19 @@ class FiKeybean implements IteratorAggregate
   /**
    * Undocumented function
    *
-   * @param FiKeybean $fiCol
+   * @param FiKeybean $fkbCol
    * @param mixed $value
    * @return void
    */
-  public function addFieldFkb($fiCol, $value)
+  public function addFieldFkb($fkbCol, $value)
   {
-    if ($fiCol == null) return;
+    if ($fkbCol == null) return;
 
-    $txFieldName =  $fiCol->getValueByFiMeta(FimFiCol::fcTxFieldName());
+    $txFieldName =  $fkbCol->getValueByFiMeta(FimFiCol::fcTxFieldName());
 
     if (FiString::isEmpty($txFieldName)) return;
 
-    $this->params[$fiCol->getValueByFiMeta(FimFiCol::fcTxFieldName())] = $value;
+    $this->params[$fkbCol->getValueByFiMeta(FimFiCol::fcTxFieldName())] = $value;
   }
 
   /**
@@ -132,6 +132,11 @@ class FiKeybean implements IteratorAggregate
   }
 
   public function getArr(): array
+  {
+    return $this->params;
+  }
+
+  public function ToArr(): array
   {
     return $this->params;
   }
