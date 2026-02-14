@@ -49,6 +49,8 @@ class FiPdo extends PDO
       } else {
         throw new \Exception("Unsupported database type: " . $dbType);
       }
+
+      FiAppConfig::$fiLog?->debug("FiPdo::__construct called. DSN: " . $txDsn); 
       
       parent::__construct($txDsn, $username, $password);
       $this->dbName = $dbname;
@@ -60,12 +62,15 @@ class FiPdo extends PDO
       $this->boConnection = true;
     } catch (PDOException $e) {
       $this->pdoException = $e;
+      FiAppConfig::$fiLog?->error("FiPdo::__construct failed. Error: " . $e->getMessage());
       $this->boConnection = false;
     }
   }
 
   public static function buiWithProfile(string $connProfile = null): FiPdo
   {
+    FiAppConfig::$fiLog?->debug("FiPdo::buiWithProfile called" . ($connProfile ? ". ConnProfile: " . $connProfile : ""));
+
     if($connProfile == null) {
       $connProfile = FiAppConfig::$fiConfig?->getProfile();
     }
@@ -80,10 +85,12 @@ class FiPdo extends PDO
 
     $fiConnConfig = FiAppConfig::$fiConfig?->getFiConnConfig($connProfile);
 
+    FiAppConfig::$fiLog?->debug("FiPdo::buiWithProfile called. ConnProfile: " . $connProfile . ", Host: " . $fiConnConfig->getTxServer() . ", DbName: " . $fiConnConfig->getTxDatabase());
+
     $fiPdo = null;
 
     if($fiConnConfig != null) {
-      $fiPdo = new FiPdo($fiConnConfig->getTxServer(), $fiConnConfig->getTxDatabase(), $fiConnConfig->getTxUsername(), $fiConnConfig->getTxPass());
+      $fiPdo = new FiPdo($fiConnConfig->getTxServer(), $fiConnConfig->getTxDatabase(), $fiConnConfig->getTxUsername(), $fiConnConfig->getTxPass(), null, $fiConnConfig->getTxDbType());
       self::$fkbPdoPool->set($connProfile, $fiPdo);
     } else {
       throw new \Exception("FiConnConfig is null. Please check your configuration.");
