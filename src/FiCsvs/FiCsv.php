@@ -49,7 +49,7 @@ class FiCsv
         // Sütunları gezmek için 'for' döngüsü
         foreach ($fiExcelHeaders as $col => $value) {
 
-          if(array_key_exists($col, $row) === false) {
+          if (array_key_exists($col, $row) === false) {
             //FiLog::$log?->error(sprintf("Column %s not found in row %s", $col, $rowIndex));
             continue;
           }
@@ -172,5 +172,20 @@ class FiCsv
 
     //if(!$boFoundHeaderRow) return -1;
     return $fiExcelHeaders;
+  }
+
+  public static function writeArrayToCsv(array $array, string $filePath): bool
+  {
+    $file = fopen($filePath, 'w');
+    if ($file === false) {
+      return false;
+    }
+
+    foreach ($array as $row) {
+      fputcsv($file, $row);
+    }
+
+    fclose($file);
+    return true;
   }
 }
