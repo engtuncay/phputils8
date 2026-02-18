@@ -10,6 +10,29 @@ use Engtuncay\Phputils8\FiDtos\FkbList;
 
 class FiCsv
 {
+  
+  /**
+   * Verilen array'i CSV string olarak döndürür.
+   * @param array $data
+   * @return string|false CSV string veya hata durumunda false
+   */
+  public static function arrayToCsvString(array $data)
+  {
+    if (empty($data) || !is_array($data)) {
+      return false;
+    }
+    ob_start();
+    $headers = array_keys(reset($data));
+    $output = fopen('php://output', 'w');
+    fputcsv($output, $headers);
+    foreach ($data as $row) {
+      fputcsv($output, $row);
+    }
+    fclose($output);
+    $csvString = ob_get_clean();
+    return $csvString;
+  }
+
 
   public static function readByFirstRowHeader($file): Fdr
   {
@@ -174,11 +197,21 @@ class FiCsv
     return $fiExcelHeaders;
   }
 
-  public static function writeArrayToCsv(array $array, string $filePath): bool
+  public static function writeArrayToCsv(array $array, string $filePath, ?array $headers = null): bool
   {
     $file = fopen($filePath, 'w');
     if ($file === false) {
       return false;
+    }
+
+    // Eğer başlık verilmemişse ve array'de veri varsa, ilk elemanın keys'lerini başlık olarak kullan
+    if ($headers === null && !empty($array) && is_array($array[0])) {
+      $headers = array_keys($array[0]);
+    }
+
+    // Başlık satırını yaz
+    if ($headers !== null) {
+      fputcsv($file, $headers);
     }
 
     foreach ($array as $row) {

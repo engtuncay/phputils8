@@ -173,6 +173,11 @@ class Fdr
     $this->txMessage = $message;
   }
 
+  public function setTxMessage(?string $message): void
+  {
+    $this->txMessage = $message;
+  }
+
   public function getRowsAffected(): ?int
   {
     return $this->rowsAffected ?? -1;

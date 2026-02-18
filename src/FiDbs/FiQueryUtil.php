@@ -271,6 +271,12 @@ class FiQueryUtil
 
     return $txSqlFinal;
   }
+
+  public static function convertSqlParamToNamedParamMainExcludable(string $sql): string
+  {
+    return preg_replace('/@(?!__)/', ':', $sql);
+  }
+
 }
 
 

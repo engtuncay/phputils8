@@ -34,7 +34,23 @@ class FiQuery
 
   public function getSql(): string
   {
-    return $this->sql ?? '';
+    // if ($this->sql != null) {
+    //   return FiQueryUtil::convertSqlParamToNamedParamMainExcludable($this->sql);
+    // }
+    return $this->sql ??  '';
+  }
+
+  /**
+   * sql fixed
+   *
+   * @return string
+   */
+  public function getSqlf(): string
+  {
+    if ($this->sql != null) {
+      return FiQueryUtil::convertSqlParamToNamedParamMainExcludable($this->sql);
+    }
+    return '';
   }
 
   public function setSql(string $sql): void
@@ -148,7 +164,6 @@ class FiQuery
     }
     return json_encode($this->fkbParams->getParams());
   }
-
 }
 
 /*

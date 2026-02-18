@@ -23,7 +23,7 @@ class FiPdo extends PDO
   public ?string $dbName = null;
 
   public static ?FiKeybean $fkbPdoPool = null;
-  
+
   /**
    * shows whether or not there is a connection
    *
@@ -33,33 +33,38 @@ class FiPdo extends PDO
 
   public ?PDOException $pdoException;
 
-  public function __construct($host, $dbname, $username, $password, $charset = 'utf8',string $dbType = FiDbTypes::MYSQL)
+  public function __construct($host, $dbname, $username, $password, $charset = 'utf8', string $dbType = FiDbTypes::MYSQL)
   {
     try {
-      if($dbType == FiDbTypes::MYSQL) {
+      if ($dbType == FiDbTypes::MYSQL) {
         $txDsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
-      } else if($dbType == FiDbTypes::MSSQL) {
+      } else if ($dbType == FiDbTypes::MSSQL) {
         $txDsn = 'sqlsrv:server=' . $host . ';database=' . $dbname;
-      } else if($dbType == FiDbTypes::POSTGRESQL) {
+      } else if ($dbType == FiDbTypes::POSTGRESQL) {
         $txDsn = 'pgsql:host=' . $host . ';dbname=' . $dbname;
-      } else if($dbType == FiDbTypes::ORACLE) {
+      } else if ($dbType == FiDbTypes::ORACLE) {
         $txDsn = 'oci:dbname=' . $dbname . ';host=' . $host;
-      } else if($dbType == FiDbTypes::SQLITE) {
+      } else if ($dbType == FiDbTypes::SQLITE) {
         $txDsn = 'sqlite:' . $dbname;
       } else {
         throw new \Exception("Unsupported database type: " . $dbType);
       }
 
-      FiAppConfig::$fiLog?->debug("FiPdo::__construct called. DSN: " . $txDsn); 
-      
+      FiAppConfig::$fiLog?->debug("FiPdo::__construct called. DSN: " . $txDsn);
+      FiAppConfig::$fiLog?->debug("username password" . $username . " " . $password);
+
       parent::__construct($txDsn, $username, $password);
       $this->dbName = $dbname;
-      $this->query('SET CHARACTER SET ' . $charset);
-      $this->query('SET NAMES ' . $charset);
-      $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-      $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
       $this->boConnection = true;
+
+      if ($dbType == FiDbTypes::MYSQL) {
+        $this->query('SET CHARACTER SET ' . $charset);
+        $this->query('SET NAMES ' . $charset);
+      }
+      
+      $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, true);
+      $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     } catch (PDOException $e) {
       $this->pdoException = $e;
       FiAppConfig::$fiLog?->error("FiPdo::__construct failed. Error: " . $e->getMessage());
@@ -71,15 +76,15 @@ class FiPdo extends PDO
   {
     FiAppConfig::$fiLog?->debug("FiPdo::buiWithProfile called" . ($connProfile ? ". ConnProfile: " . $connProfile : ""));
 
-    if($connProfile == null) {
+    if ($connProfile == null) {
       $connProfile = FiAppConfig::$fiConfig?->getProfile();
     }
 
-    if(self::$fkbPdoPool == null) {
+    if (self::$fkbPdoPool == null) {
       self::$fkbPdoPool = FiKeybean::bui([]);
     }
 
-    if(self::$fkbPdoPool->has($connProfile)) {
+    if (self::$fkbPdoPool->has($connProfile)) {
       return self::$fkbPdoPool->get($connProfile);
     }
 
@@ -89,7 +94,7 @@ class FiPdo extends PDO
 
     $fiPdo = null;
 
-    if($fiConnConfig != null) {
+    if ($fiConnConfig != null) {
       $fiPdo = new FiPdo($fiConnConfig->getTxServer(), $fiConnConfig->getTxDatabase(), $fiConnConfig->getTxUsername(), $fiConnConfig->getTxPass(), null, $fiConnConfig->getTxDbType());
       self::$fkbPdoPool->set($connProfile, $fiPdo);
     } else {
@@ -360,10 +365,10 @@ class FiPdo extends PDO
 
     try {
 
-      $stmt = $this->prepare($fiQuery->getSql());
+      $stmt = $this->prepare($fiQuery->getSqlf());
 
       if ($fiQuery->getFkbParams() != null) {
-        $stmt->execute($fiQuery->getFkbParams()->getParams());
+        $stmt->execute($fiQuery->getFkbParams()->getArr());
       } else {
         $stmt->execute();
       }
@@ -373,6 +378,7 @@ class FiPdo extends PDO
       $fdrMain->setFkbValue($fkbVal);
       return $fdrMain;
     } catch (PDOException $e) {
+
       $fdrMain->setBoResult(false);
       $fdrMain->setException($e);
       return $fdrMain; //$result;

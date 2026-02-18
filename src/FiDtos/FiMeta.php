@@ -100,4 +100,14 @@ class FiMeta
   {
     $this->ofmTxLabel = $txLabel;
   }
+
+  public function key(): ?string
+  {
+    return $this->ofmTxKey;
+  }
+
+  public function val(): ?string
+  {
+    return $this->ofmTxValue;
+  }
 }
