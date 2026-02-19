@@ -59,7 +59,7 @@ class FiMeta
   }
 
   /**
-   * {{ ofmTxKey }} şeklinde dönüş verir. Template variable olarak kullanılır.
+   * {{ ftTxKey }} şeklinde dönüş verir. Template variable olarak kullanılır.
    *
    * @return string|null
    */
