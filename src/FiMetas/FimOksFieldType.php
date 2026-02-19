@@ -3,7 +3,7 @@ namespace Engtuncay\Phputils8\FiMetas;
 // Codegen v2
 
 use Engtuncay\Phputils8\FiDtos\FiMeta;
-use Engtuncay\Phputils8\FiDtos\FmtList;
+use Engtuncay\Phputils8\FiDtos\FimList;
 
 class FimOksFieldType
 {

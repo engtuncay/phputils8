@@ -3,30 +3,32 @@
 namespace Engtuncay\Phputils8\FiDtos;
 
 /**
- * Ana alanlar ofmTxKey, ofmTxValue olarak tanımlanır.
+ * Ana alanlar  ftTxKey, ftTxValue olarak tanımlanır.
  * 
- * Ek alanlar olarak ofmLnKey, ofmTxLabel tanımlanabilir.
+ * Ek alanlar olarak ftLnKey, ftTxLabel tanımlanabilir.
+ * 
+ * Not : eski isimlendirme (ofmTxKey, ofmTxValue)
  */
 class FiMeta
 {
   /**
    * TxCode (TxKodu)
    */
-  public ?string $ofmTxKey = null;
+  public ?string $ftTxKey = null;
 
-  public ?string $ofmTxValue  = null;
+  public ?string $ftTxValue  = null;
 
   /**
    * LnCode (LnKodu)
    * <p>
    * Key Meta Karşılık Gelen Integer Kod varsa
    */
-  public ?int $ofmLnKey = null;
+  public ?int $ftLnKey = null;
 
   /**
    * Açıklama (Description) gibi düşünebiliriz
    */
-  public ?string $ofmTxLabel = null;
+  public ?string $ftTxLabel = null;
 
   //private ?string $txType = null;
 
@@ -35,8 +37,8 @@ class FiMeta
    */
   public function __construct(string $txKey = '', string $txValue = null)
   {
-    $this->ofmTxKey = $txKey;
-    $this->ofmTxValue = $txValue;
+    $this->ftTxKey = $txKey;
+    $this->ftTxValue = $txValue;
   }
 
   /**
@@ -46,14 +48,14 @@ class FiMeta
   //@Override
   public function __toString()
   {
-    return $this->ofmTxKey;
+    return $this->ftTxKey;
   }
 
   // Getter and Setters
 
   public function getTxKey(): ?string
   {
-    return $this->ofmTxKey;
+    return $this->ftTxKey;
   }
 
   /**
@@ -63,51 +65,51 @@ class FiMeta
    */
   public function getTxKeyAsTemp(): ?string
   {
-    return '{{' . $this->ofmTxKey . '}}';
+    return '{{' . $this->ftTxKey . '}}';
   }
 
   public function setTxKey(?string $txKey): void
   {
-    $this->ofmTxKey = $txKey;
+    $this->ftTxKey = $txKey;
   }
 
   public function getTxValue(): ?string
   {
-    return $this->ofmTxValue;
+    return $this->ftTxValue;
   }
 
   public function setTxValue(?string $txValue): void
   {
-    $this->ofmTxValue = $txValue;
+    $this->ftTxValue = $txValue;
   }
 
   public function getLnKey(): ?int
   {
-    return $this->ofmLnKey;
+    return $this->ftLnKey;
   }
 
   public function setLnKey(?int $lnKey): void
   {
-    $this->ofmLnKey = $lnKey;
+    $this->ftLnKey = $lnKey;
   }
 
   public function getTxLabel(): ?string
   {
-    return $this->ofmTxLabel;
+    return $this->ftTxLabel;
   }
 
   public function setTxLabel(?string $txLabel): void
   {
-    $this->ofmTxLabel = $txLabel;
+    $this->ftTxLabel = $txLabel;
   }
 
   public function key(): ?string
   {
-    return $this->ofmTxKey;
+    return $this->ftTxKey;
   }
 
   public function val(): ?string
   {
-    return $this->ofmTxValue;
+    return $this->ftTxValue;
   }
 }

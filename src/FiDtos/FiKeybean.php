@@ -105,10 +105,10 @@ class FiKeybean implements IteratorAggregate
    */
   public function addFieldMeta($fiMeta, $value)
   {
-    if (FiString::isEmpty($fiMeta->ofmTxKey)) {
+    if (FiString::isEmpty($fiMeta->ftTxKey)) {
       return;
     }
-    $this->params[$fiMeta->ofmTxKey] = $value;
+    $this->params[$fiMeta->ftTxKey] = $value;
   }
 
   public function addFm($fiMeta, $value)
@@ -170,7 +170,7 @@ class FiKeybean implements IteratorAggregate
   public function getValueByFiMeta(FiMeta $fiMeta): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValue($fiMeta->ofmTxKey);
+    return $this->getValue($fiMeta->ftTxKey);
   }
   /**
    * shortcut method for getValueByFiMeta
