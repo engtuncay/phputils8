@@ -45,7 +45,7 @@ class FiQuery
    *
    * @return string
    */
-  public function getSqlf(): string
+  public function getSqlFixed(): string
   {
     if ($this->sql != null) {
       return FiQueryUtil::convertSqlParamToNamedParamMainExcludable($this->sql);

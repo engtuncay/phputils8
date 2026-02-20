@@ -365,7 +365,7 @@ class FiPdo extends PDO
 
     try {
 
-      $stmt = $this->prepare($fiQuery->getSqlf());
+      $stmt = $this->prepare($fiQuery->getSqlFixed());
 
       if ($fiQuery->getFkbParams() != null) {
         $stmt->execute($fiQuery->getFkbParams()->getArr());

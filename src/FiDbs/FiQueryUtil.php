@@ -274,6 +274,7 @@ class FiQueryUtil
 
   public static function convertSqlParamToNamedParamMainExcludable(string $sql): string
   {
+    // öncesinde __ gelmiyorsa @ leri : ile değiştirir.
     return preg_replace('/@(?!__)/', ':', $sql);
   }
 
