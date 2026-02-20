@@ -48,7 +48,9 @@ class FiQuery
   public function getSqlFixed(): string
   {
     if ($this->sql != null) {
-      return FiQueryUtil::convertSqlParamToNamedParamMainExcludable($this->sql);
+      $sqlNew = FiQueryUtil::fixSqlProblems($this->sql);
+      $sqlNew = FiQueryUtil::convertSqlParamToNamedParamMainExcludable($sqlNew);
+      return $sqlNew;
     }
     return '';
   }
