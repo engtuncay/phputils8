@@ -185,6 +185,12 @@ class FiKeybean implements IteratorAggregate
     return $this->getValue($fiMeta->ftTxKey);
   } 
 
+  public function getValueByFimAsBool(FiMeta $fiMeta): mixed
+  {
+    //FiLog::$log?->debug(json_encode($this->getArr()));
+    return FicValue::toBool($this->getValue($fiMeta->ftTxKey,null));
+  }
+
   /**
    * shortcut method for getValueByFiMeta
    *

@@ -11,21 +11,19 @@ class FicValue
    * @param bool|null $boElseValue The default value to return if the input does not match predefined conditions.
    * @return bool|null Returns true, false, or null depending on the value provided and defined conversion rules.
    */
-  public static function toBool(mixed $value,bool|null $boElseValue = null):bool|null
+  public static function toBool(mixed $value, bool|null $boElseValue = null): bool|null
   {
     $txValue = strval($value);
 
     //FiLog::$log?->debug('toBool:'. $txValue);
-    if(strcasecmp($txValue,'true')===0) return true;
-    if(strcasecmp($txValue,'false')===0) return false;
-    if(strcasecmp($txValue,'x')===0) return false;
-    if(strcasecmp($txValue,'ok')===0) return true;
-    if(strcasecmp($txValue,'yes')===0) return true;
-    if(strcasecmp($txValue,'no')===0) return false;
+    if (strcasecmp($txValue, 'true') === 0) return true;
+    if (strcasecmp($txValue, 'false') === 0) return false;
+    if (strcasecmp($txValue, 'x') === 0) return false;
+    if (strcasecmp($txValue, 'ok') === 0) return true;
+    if (strcasecmp($txValue, 'yes') === 0) return true;
+    if (strcasecmp($txValue, 'no') === 0) return false;
 
-    if($boElseValue!==null) return $boElseValue;
-
-    return null;
+    return $boElseValue;
   }
 
   /**
@@ -46,5 +44,4 @@ class FicValue
     // Eğer numeric bir değerse, default'u döndürüyoruz
     return $orValue;
   }
-
 }
