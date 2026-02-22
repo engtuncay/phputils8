@@ -167,11 +167,24 @@ class FiKeybean implements IteratorAggregate
     return $this->getValue($fiCol->fcTxFieldName);
   }
 
+  /**
+   * deprecated getValueByFim kullanılacak
+   *
+   * @param FiMeta $fiMeta
+   * @return mixed
+   */
   public function getValueByFiMeta(FiMeta $fiMeta): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
     return $this->getValue($fiMeta->ftTxKey);
   }
+
+  public function getValueByFim(FiMeta $fiMeta): mixed
+  {
+    //FiLog::$log?->debug(json_encode($this->getArr()));
+    return $this->getValue($fiMeta->ftTxKey);
+  } 
+
   /**
    * shortcut method for getValueByFiMeta
    *
