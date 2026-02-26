@@ -80,13 +80,23 @@ class FiExcel
     }
   }
 
-  public static function readExcelFileByFirstRowHeader($inputFileName): Fdr
+  public static function readExcelFileByFirstRowHeader($inputFileName, $txSheetName = null): Fdr
   {
     $fdrMain = new Fdr();
 
     try {
       $spreadsheet = IOFactory::load($inputFileName);
-      $sheet = $spreadsheet->getActiveSheet();
+      
+      if (
+        !FiString::isEmpty($txSheetName) &&
+        $spreadsheet->sheetNameExists($txSheetName)
+      ) {
+        $sheet = $spreadsheet->getSheetByName($txSheetName);
+        //$spreadsheet->setActiveSheetIndexByName($txSheetName);
+      } else {
+        $spreadsheet->setActiveSheetIndex(0);
+        $sheet = $spreadsheet->getActiveSheet();
+      }
 
       // En yüksek satır ve sütun numaralarını al
       $highestRow = $sheet->getHighestRow(); // Toplam satır sayısı
@@ -126,7 +136,7 @@ class FiExcel
     } catch (Exception $e) {
       //echo 'Excel dosyası okunurken hata oluştu: ', $e->getMessage(), PHP_EOL;
       FiLog::$log?->debug('Exception aldı');
-      FiAppConfig::$fiLog?->error('Exception aldı :'. $e->getLine() . ":" . $e->getMessage());
+      FiAppConfig::$fiLog?->error('Exception aldı :' . $e->getLine() . ":" . $e->getMessage());
       $fdrMain->setBoResult(false);
       $fdrMain->setException($e);
       $fdrMain->setMessage("Excel dosyası okunurken hata oluştu: " . $e->getMessage());
@@ -199,7 +209,7 @@ class FiExcel
       //FiLog::$log->info('info message:');
       //FiLog::$log?->debug('cellValue:' . $cellValue);
       //FiLog::$log?->debug(sprintf("itemHeaders:%s", implode("-", $fiCols->getItemsHeader())));
-      
+
       if (!FiString::isEmpty($cellValue)) {
         $boFoundHeaderRow = true;
         FiLog::$log?->debug(sprintf("boFoundHeaderRow:%s", $boFoundHeaderRow));
@@ -207,7 +217,7 @@ class FiExcel
         $fiExcelHeaders[$colIndex] = $cellValue; //$fiCols->getArrayHeaderToField()[$cellValue];
       }
     }
-    
+
     return array($fiExcelHeaders, $rowHeaderNo);
   }
 }
