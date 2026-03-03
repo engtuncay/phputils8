@@ -1,7 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiMetas;
 
-// FiMeta Class Generation (By Dml) - v0.3 
+// FiMeta Class Generation  - v0.3 
       
 use Engtuncay\Phputils8\FiDtos\FiMeta;
 use Engtuncay\Phputils8\FiDtos\FimList;

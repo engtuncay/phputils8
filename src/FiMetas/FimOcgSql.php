@@ -2,7 +2,7 @@
 
 namespace Engtuncay\Phputils8\FiMetas;
 
-// FiMeta Class Generation (By Dml) - v0.4 
+// FiMeta Class Generation  - v0.4 
 
 use Engtuncay\Phputils8\FiDtos\FiMeta;
 
@@ -38,4 +38,12 @@ class FimOcgSql
 
     return $fiMeta;
   }
+
+  public static function sfTxFieldName(): FiMeta
+  {
+    $fiMeta = new FiMeta("sfTxFieldName");
+
+    return $fiMeta;
+  }
+  
 }
