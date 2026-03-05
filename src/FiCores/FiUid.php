@@ -40,7 +40,7 @@ class FiUid
     $counterStr = str_pad(dechex($counter), 4, '0', STR_PAD_LEFT);
 
     $timestamp = dechex((int)(microtime(true) * 1000)); // milisaniye, hex
-    $random = bin2hex(random_bytes(4)); // 8 karakter
+    $random = bin2hex(random_bytes(2)); // 4 karakter // length 4 olursa 8 karakter
     $fingerprint = substr(md5(gethostname() . getmypid()), 0, 6); // sistem parmak izi
 
     // Sabit uzunluk için padding
