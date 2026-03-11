@@ -15,6 +15,11 @@ abstract class FiAbsRepoGeneric
     {
       return FiPdo::buiWithProfile($this->connProfile);
     }
+
+    public function getDbType(): string
+    {
+      return env("database.$this->connProfile.dbType") ?: FiDbTypes::MYSQL;
+    }
 }
 
 //
