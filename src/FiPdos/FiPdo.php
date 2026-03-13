@@ -226,6 +226,28 @@ class FiPdo extends PDO
     }
   }
 
+  public function execQuery(FiQuery $fiQuery): Fdr
+  { // int-false-null return type
+    $result = null;
+
+    // if ($this->boConnection == null || $this->boConnection == false) {
+    //   echo "connection is not established";
+    //   return false;
+    // }
+    $fdrMain = new Fdr();
+
+    try {
+      $result = parent::exec($fiQuery->getSql());
+      $fdrMain->setRowsAffected($result);
+      $fdrMain->setBoResult(true);
+      return $fdrMain;
+    } catch (PDOException $e) {
+      $fdrMain->setBoResult(false);
+      $fdrMain->setException($e);
+      return $fdrMain;
+    }
+  }
+
   public function execFiWitEchoErr(string $statement)
   {
     $result = null;

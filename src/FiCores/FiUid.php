@@ -1,4 +1,5 @@
 <?php
+
 namespace Engtuncay\Phputils8\FiCores;
 
 /**
@@ -49,4 +50,23 @@ class FiUid
     return 'c' . $timestamp . $counterStr . $random . $fingerprint;
   }
 
+
+
+  public static function genSnowFlakeId($machineId): string
+  {
+    static $lastTimestamp = 0;
+    static $sequence = 0;
+
+    $timestamp = (int)(microtime(true) * 1000);
+
+    if ($timestamp == $lastTimestamp) {
+      $sequence++;
+    } else {
+      $sequence = 0;
+    }
+
+    $lastTimestamp = $timestamp;
+
+    return ($timestamp << 22) | ($machineId << 12) | $sequence;
+  }
 }

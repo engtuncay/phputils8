@@ -3,6 +3,7 @@
 namespace Engtuncay\Phputils8\FiDtos;
 
 use ArrayIterator;
+use Engtuncay\Phputils8\FiMetas\FimFiCol;
 use IteratorAggregate;
 use Traversable;
 
@@ -74,4 +75,6 @@ class FkbList implements IteratorAggregate
       return $item->getFcFieldName();
     }, $this->items);
   }
+
+
 }

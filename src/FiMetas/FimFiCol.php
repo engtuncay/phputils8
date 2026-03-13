@@ -150,4 +150,19 @@ class FimFiCol
 
     return $fiMeta;
   }
+
+  public static function fcTxDesc(): FiMeta
+  {
+    $fiMeta = new FiMeta("fcTxDesc");
+
+    return $fiMeta;
+  }
+
+  public static function fcTxPrefix(): FiMeta
+  {
+    $fiMeta = new FiMeta("fcTxPrefix");
+
+    return $fiMeta;
+  }
+  
 }
