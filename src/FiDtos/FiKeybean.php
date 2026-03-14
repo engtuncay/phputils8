@@ -97,13 +97,25 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
-   * Adds a field (FiMeta->fcTxFieldName) to the FiKeybean.
+   * Deprecated, use addFieldByFim instead
    *
    * @param FiMeta $fiMeta
    * @param mixed $value
    * @return void
    */
   public function addFieldMeta($fiMeta, $value)
+  {
+    self::addFieldByFim($fiMeta, $value);
+  }
+
+  /**
+   * 
+   *
+   * @param FiMeta $fiMeta
+   * @param mixed $value
+   * @return void
+   */
+  public function addFieldByFim($fiMeta, $value)
   {
     if (FiString::isEmpty($fiMeta->ftTxKey)) {
       return;
@@ -115,6 +127,13 @@ class FiKeybean implements IteratorAggregate
   {
     self::addFieldMeta($fiMeta, $value);
   }
+
+  public function addFim($fiMeta, $value)
+  {
+    self::addFieldMeta($fiMeta, $value);
+  }
+
+  
 
   /**
    * FkbCol->fcTxFieldName is used as key
@@ -222,19 +241,25 @@ class FiKeybean implements IteratorAggregate
   public function getFcFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
+    return $this->getFimValue(FimFiCol::fcTxFieldName());
   }
 
   public function getFcTxFieldName(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
+    return $this->getFimValue(FimFiCol::fcTxFieldName());
   }
 
   public function getFcTxFn(): mixed
   {
     //FiLog::$log?->debug( json_encode($this->getArr()));
-    return $this->getValueByFiMeta(FimFiCol::fcTxFieldName());
+    return $this->getFimValue(FimFiCol::fcTxFieldName());
+  }
+
+  public function getFcFn(): mixed
+  {
+    //FiLog::$log?->debug( json_encode($this->getArr()));
+    return $this->getFimValue(FimFiCol::fcTxFieldName());
   }
 
   public function getFcTxFnNtn(): string

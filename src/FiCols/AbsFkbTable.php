@@ -11,4 +11,11 @@ abstract class AbsFkbTable
     $fkbCol = new FiKeybean();
     return $fkbCol;
   }
+
+  public static function genFkbFields(): FiKeybean
+  {
+    $fkbCol = new FiKeybean();
+    return $fkbCol;
+  }
+  
 }

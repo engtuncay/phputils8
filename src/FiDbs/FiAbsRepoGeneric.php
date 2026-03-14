@@ -1,6 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiDbs;
 
+use Engtuncay\Phputils8\FiApps\FiAppConfig;
 use Engtuncay\Phputils8\FiPdos\FiPdo;
 
 abstract class FiAbsRepoGeneric
@@ -18,7 +19,7 @@ abstract class FiAbsRepoGeneric
 
     public function getDbType(): string
     {
-      return env("database.$this->connProfile.dbType") ?: FiDbTypes::MYSQL;
+      return FiAppConfig::$fiConfig?->getEnvVar("database.$this->connProfile.dbType") ?: FiDbTypes::MYSQL;
     }
 }
 

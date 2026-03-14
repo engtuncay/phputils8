@@ -14,5 +14,14 @@ interface IFiConfigManager
    * Ayar dosyasından okunarak alınacak profile
    */
   public function getProfile(): string;
+
+  /**
+   * Gets Environment Variable
+   * 
+   * @param null|string $key 
+   * @return string|null
+   */
+  public function getEnvVar(?string $key): ?string;
+
 }
 //Dictionary<string, string> mapConnString { get; set; };

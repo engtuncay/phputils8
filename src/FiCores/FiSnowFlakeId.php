@@ -1,7 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiCores;
 
-class SnowflakeId
+class FiSnowFlakeId
 {
     private int $machineId;
     private int $sequence = 0;
