@@ -144,10 +144,10 @@ class FiKeybean implements IteratorAggregate
    */
   public function addFkbCol($fkbCol, $value)
   {
-    if (FiString::isEmpty($fkbCol->getValueByFiCol(FicFiCol::fcTxFieldName()))) {
+    if (FiString::isEmpty($fkbCol->getFimValue(FimFiCol::fcTxFieldName()))) {
       return;
     }
-    $this->params[$fkbCol->getValueByFiCol(FicFiCol::fcTxFieldName())] = $value;
+    $this->params[$fkbCol->getFimValue(FimFiCol::fcTxFieldName())] = $value;
   }
 
   public function getArr(): array
