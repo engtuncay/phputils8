@@ -2,7 +2,9 @@
 
 namespace Engtuncay\Phputils8\FiDtos;
 
+use Engtuncay\Phputils8\FiSoaps\FiSoap;
 use Exception;
+use ZipStream\File;
 
 class Fdr
 {
@@ -165,6 +167,11 @@ class Fdr
   public function getRefValue()
   {
     return $this->refValue;
+  }
+
+  public function getRefValueAsFiSoap(): FiSoap
+  {
+    return $this->refValue instanceof FiSoap ? $this->refValue : new FiSoap();
   }
 
   public function setRefValue($refValue): void
