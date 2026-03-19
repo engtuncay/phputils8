@@ -1,11 +1,11 @@
 <?php
-
 namespace Engtuncay\Phputils8\FiSoaps;
 
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
 use Engtuncay\Phputils8\FiDtos\Fdr;
 use Engtuncay\Phputils8\FiXmls\FiXmlReq;
 use DOMDocument;
+use Engtuncay\Phputils8\FiXmls\FiXml;
 use Exception;
 
 class FiSoapUtil
@@ -43,20 +43,22 @@ class FiSoapUtil
 
       // Yanıtı işle
       $fdrMain->setBoResult(true);
-      $fdrMain->setRefValue($response['body']);
+      $txValue = $response['body'];
+      $fdrMain->setTxValue($txValue);
+      $fdrMain->setRefFiXml(new FiXml($txValue));
       $fdrMain->lnResponseCode = $response['statusCode'];
       if ($response['statusCode'] >= 400) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("HTTP Error: " . $response['statusCode']);
       }
-      return $fdrMain;
     } catch (Exception $ex) {
       FiAppConfig::$fiLog?->error($ex->getMessage());
       FiAppConfig::$fiLog?->error($ex->getTraceAsString());
       $fdrMain->setBoResult(false);
       $fdrMain->setMessage($ex->getMessage());
-      return $fdrMain;
     }
+
+    return $fdrMain;
   }
 
   /**

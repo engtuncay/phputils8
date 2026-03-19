@@ -33,6 +33,7 @@ abstract class FiAbsRsoGeneric
         $fdr->setBoResult(false);
       }
 
+      return $fdr;
     }
 
 }

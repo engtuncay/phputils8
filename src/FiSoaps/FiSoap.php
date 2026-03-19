@@ -25,11 +25,12 @@ class FiSoap
   public function request(FiXmlReq $fiXmlReq): Fdr
   {
     $fiXmlReq->txBaseUrl = $this->txBaseUrl;
-    return FiSoapUtil::execute($fiXmlReq);
+    $fdrRequest = FiSoapUtil::execute($fiXmlReq);
+    return $fdrRequest;
   }
 
 
-  public static function buiWithProfile(string $connProfile): FiSoap
+  public static function buiWithProfile(string $connProfile): FiSoap | null
   {
     FiAppConfig::$fiLog?->debug("FiSoap::buiWithProfile called" . $connProfile ?  ". ConnProfile: " . $connProfile :  "");
     if ($connProfile == null) {
