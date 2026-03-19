@@ -7,6 +7,7 @@ use Engtuncay\Phputils8\FiDbs\FiDbTypes;
 use Engtuncay\Phputils8\FiDbs\FiQuery;
 use Engtuncay\Phputils8\FiDtos\Fdr;
 use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiLogs\FiLog;
 use PDOException;
 use PDO;
 
@@ -33,8 +34,13 @@ class FiPdo extends PDO
 
   public ?PDOException $pdoException;
 
-  public function __construct($host, $dbname, $username, $password, $charset = 'utf8', string $dbType = FiDbTypes::MYSQL)
+  public function __construct($host, $dbname, $username, $password, $charset = 'utf8', ?string $dbType = FiDbTypes::MYSQL)
   {
+    //FiAppConfig::$fiLog?->debug( " DbType:(" . $dbType . ")");
+    
+    //dbType null ile MYSQL eşitleniyor
+    $dbType??= FiDbTypes::MYSQL;
+    
     try {
       if ($dbType == FiDbTypes::MYSQL) {
         $txDsn = 'mysql:host=' . $host . ';dbname=' . $dbname;
@@ -50,8 +56,8 @@ class FiPdo extends PDO
         throw new \Exception("Unsupported database type: " . $dbType);
       }
 
-      FiAppConfig::$fiLog?->debug("FiPdo::__construct called. DSN: " . $txDsn);
-      FiAppConfig::$fiLog?->debug("username password" . $username . " " . $password);
+      //FiAppConfig::$fiLog?->debug("FiPdo::__construct called. DSN: " . $txDsn);
+      //FiAppConfig::$fiLog?->debug("username password" . $username . " " . $password);
 
       parent::__construct($txDsn, $username, $password);
       $this->dbName = $dbname;

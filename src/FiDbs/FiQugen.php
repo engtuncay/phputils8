@@ -4,6 +4,7 @@ namespace Engtuncay\Phputils8\FiDbs;
 
 use Engtuncay\Phputils8\FiCores\FiStrbui;
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
+use Engtuncay\Phputils8\FiCols\AbsFkbTable;
 use Engtuncay\Phputils8\FiCols\FimColType;
 use Engtuncay\Phputils8\FiDtos\FiKeybean;
 use Engtuncay\Phputils8\FiDtos\FkbList;
@@ -37,15 +38,17 @@ class FiQugen
       if (!in_array($fkb->getFcTxFn(), $arrFieldId)) {
         // Field needs to be added
         $fieldType = $fkb->getValueByFiMeta(FimFiCol::fcTxFieldType());
-        
+
         $sbSql->append("ALTER TABLE payments_log ADD COLUMN {$fkb->getFcTxFn()} {$fieldType}");
 
-        if($fieldType == FimOksFieldType::varchar()->getTxKey()
-          || $fieldType == FimOksFieldType::string()->getTxKey()) {
+        if (
+          $fieldType == FimOksFieldType::varchar()->getTxKey()
+          || $fieldType == FimOksFieldType::string()->getTxKey()
+        ) {
           $lnLength = $fkb->getValueByFiMeta(FimFiCol::fcLnLength());
-          if($lnLength !== null) {
+          if ($lnLength !== null) {
             $sbSql->append("({$lnLength})");
-          }else{
+          } else {
             // Varsayılan uzunluk eklenebilir
             $sbSql->append("(50)");
           }
@@ -56,5 +59,12 @@ class FiQugen
       }
     }
     return $sbSql->toString();
+  }
+
+  public static function sqSelAllLimit1(AbsFkbTable $absFkbTable): string
+  {
+    //
+    $sql = "SELECT * FROM " . $absFkbTable::sqTableName()->getFcTxHd() . " LIMIT 1";
+    return $sql;
   }
 }

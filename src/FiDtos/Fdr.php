@@ -81,6 +81,15 @@ class Fdr
     return $this->genFkbResponse()->getVal();
   }
 
+  public function getArrResponse(): array
+  {
+    return $this->genFkbResponse()->getVal();
+  }
+
+  public function getFkbResponse() {
+    return $this->genFkbResponse();
+  }
+
   public function genFkbResponse()
   {
 

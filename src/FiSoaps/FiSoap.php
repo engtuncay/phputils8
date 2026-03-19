@@ -1,4 +1,5 @@
 <?php
+
 namespace Engtuncay\Phputils8\FiSoaps;
 
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
@@ -9,6 +10,14 @@ use Exception;
 
 class FiSoap
 {
+  // FiPdo'ya göre conn string
+  public ?string $txBaseUrl = null;
+
+  public function __construct(?string $txBaseUrl = null)
+  {
+    $this->txBaseUrl = $txBaseUrl;
+  }
+
   /**
    * SOAP mesajını belirtilen URL'ye gönderir ve sonucu döndürür
    *
@@ -17,15 +26,14 @@ class FiSoap
    */
   public static function execute(FiXmlReq $fiXmlReq): Fdr
   {
-    $fdrMain = new Fdr();
-
+    $fdrMain = new Fdr;
     try {
       // SOAP envelope'ı oluştur ve gönder
       $xmlContent = $fiXmlReq->getXmlFinal();
       $url = $fiXmlReq->txBaseUrl;
 
       // XML'nin geçerli olduğunu kontrol et
-      $xmlDoc = new DOMDocument();
+      $xmlDoc = new DOMDocument;
       if (!$xmlDoc->loadXML($xmlContent)) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("Invalid XML content.");
@@ -34,7 +42,6 @@ class FiSoap
 
       // HTTP isteğini oluştur ve gönder
       $response = self::sendHttpRequest($xmlContent, $url);
-
       if ($response === null) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("Response is null.");
@@ -45,14 +52,11 @@ class FiSoap
       $fdrMain->setBoResult(true);
       $fdrMain->setRefValue($response['body']);
       $fdrMain->lnResponseCode = $response['statusCode'];
-
       if ($response['statusCode'] >= 400) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("HTTP Error: " . $response['statusCode']);
       }
-
       return $fdrMain;
-
     } catch (Exception $ex) {
       FiAppConfig::$fiLog?->error($ex->getMessage());
       FiAppConfig::$fiLog?->error($ex->getTraceAsString());
@@ -71,11 +75,10 @@ class FiSoap
    */
   public static function executeString(string $xmlContent, string $url): Fdr
   {
-    $fdrMain = new Fdr();
-
+    $fdrMain = new Fdr;
     try {
       // XML'nin geçerli olduğunu kontrol et
-      $xmlDoc = new DOMDocument();
+      $xmlDoc = new DOMDocument;
       if (!$xmlDoc->loadXML($xmlContent)) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("Invalid XML content.");
@@ -84,7 +87,6 @@ class FiSoap
 
       // HTTP isteğini oluştur ve gönder
       $response = self::sendHttpRequest($xmlContent, $url);
-
       if ($response === null) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("Response is null.");
@@ -95,14 +97,11 @@ class FiSoap
       $fdrMain->setBoResult(true);
       $fdrMain->setRefValue($response['body']);
       $fdrMain->lnResponseCode = $response['statusCode'];
-
       if ($response['statusCode'] >= 400) {
         $fdrMain->setBoResult(false);
         $fdrMain->setMessage("HTTP Error: " . $response['statusCode']);
       }
-
       return $fdrMain;
-
     } catch (Exception $ex) {
       FiAppConfig::$fiLog?->error($ex->getMessage());
       FiAppConfig::$fiLog?->error($ex->getTraceAsString());
@@ -123,7 +122,6 @@ class FiSoap
   {
     try {
       $ch = curl_init($url);
-
       if ($ch === false) {
         return null;
       }
@@ -132,11 +130,7 @@ class FiSoap
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
       curl_setopt($ch, CURLOPT_POST, true);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlContent);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Content-Type: text/xml; charset=utf-8',
-        'Accept: text/xml',
-        'Content-Length: ' . strlen($xmlContent)
-      ]);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: text/xml; charset=utf-8', 'Accept: text/xml', 'Content-Length: ' . strlen($xmlContent)]);
       curl_setopt($ch, CURLOPT_TIMEOUT, 30);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
@@ -145,23 +139,15 @@ class FiSoap
       $response = curl_exec($ch);
       $statusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
       $error = curl_error($ch);
-
       curl_close($ch);
-
       if ($error) {
         FiAppConfig::$fiLog?->error("CURL Error: " . $error);
         return null;
       }
-
       if ($response === false) {
         return null;
       }
-
-      return [
-        'body' => $response,
-        'statusCode' => $statusCode
-      ];
-
+      return ['body' => $response, 'statusCode' => $statusCode];
     } catch (Exception $ex) {
       FiAppConfig::$fiLog?->error($ex->getMessage());
       return null;
@@ -176,14 +162,13 @@ class FiSoap
    * @param string $namespace Namespace URI (örn: "http://example.com/")
    * @return string Namespace'li XML
    */
-  public static function addNamespace(string $xml, string $prefix = "ws", string $namespace = "http://example.com/"): string
+  public static function addNamespace(string $xml, string $prefix, string $namespace): string
   {
     try {
-      $xmlDoc = new DOMDocument();
+      $xmlDoc = new DOMDocument;
       if (!$xmlDoc->loadXML($xml)) {
         return $xml;
       }
-
       $root = $xmlDoc->documentElement;
       $tempRoot = $xmlDoc->createElementNS($namespace, $prefix . ":Request");
 
@@ -191,11 +176,8 @@ class FiSoap
       while ($root->firstChild) {
         $tempRoot->appendChild($root->removeChild($root->firstChild));
       }
-
       $xmlDoc->replaceChild($tempRoot, $root);
-
       return $xmlDoc->saveXML();
-
     } catch (Exception $ex) {
       FiAppConfig::$fiLog?->error($ex->getMessage());
       return $xml;
@@ -234,7 +216,6 @@ XML;
 
     // Escaped karakterleri decode et
     $response = html_entity_decode($response, ENT_QUOTES | ENT_XML1, 'UTF-8');
-
     return trim($response);
   }
 
@@ -247,7 +228,7 @@ XML;
   public static function extractSoapFault(string $soapResponse): ?string
   {
     try {
-      $xmlDoc = new DOMDocument();
+      $xmlDoc = new DOMDocument;
       $xmlDoc->preserveWhiteSpace = false;
 
       // XML'i yükle (escaped karakterleri ele al)
@@ -257,33 +238,54 @@ XML;
 
       // SOAP fault'u ara
       $faultElements = $xmlDoc->getElementsByTagName('Fault');
-
       if ($faultElements->length === 0) {
         return null;
       }
-
       $faultString = $xmlDoc->getElementsByTagName('faultstring');
       if ($faultString->length > 0) {
         return $faultString->item(0)->nodeValue;
       }
-
       return null;
-
     } catch (Exception $ex) {
       FiAppConfig::$fiLog?->error($ex->getMessage());
       return null;
     }
   }
+
+  public static function buiWithProfile(string $connProfile): FiSoap
+  {
+    FiAppConfig::$fiLog?->debug("FiSoap::buiWithProfile called" . $connProfile ?  ". ConnProfile: " . $connProfile :  "");
+    if ($connProfile == null) {
+      $connProfile = FiAppConfig::$fiConfig?->getProfile();
+    }
+
+    // if (self::$fkbPdoPool == null) {
+    //   self::$fkbPdoPool = FiKeybean::bui([]);
+    // }
+    // if (self::$fkbPdoPool->has($connProfile)) {
+    //   return self::$fkbPdoPool->get($connProfile);
+    // }
+    $txApiUrl = FiAppConfig::$fiConfig?->getApiUrl($connProfile);
+
+    $fiSoap = null;
+    if ($txApiUrl != null) {
+      $fiSoap = new FiSoap;
+      $fiSoap->txBaseUrl = $txApiUrl;
+      //self::$fkbPdoPool->set($connProfile, $fiPdo);
+    } else {
+      //throw new \Exception( "FiConnConfig is null. Please check your configuration.");
+      FiAppConfig::$fiLog?->error("Api Url is null for profile: " . $connProfile);
+    }
+    return $fiSoap;
+  }
 }
-
-
+ 
 
 // class FiSoap
 // {
 //   public static function Execute(FiXmlReq fiXmlReq): Fdr
 //         {
 //             Fdr fdrMain = new Fdr();
-
 //             try
 //             {
 //                 HttpWebRequest request = CreateWebRequest(fiXmlReq.txBaseUrl);
@@ -292,12 +294,10 @@ XML;
 //                 soapEnvelopeXml.LoadXml(fiXmlReq.GetXmlFinal()); //AddNamespace(txXmlContent) //txXmlContent
 //                 //FiAppConfig.fiLogManager?.LogMessage(fiXmlReq.txXml);
 //                 //FiAppConfig.fiLogManager?.LogMessage(fiXmlReq.txBaseUrl);
-
 //                 using (Stream stream = request.GetRequestStream())
 //                 {
 //                     soapEnvelopeXml.Save(stream);
 //                 }
-
 //                 //request.Method = "GET";
 //                 using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
 //                 {
@@ -308,31 +308,24 @@ XML;
 //                         fdrMain.txMessage = "Response stream is null.";
 //                         return fdrMain;
 //                     }
-
 //                     using (StreamReader rd = new StreamReader(responseStream))
 //                     {
 //                         string soapResult = rd.ReadToEnd();
 //                         // 1. Escape edilmiş yanıtı decode et
 //                         //string decodedSoapResult = WebUtility.HtmlDecode(soapResult);
-
 //                         // Eğer BOM (Byte Order Mark) karakterinden şüpheleniyorsanız:
 //                         //decodedSoapResponse = decodedSoapResponse.Replace("\uFEFF", "").Trim();
-
 //                         fdrMain.txResponse = soapResult; //decodedSoapResult.Trim();
-
 //                         //FiAppConfig.fiLogManager?.LogMessage("[Response XML Start]");
 //                         //FiAppConfig.fiLogManager?.LogMessage($"[{fdrMain.txResponse}]");
 //                         //FiAppConfig.fiLogManager?.LogMessage("[Response XML End]");
-
 //                         //Console.WriteLine(soapResult);
 //                         //FiAppConfig.fiLogManager?.LogMessage(soapResult);
-
 //                         int statusCode = (int)response.StatusCode;
 //                         fdrMain.lnStatusCode = statusCode;
 //                         fdrMain.boExecution = true;
 //                         //Console.WriteLine($"HTTP Durum Kodu: {statusCode}");
 //                     }
-
 //                 }
 //             }
 //             catch (Exception ex)
@@ -342,16 +335,12 @@ XML;
 //                 fdrMain.txMessage = ex.Message;
 //                 fdrMain.SetBoExecAndResultFalse();
 //             }
-
 //             return fdrMain;
 //         }
-
-
 //         private static HttpWebRequest CreateWebRequest(string url)
 //         {
 //             //string url = "";
 //             HttpWebRequest webRequest = null;
-
 //             try
 //             {
 //                 webRequest = (HttpWebRequest)WebRequest.Create(url);
@@ -367,7 +356,6 @@ XML;
 //             }
 //             return webRequest;
 //         }
-
 //         private static string AddNamespace(string XML)
 //         {
 //             string result = string.Empty;
@@ -375,47 +363,38 @@ XML;
 //             {
 //                 XmlDocument xdoc = new XmlDocument();
 //                 xdoc.LoadXml(XML);
-
 //                 XmlElement temproot = xdoc.CreateElement("ws", "Request", "http://example.com/");
 //                 temproot.InnerXml = xdoc.DocumentElement.InnerXml;
 //                 result = temproot.OuterXml;
-
 //             }
 //             catch (Exception ex)
 //             {
 //                 Console.WriteLine(ex);
 //             }
-
 //             return result;
 //         }
-
 //         private static string AppendEnvelope(string data)
 //         {
 //             string txHead = @"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" ><soapenv:Header/><soapenv:Body>";
 //             string txEnd = @"</soapenv:Body></soapenv:Envelope>";
 //             return txHead + data + txEnd;
 //         }
-
 //         // Execute2
 //         public static Fdr Execute2(string txXmlContent,string txUrl)
 //         {
 //             Fdr fdrMain = new Fdr();
-
 //             try
 //             {
 //                 HttpWebRequest request = CreateWebRequest(txUrl);
 //                 XmlDocument soapEnvelopeXml = new XmlDocument();
 //                 soapEnvelopeXml.LoadXml(txXmlContent); //AddNamespace(txXmlContent) //txXmlContent
-
 //                 using (Stream stream = request.GetRequestStream())
 //                 {
 //                     soapEnvelopeXml.Save(stream);
 //                 }
-
 //                 //request.Method = "GET";
 //                 using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
 //                 {
-
 //                     Stream responseStream = response.GetResponseStream();
 //                     if (responseStream == null)
 //                     {
@@ -424,19 +403,16 @@ XML;
 //                         fdrMain.txMessage = "Response stream is null.";
 //                         return fdrMain;
 //                     }
-
 //                     using (StreamReader rd = new StreamReader(responseStream))
 //                     {
 //                         string soapResult = rd.ReadToEnd();
 //                         fdrMain.txResponse = soapResult;
 //                         Console.WriteLine(soapResult);
-
 //                         int statusCode = (int)response.StatusCode;
 //                         fdrMain.lnStatusCode = statusCode;
 //                         fdrMain.boExecution = true;
 //                         Console.WriteLine($"HTTP Durum Kodu: {statusCode}");
 //                     }
-
 //                 }
 //             }
 //             catch (Exception ex)
@@ -445,9 +421,6 @@ XML;
 //                 fdrMain.txMessage = ex.Message;
 //                 fdrMain.boExecution = false;
 //             }
-
 //             return fdrMain;
 //         }
-
-
 //     }//end class
