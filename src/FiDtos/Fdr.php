@@ -392,7 +392,7 @@ class Fdr
     return $this->refFiXml;
   }
 
-  public function setRefFiXml(?FiXml $refFiXml): self
+  public function setRefFiXml(?FiXml $refFiXml) : self
   {
     $this->refFiXml = $refFiXml;
     return $this;
