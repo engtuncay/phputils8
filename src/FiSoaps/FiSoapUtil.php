@@ -43,11 +43,12 @@ class FiSoapUtil
 
       // Yanıtı işle
       $fdrMain->setBoResult(true);
-      $txValue = $response['body'];
-      $fdrMain->setTxValue($txValue);
-      $fiXml = new FiXml($txValue);
+      $txXmlRaw = $response['body'];
+      // $fdrMain->setTxValue($txValue);
+      $fiXml = new FiXml($txXmlRaw);
       $fiXml->convertFkb();
-      $fdrMain->setRefFiXml($fiXml);
+      $fdrMain->setFkbValue($fiXml->fkbData);
+      // $fdrMain->setRefFiXml($fiXml);
       $fdrMain->lnResponseCode = $response['statusCode'];
       if ($response['statusCode'] >= 400) {
         $fdrMain->setBoResult(false);

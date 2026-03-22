@@ -2,6 +2,7 @@
 
 namespace Engtuncay\Phputils8\FiDtos;
 
+use App\EntegreSip\EspConfigs\EspLog;
 use ArrayIterator;
 use Engtuncay\Phputils8\FiCores\FiArray;
 use Engtuncay\Phputils8\FiCores\FiString;
@@ -133,7 +134,7 @@ class FiKeybean implements IteratorAggregate
     self::addFieldMeta($fiMeta, $value);
   }
 
-  
+
 
   /**
    * FkbCol->fcTxFieldName is used as key
@@ -202,18 +203,18 @@ class FiKeybean implements IteratorAggregate
   {
     //FiLog::$log?->debug(json_encode($this->getArr()));
     return $this->getValue($fiMeta->ftTxKey);
-  } 
+  }
 
   public function getValueByFimAsBool(FiMeta $fiMeta): mixed
   {
     //FiLog::$log?->debug(json_encode($this->getArr()));
-    return FicValue::toBool($this->getValue($fiMeta->ftTxKey,null));
+    return FicValue::toBool($this->getValue($fiMeta->ftTxKey, null));
   }
 
   public function getFimAsBool(FiMeta $fiMeta): mixed
   {
     //FiLog::$log?->debug(json_encode($this->getArr()));
-    return FicValue::toBool($this->getValue($fiMeta->ftTxKey,null));
+    return FicValue::toBool($this->getValue($fiMeta->ftTxKey, null));
   }
 
   /**
@@ -265,7 +266,7 @@ class FiKeybean implements IteratorAggregate
   public function getFcTxFnNtn(): string
   {
     $objValue = $this->getFimValue(FimFiCol::fcTxFieldName());
-    if($objValue === null) return "";
+    if ($objValue === null) return "";
     return (string)$objValue;
   }
 
@@ -355,4 +356,25 @@ class FiKeybean implements IteratorAggregate
     }
   }
 
+  /**
+   * $base ile başlayan bir alt yapıya sahip FiKeybean döner. 
+   * 
+   * Örneğin $base = ['Body', 'IntegrationLoginResponse'] ise, Body->IntegrationLoginResponse altındaki elemanları içeren yeni bir FiKeybean döner.
+   * 
+   * @param mixed ...$base 
+   * @return FiKeybean 
+   */
+  public function changeBase(string ...$base)
+  {
+    $arrayLast = $this->params;
+
+    foreach ($base as $item) {
+      if (array_key_exists($item, $arrayLast)) {
+        $arrayLast = $arrayLast[$item];
+        //EspLog::debug("changeBase - current base: " . $item);
+      }
+    }
+
+    return FiKeybean::bui($arrayLast);
+  }
 }
