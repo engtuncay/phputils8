@@ -5,7 +5,7 @@ namespace Engtuncay\Phputils8\FiXmls;
 use DateTime;
 
 use Engtuncay\Phputils8\FiCores\FiString;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiDtos\FkbList;
 
 
@@ -15,7 +15,7 @@ class FiXmlUtil
   /**
    * XML template içindeki {{key}} formatındaki placeholder'ları değerlerle değiştirir
    */
-  public static function convertXmlParams(string $txXmlTemp, FiKeybean $fkbParams = null): string
+  public static function convertXmlParams(string $txXmlTemp, Fkb $fkbParams = null): string
   {
     if (FiString::isEmpty($txXmlTemp) || $fkbParams === null || $fkbParams->count() == 0) {
       return $txXmlTemp;
@@ -55,9 +55,9 @@ class FiXmlUtil
   }
 
   /**
-   * FiKeybean parametrelerini hazırlar ve template block'larını işler
+   * Fkb parametrelerini hazırlar ve template block'larını işler
    */
-  public static function prepFkbParams(string $txXmlTemp, FiKeybean $fkbParams): string
+  public static function prepFkbParams(string $txXmlTemp, Fkb $fkbParams): string
   {
     //$keys = $fkbParams->getKeys();
 
@@ -184,7 +184,7 @@ class FiXmlUtil
 //   public static class FiXmlUtil
 //   {
 
-//     public static string ConvertXmlParams(string txXmlTemp, FiKeybean fkbParams)
+//     public static string ConvertXmlParams(string txXmlTemp, Fkb fkbParams)
 //     {
 //       if (FiString.IsEmpty(txXmlTemp) || fkbParams == null || fkbParams.Count == 0
 //         // template key yoksa, değiştirilecek bir şey yok
@@ -212,7 +212,7 @@ class FiXmlUtil
 
 //           StringBuilder sbChild = new StringBuilder();
 
-//           foreach (FiKeybean fkbChild in fkbListChild)
+//           foreach (Fkb fkbChild in fkbListChild)
 //           {
 //             string convertXmlParams = ConvertXmlParams(fkbListChild.txTemplate, fkbChild);
 //             sbChild.Append(convertXmlParams);
@@ -254,7 +254,7 @@ class FiXmlUtil
 //       return txXmlTemp; // Güncellenmiş metni döndür
 //     }
 
-//     public static string PrepFkbParams(string txXmlTemp, FiKeybean fkbParams)
+//     public static string PrepFkbParams(string txXmlTemp, Fkb fkbParams)
 //     {
 //       var keys = fkbParams.Keys.ToList(); // Keys'i geçici bir listeye kopyalıyoruz
 

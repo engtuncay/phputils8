@@ -2,11 +2,11 @@
 
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 class FiTemplate
 {
-  public static function replaceParams(string $template, FiKeybean $fkbParams):string
+  public static function replaceParams(string $template, Fkb $fkbParams):string
   {
     // Düzenli ifade
     $pattern = '/\{\{(.*?)\}\}/';

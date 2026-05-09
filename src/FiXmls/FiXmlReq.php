@@ -1,7 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiXmls;
 
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiCores\FiCollection;
 use Engtuncay\Phputils8\FiDtos\FiCol;
 use Engtuncay\Phputils8\FiXmls\FiXmlUtil;
@@ -15,16 +15,16 @@ class FiXmlReq
 	public ?string $txXml;
 
 	/**
-	 * @var FiKeybean
+	 * @var Fkb
 	 */
-	public ?FiKeybean $fkbParams;
+	public ?Fkb $fkbParams;
 
 	/**
 	 * @var string
 	 */
 	public ?string $txBaseUrl;
 
-	public function __construct(?string $prmTxXml = null, ?FiKeybean $prmFkbParams = null)
+	public function __construct(?string $prmTxXml = null, ?Fkb $prmFkbParams = null)
 	{
 		$this->txXml = $prmTxXml;
 		$this->fkbParams = $prmFkbParams;
@@ -94,11 +94,11 @@ class FiXmlReq
 //   {
 //     public string txXml { get; set; }
 
-//     public FiKeybean fkbParams { get; set; }
+//     public Fkb fkbParams { get; set; }
 
 //     public string txBaseUrl { get; set; }
 
-//     public FiXmlReq(string prmTxXml, FiKeybean prmFkbParams)
+//     public FiXmlReq(string prmTxXml, Fkb prmFkbParams)
 //     {
 //       this.txXml = prmTxXml;
 //       this.fkbParams = prmFkbParams;

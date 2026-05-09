@@ -6,7 +6,7 @@ class FiResponse
 {
   private $fsTxMessage;
 
-  private ?FiKeybean $fsFkbVal = null;
+  private ?Fkb $fsFkbVal = null;
 
   public function __construct()
   {
@@ -23,20 +23,20 @@ class FiResponse
     $this->fsTxMessage = $message;
   }
 
-  public function getFkbValue(): ?FiKeybean
+  public function getFkbValue(): ?Fkb
   {
     return $this->fsFkbVal;
   }
 
-  public function getFkbValueInit(): FiKeybean
+  public function getFkbValueInit(): Fkb
   {
     if ($this->fsFkbVal === null) {
-      $this->fsFkbVal = new FiKeybean();
+      $this->fsFkbVal = new Fkb();
     }
     return $this->fsFkbVal;
   }
 
-  public function setFkbValue(?FiKeybean $fsFkbVal): self
+  public function setFkbValue(?Fkb $fsFkbVal): self
   {
     $this->fsFkbVal = $fsFkbVal;
     return $this;

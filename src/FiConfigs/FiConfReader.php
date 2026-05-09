@@ -2,7 +2,7 @@
 namespace Engtuncay\Phputils8\FiConfigs;
 
 use Engtuncay\Phputils8\FiDtos\Fdr;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 class FiConfReader
 {
@@ -22,7 +22,7 @@ class FiConfReader
       $fdr->setMessage("Failed to parse configuration file: " . $filePath);
     }
 
-    $fkbVal = new FiKeybean($conf);
+    $fkbVal = new Fkb($conf);
 
     $fdr->setFkbValue($fkbVal);
 

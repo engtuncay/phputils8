@@ -15,7 +15,7 @@ use Traversable;
 /**
  * Class which wraps an associative array for utility
  */
-class FiKeybean implements IteratorAggregate
+class Fkb implements IteratorAggregate
 {
   /**
    * fkb is used as array, so it initialized.
@@ -33,9 +33,9 @@ class FiKeybean implements IteratorAggregate
   }
 
 
-  public static function bui(array $params = []): FiKeybean
+  public static function bui(array $params = []): Fkb
   {
-    return new FiKeybean($params);
+    return new Fkb($params);
   }
 
   public function put($key, $value)
@@ -43,7 +43,7 @@ class FiKeybean implements IteratorAggregate
     $this->params[$key] = $value;
   }
 
-  public function buiPut($key, $value): FiKeybean
+  public function buiPut($key, $value): Fkb
   {
     $this->params[$key] = $value;
     return $this;
@@ -65,7 +65,7 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
-   * Adds a field (FiCol->fcTxFieldName) to the FiKeybean.
+   * Adds a field (FiCol->fcTxFieldName) to the Fkb.
    *
    * @param FiCol $fiCol
    * @param mixed $value
@@ -82,7 +82,7 @@ class FiKeybean implements IteratorAggregate
   /**
    * Undocumented function
    *
-   * @param FiKeybean $fkbCol
+   * @param Fkb $fkbCol
    * @param mixed $value
    * @return void
    */
@@ -139,7 +139,7 @@ class FiKeybean implements IteratorAggregate
   /**
    * FkbCol->fcTxFieldName is used as key
    *
-   * @param FiKeybean $fkbCol
+   * @param Fkb $fkbCol
    * @param mixed $value
    * @return void
    */
@@ -228,12 +228,12 @@ class FiKeybean implements IteratorAggregate
     return $this->getValueByFiMeta($fiMeta);
   }
 
-  public function getValueByFkc(FiKeybean $fkcCol): mixed
+  public function getValueByFkc(Fkb $fkcCol): mixed
   {
     return $this->getValue($fkcCol->getValueByFiMeta(FimFiCol::fcTxFieldName()));
   }
 
-  public function getFkcVal(FiKeybean $fkcCol): mixed
+  public function getFkcVal(Fkb $fkcCol): mixed
   {
     return $this->getValueByFkc($fkcCol);
   }
@@ -323,10 +323,10 @@ class FiKeybean implements IteratorAggregate
    * $mixkey FkbList olan bir anahtar olarak tanımlanarak, içine $fkbValue ekler
    *
    * @param mixed $mixKey
-   * @param FiKeybean $fkbValue
+   * @param Fkb $fkbValue
    * @return void
    */
-  public function putInFkbList($mixKey, FiKeybean $fkbValue)
+  public function putInFkbList($mixKey, Fkb $fkbValue)
   {
     if (!$this->existKey($mixKey)) {
       $this->params[$mixKey] = new FkbList();
@@ -357,12 +357,12 @@ class FiKeybean implements IteratorAggregate
   }
 
   /**
-   * $base ile başlayan bir alt yapıya sahip FiKeybean döner. 
+   * $base ile başlayan bir alt yapıya sahip Fkb döner. 
    * 
-   * Örneğin $base = ['Body', 'IntegrationLoginResponse'] ise, Body->IntegrationLoginResponse altındaki elemanları içeren yeni bir FiKeybean döner.
+   * Örneğin $base = ['Body', 'IntegrationLoginResponse'] ise, Body->IntegrationLoginResponse altındaki elemanları içeren yeni bir Fkb döner.
    * 
    * @param mixed ...$base 
-   * @return FiKeybean 
+   * @return Fkb 
    */
   public function changeBase(string ...$base)
   {
@@ -375,6 +375,6 @@ class FiKeybean implements IteratorAggregate
       }
     }
 
-    return FiKeybean::bui($arrayLast);
+    return Fkb::bui($arrayLast);
   }
 }

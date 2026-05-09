@@ -6,7 +6,7 @@ use Engtuncay\Phputils8\FiCores\FiStrbui;
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
 use Engtuncay\Phputils8\FiCols\AbsFkbTable;
 use Engtuncay\Phputils8\FiCols\FimColType;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiDtos\FkbList;
 use Engtuncay\Phputils8\FiMetas\FimFiCol;
 use Engtuncay\Phputils8\FiMetas\FimOksFieldType;
@@ -32,7 +32,7 @@ class FiQugen
 
     /** 
      *  @var FkbList $fkbFields 
-     *  @var FiKeybean $fkb
+     *  @var Fkb $fkb
      */
     foreach ($fkbFields as $fkb) {
       if (!in_array($fkb->getFcTxFn(), $arrFieldId)) {

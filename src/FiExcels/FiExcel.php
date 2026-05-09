@@ -7,7 +7,7 @@ use Engtuncay\Phputils8\FiCores\FiString;
 use Engtuncay\Phputils8\FiLogs\FiLog;
 use Engtuncay\Phputils8\FiDtos\Fdr;
 use Engtuncay\Phputils8\FiDtos\FicList;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiDtos\FkbList;
 use Exception;
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -55,7 +55,7 @@ class FiExcel
       $row = $headerRowNo + 1;
       for (; $row <= $highestRow; $row++) {
         // Sütunları dolaş
-        $fkb = new FiKeybean();
+        $fkb = new Fkb();
         // Sütunları gezmek için 'for' döngüsü
         foreach ($fiExcelHeaders as $col => $value) {
           $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
@@ -120,7 +120,7 @@ class FiExcel
       $row = $headerRowNo + 1;
       for (; $row <= $highestRow; $row++) {
         // Sütunları dolaş
-        $fkb = new FiKeybean();
+        $fkb = new Fkb();
         // Sütunları gezmek için 'for' döngüsü
         foreach ($fiExcelHeaders as $col => $value) {
           $cellValue = $sheet->getCell($col . $row)->getFormattedValue();
@@ -188,7 +188,7 @@ class FiExcel
    *                
    * @param Worksheet $sheet 
    * @param int $rowHeaderNo 
-   * @return array array(FiKeybean $fkbHeaders, int $rowHeaderNo) )
+   * @return array array(Fkb $fkbHeaders, int $rowHeaderNo) )
    */
   public static function genHeadersByRowNo(Worksheet $sheet, int $rowHeaderNo): array
   {

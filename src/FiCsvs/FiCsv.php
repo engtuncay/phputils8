@@ -5,7 +5,7 @@ namespace Engtuncay\Phputils8\FiCsvs;
 use Engtuncay\Phputils8\Log\FiLog;
 use Engtuncay\Phputils8\FiDtos\Fdr;
 use Engtuncay\Phputils8\FiDtos\FicList;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiDtos\FkbList;
 
 class FiCsv
@@ -68,7 +68,7 @@ class FiCsv
 
       if (array_key_exists($rowIndex, $data)) {
         $row = $data[$rowIndex];
-        $fkb = new FiKeybean();
+        $fkb = new Fkb();
         // Sütunları gezmek için 'for' döngüsü
         foreach ($fiExcelHeaders as $col => $value) {
 
@@ -124,7 +124,7 @@ class FiCsv
 
       if (array_key_exists($rowIndex, $data)) {
         $row = $data[$rowIndex];
-        $fkb = new FiKeybean();
+        $fkb = new Fkb();
         // Sütunları gezmek için 'for' döngüsü
         foreach ($fiExcelHeaders as $col => $value) {
           $cellValue = $row[$col];

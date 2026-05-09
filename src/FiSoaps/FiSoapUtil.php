@@ -258,7 +258,7 @@ XML;
     }
 
     // if (self::$fkbPdoPool == null) {
-    //   self::$fkbPdoPool = FiKeybean::bui([]);
+    //   self::$fkbPdoPool = Fkb::bui([]);
     // }
     // if (self::$fkbPdoPool->has($connProfile)) {
     //   return self::$fkbPdoPool->get($connProfile);
@@ -285,7 +285,7 @@ XML;
     }
 
     // if (self::$fkbPdoPool == null) {
-    //   self::$fkbPdoPool = FiKeybean::bui([]);
+    //   self::$fkbPdoPool = Fkb::bui([]);
     // }
     // if (self::$fkbPdoPool->has($connProfile)) {
     //   return self::$fkbPdoPool->get($connProfile);

@@ -1,7 +1,7 @@
 <?php
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 class FiCollection
 {
@@ -13,7 +13,7 @@ class FiCollection
       return count($objCollection) == 0;
     }
 
-    if($objCollection instanceof FiKeybean) {
+    if($objCollection instanceof Fkb) {
       return count($objCollection->params) == 0;
     }
 

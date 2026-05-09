@@ -5,7 +5,7 @@ namespace Engtuncay\Phputils8\FiDbs;
 use Engtuncay\Phputils8\FiCores\FiString;
 use Engtuncay\Phputils8\FiCores\FiBool;
 use Engtuncay\Phputils8\FiCores\FiCollection;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 class FiQueryUtil
 {
@@ -38,7 +38,7 @@ class FiQueryUtil
   /**
    * Tekli parametreyi çoklu parametrelere çevirir (abc_1,abc_2 gibi)
    * @param string $txQuery SQL sorgusu
-   * @param FiKeybean $mapParams Parametreler
+   * @param Fkb $mapParams Parametreler
    * @param string $param Parametre adı
    * @param array $listParamData Parametre değerleri dizisi
    * @param bool $boKeepOldParam Eski parametreyi saklasın mı?
@@ -46,7 +46,7 @@ class FiQueryUtil
    */
   public static function convertSingleParamToMultiParam(
     string $txQuery,
-    FiKeybean $mapParams,
+    Fkb $mapParams,
     string $param,
     array $listParamData,
     bool $boKeepOldParam = false
@@ -89,13 +89,13 @@ class FiQueryUtil
   /**
    * Liste parametrelerini çoklu parametrelere çevirir
    * @param string $txQuery SQL sorgusu
-   * @param FiKeybean $mapParams Parametreler
+   * @param Fkb $mapParams Parametreler
    * @param bool $boKeepOldMultiParamInFkb Eski çoklu parametreyi saklasın mı?
    * @return string Dönüştürülmüş SQL sorgusu
    */
   public static function convertListParamToMultiParams(
     string $txQuery,
-    FiKeybean $mapParams,
+    Fkb $mapParams,
     bool $boKeepOldMultiParamInFkb = false
   ): string {
     if ($mapParams === null) {
@@ -157,13 +157,13 @@ class FiQueryUtil
   /**
    * Parametreleri aktif/deaktif eder
    * @param string $txQuery SQL sorgusu
-   * @param FiKeybean $mapParams Parametreler
+   * @param Fkb $mapParams Parametreler
    * @param bool $boActivateOnlyFullParams Sadece dolu parametreleri aktif etsin mi?
    * @return string İşlem yapılmış SQL sorgusu
    */
   public static function activateParamsMain(
     string $txQuery,
-    FiKeybean $mapParams,
+    Fkb $mapParams,
     bool $boActivateOnlyFullParams = false
   ): string {
     $listParamsDeActivated = [];
@@ -215,10 +215,10 @@ class FiQueryUtil
   /**
    * Null olmayan parametreleri aktif eder
    * @param string $txSqlValue SQL sorgusu
-   * @param FiKeybean $fkbParams Parametreler
+   * @param Fkb $fkbParams Parametreler
    * @return string İşlem yapılmış SQL sorgusu
    */
-  public static function activateParamsNotNull(string $txSqlValue, FiKeybean $fkbParams): string
+  public static function activateParamsNotNull(string $txSqlValue, Fkb $fkbParams): string
   {
     if ($fkbParams === null) {
       return $txSqlValue;
@@ -334,11 +334,11 @@ class FiQueryUtil
 //     /// <param name="listParamData"></param>
 //     /// <param name="boKeepOldParam"></param>
 //     /// <returns></returns>
-//     public static string ConvertSingleParamToMultiParam(string txQuery, FiKeybean mapParams, String param, IList listParamData, bool boKeepOldParam)
+//     public static string ConvertSingleParamToMultiParam(string txQuery, Fkb mapParams, String param, IList listParamData, bool boKeepOldParam)
 //     {
 
 //       // (1) şablona göre yeni eklenecek parametre listesi
-//       // FiKeybean paramsNew = new FiKeybean();
+//       // Fkb paramsNew = new Fkb();
 //       StringBuilder sbNewParamsForQuery = new StringBuilder();
 
 //       int index = 0;
@@ -373,7 +373,7 @@ class FiQueryUtil
 //       return param + "_" + index.ToString();
 //     }
 
-//     public static string ConvertListParamToMultiParams(string txQuery, FiKeybean mapParams, bool boKeepOldMultiParamInFkb)
+//     public static string ConvertListParamToMultiParams(string txQuery, Fkb mapParams, bool boKeepOldMultiParamInFkb)
 //     {
 
 //       if (mapParams == null) return txQuery;
@@ -443,7 +443,7 @@ class FiQueryUtil
 //     ///
 //     /// boActivateOnlyFullParams true olursa sadece dolu olan parametreleri aktif eder, parametre dolu değilse (null dahil) deaktif eder.
 //     ///
-//     /// Deaktif edilecek parametrelerde FiKeyBean'de bulunmalı. (FkbParams olmayanlar deaktif edilmez)
+//     /// Deaktif edilecek parametrelerde Fkb'de bulunmalı. (FkbParams olmayanlar deaktif edilmez)
 //     ///
 //     /// Dolu olma Şartları : String boş string degilse
 //     ///
@@ -455,7 +455,7 @@ class FiQueryUtil
 //     /// <param name="mapParams"></param>
 //     /// <param name="boActivateOnlyFullParams"></param>
 //     /// <returns></returns>
-//     public static string ActivateParamsMain(string txQuery, FiKeybean mapParams, bool boActivateOnlyFullParams)
+//     public static string ActivateParamsMain(string txQuery, Fkb mapParams, bool boActivateOnlyFullParams)
 //     {
 
 //       var listParamsDeActivated = new List<string>();
@@ -522,7 +522,7 @@ class FiQueryUtil
 
 //     }
 
-//     public static string ActivateParamsNotNull(string txSqlValue, FiKeybean fkbParams)
+//     public static string ActivateParamsNotNull(string txSqlValue, Fkb fkbParams)
 //     {
 
 //       if (fkbParams == null) return txSqlValue;

@@ -4,7 +4,7 @@ namespace Engtuncay\Phputils8\FiCores;
 
 use App\OnlineKraft\OkpCore\OkpLog;
 use Engtuncay\Phputils8\FiDtos\Fdr;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 /** 
  * This class has all the necessary code for making API calls thru curl library
@@ -17,11 +17,11 @@ class FiCurl
   // Method= POST, PUT, GET etc
   // Data= array("param" => "value") ==> index.php?param=value
 
-  public static function request($method, $url, $data = false, ?FiKeybean $fkbHeaderParams): Fdr
+  public static function request($method, $url, $data = false, ?Fkb $fkbHeaderParams): Fdr
   {
     $fdrMain = new Fdr();
 
-    $fkbHeaderParams??=new FiKeybean();
+    $fkbHeaderParams??=new Fkb();
     
     $curl = curl_init();
 
@@ -65,7 +65,7 @@ class FiCurl
       $result = curl_exec($curl);
       OkpLog::debug("FiCurl-Result", $result);
       $response = json_decode($result, true);
-      $fdrMain->setFkbValue(new FiKeybean($response));
+      $fdrMain->setFkbValue(new Fkb($response));
 
     } catch (\Exception $e) {
       // Handle exception if needed

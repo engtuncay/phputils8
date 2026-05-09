@@ -8,11 +8,11 @@ use IteratorAggregate;
 use Traversable;
 
 /**
- * FiKeybean nesne dizisi (listesini) tutar
+ * Fkb nesne dizisi (listesini) tutar
  */
 class FkbList implements IteratorAggregate
 {
-  /** @var FiKeybean[] $items */
+  /** @var Fkb[] $items */
   private $items = [];
 
   public ?string $txTemplate;
@@ -22,7 +22,7 @@ class FkbList implements IteratorAggregate
   /**
    * 
    *
-   * @param FiKeybean[]|null $collection
+   * @param Fkb[]|null $collection
    */
   public function __construct($collection = [])
   {
@@ -33,7 +33,7 @@ class FkbList implements IteratorAggregate
     }
   }
 
-  public function add(FiKeybean $item)
+  public function add(Fkb $item)
   {
     $this->items[] = $item;
   }
@@ -52,7 +52,7 @@ class FkbList implements IteratorAggregate
     return $arrFdr;
   }
 
-  public function get($index): FikeyBean|null
+  public function get($index): Fkb|null
   {
     return $this->items[$index] ?? null;
   }
@@ -71,7 +71,7 @@ class FkbList implements IteratorAggregate
   public function getItemsField(): array
   {
     return array_map(function ($item) {
-      /** @var FiKeybean $item */
+      /** @var Fkb $item */
       return $item->getFcFieldName();
     }, $this->items);
   }

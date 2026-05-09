@@ -4,7 +4,7 @@ namespace Engtuncay\Phputils8\FiXmls;
 
 use DOMDocument;
 use Engtuncay\Phputils8\FiCores\FiArray;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use SimpleXMLElement;
 
 class FiXml
@@ -12,7 +12,7 @@ class FiXml
   public ?string $txXml = null;
   public ?SimpleXMLElement $sxmlDoc = null;
   public ?DOMDocument $domDoc = null;
-  public ?FiKeybean $fkbData = null;
+  public ?Fkb $fkbData = null;
 
   public function __construct(?string $pTxXml = null)
   {
@@ -31,7 +31,7 @@ class FiXml
         // Body varsa eğer, Body altındaki altındaki elemanları üst seviyeye çıkart, Body'yi kaldır
         $data = $data['Body']; // reset kaldırılır
       }
-      $this->fkbData = FiKeybean::bui($data);
+      $this->fkbData = Fkb::bui($data);
     } else {
       //$this->arrData = null;
 
@@ -68,12 +68,12 @@ class FiXml
     // }
   }
 
-  public function getFkbData(): ?FiKeybean
+  public function getFkbData(): ?Fkb
   {
     return $this->fkbData;
   }
 
-  public function setFkbData(?FiKeybean $fkbData): self
+  public function setFkbData(?Fkb $fkbData): self
   {
     $this->fkbData = $fkbData;
     return $this;

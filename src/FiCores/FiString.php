@@ -2,12 +2,12 @@
 
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 class FiString
 {
 
-  public static function substitutor(string $template, FiKeybean $fkbParams): string
+  public static function substitutor(string $template, Fkb $fkbParams): string
   {
     // Düzenli ifade
     $pattern = '/\{\{(.*?)\}\}/';

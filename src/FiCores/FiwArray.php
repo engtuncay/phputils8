@@ -2,7 +2,7 @@
 
 namespace Engtuncay\Phputils8\FiCores;
 
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiDtos\FkbList;
 
 /**
@@ -77,10 +77,10 @@ public function addValue($genValue)
    * $mixkey FkbList olan bir anahtar olarak tanımlanarak, içine $fkbValue ekler
    *
    * @param mixed $mixKey
-   * @param FiKeybean $fkbValue
+   * @param Fkb $fkbValue
    * @return void
    */
-  public function putInFkbList($mixKey, FiKeybean $fkbValue)
+  public function putInFkbList($mixKey, Fkb $fkbValue)
   {
     /** @var FkbList $fkbList */
     $fkbList =  $this->arrValue[$mixKey];

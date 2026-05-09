@@ -28,7 +28,7 @@ class Fdr
   private ?string $txValue = null;
   private ?array $arrValue = null;
   private ?FiXml $refFiXml = null;
-  private ?FiKeybean $fkbValue = null;
+  private ?Fkb $fkbValue = null;
 
   /**
    * fkl -> Fkb-List
@@ -81,7 +81,7 @@ class Fdr
 
   public function genFkbResponse()
   {
-    $fkbReturn = new FiKeybean;
+    $fkbReturn = new Fkb;
     if ($this->getBoResult() !== null) {
       $fkbReturn->add('fdBoResult', $this->getBoResult());
     }
@@ -251,7 +251,7 @@ class Fdr
   public function getFkbValueInit()
   {
     if ($this->fkbValue === null) {
-      $this->fkbValue = new FiKeybean;
+      $this->fkbValue = new Fkb;
     }
     return $this->fkbValue;
   }

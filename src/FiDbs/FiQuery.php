@@ -5,13 +5,13 @@ namespace Engtuncay\Phputils8\FiDbs;
 use Engtuncay\Phputils8\FiApps\FiAppConfig;
 use Engtuncay\Phputils8\FiCores\FiCollection;
 use Engtuncay\Phputils8\FiCores\FiString;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 
 class FiQuery
 {
   private ?string $sql = null;
 
-  private ?FiKeybean $fkbParams = null;
+  private ?Fkb $fkbParams = null;
 
   // Query özellikleri
   public ?object $fiTableMeta = null;
@@ -23,7 +23,7 @@ class FiQuery
   public ?bool $boUseUpdateFieldsOnly = null;
 
 
-  public function __construct(?string $sql = null, ?FiKeybean $fkbParams = null)
+  public function __construct(?string $sql = null, ?Fkb $fkbParams = null)
   {
     $this->sql = $sql;
     $this->fkbParams = $fkbParams;
@@ -60,12 +60,12 @@ class FiQuery
     $this->sql = $sql;
   }
 
-  public function getFkbParams(): FiKeybean
+  public function getFkbParams(): Fkb
   {
-    return $this->fkbParams ?? new FiKeybean();
+    return $this->fkbParams ?? new Fkb();
   }
 
-  public function setFkbParams(?FiKeybean $fkbParams): void
+  public function setFkbParams(?Fkb $fkbParams): void
   {
     $this->fkbParams = $fkbParams;
   }
@@ -127,7 +127,7 @@ class FiQuery
   }
 
   /**
-   * FiKeybean'da olan parametreleri aktive eder
+   * Fkb'da olan parametreleri aktive eder
    * @param bool $boActivateOnlyFullParams Sadece dolu parametreleri aktif et?
    * @see FiQueryUtil::activateParamsMain()
    */
@@ -186,7 +186,7 @@ activateParamsMain() - Parametreleri şarta bağlı olarak aktive eder
 deActivateAllOptParams() - Opsiyonel parametreleri deaktive eder
 logQueryAndParams() - Sorguyu ve parametreleri log'a kaydeder
 Diğer Değişiklikler:
-Constructor overload: ?FiKeybean $fkbParams parametresi eklendi
+Constructor overload: ?Fkb $fkbParams parametresi eklendi
 Gerekli use statement'ları eklendi (FiAppConfig, FiCollection, FiString)
 Tüm yorum satırları kaldırıldı
 Tüm kodlar hatasız olarak derlenmiştir.

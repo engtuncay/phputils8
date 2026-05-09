@@ -6,7 +6,7 @@ use Engtuncay\Phputils8\FiApps\FiAppConfig;
 use Engtuncay\Phputils8\FiDbs\FiDbTypes;
 use Engtuncay\Phputils8\FiDbs\FiQuery;
 use Engtuncay\Phputils8\FiDtos\Fdr;
-use Engtuncay\Phputils8\FiDtos\FiKeybean;
+use Engtuncay\Phputils8\FiDtos\Fkb;
 use Engtuncay\Phputils8\FiLogs\FiLog;
 use PDOException;
 use PDO;
@@ -23,7 +23,7 @@ class FiPdo extends PDO
   public ?bool $boExecResult = null;
   public ?string $dbName = null;
 
-  public static ?FiKeybean $fkbPdoPool = null;
+  public static ?Fkb $fkbPdoPool = null;
 
   /**
    * shows whether or not there is a connection
@@ -87,7 +87,7 @@ class FiPdo extends PDO
     }
 
     if (self::$fkbPdoPool == null) {
-      self::$fkbPdoPool = FiKeybean::bui([]);
+      self::$fkbPdoPool = Fkb::bui([]);
     }
 
     if (self::$fkbPdoPool->has($connProfile)) {
@@ -330,7 +330,7 @@ class FiPdo extends PDO
 
     //$fdr->setBoExec($boExec);
     $fdr->setBoResult($boResult);
-    $fkbResult = FiKeybean::bui($stmt->fetch(PDO::FETCH_ASSOC));
+    $fkbResult = Fkb::bui($stmt->fetch(PDO::FETCH_ASSOC));
     $fdr->setRefValue($fkbResult);
     $fdr->setRefValue($fkbResult);
 
@@ -402,7 +402,7 @@ class FiPdo extends PDO
       }
       $fdrMain->setBoResult(true);
       $arrResult = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      $fkbVal = new FiKeybean($arrResult);
+      $fkbVal = new Fkb($arrResult);
       $fdrMain->setFkbValue($fkbVal);
       return $fdrMain;
     } catch (PDOException $e) {
